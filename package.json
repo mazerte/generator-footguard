@@ -1,0 +1,42 @@
+{
+  "name": "generator-footguard",
+  "version": "0.1.5",
+  "description": "Yeoman generator for single page application",
+  "keywords": [
+    "yeoman-generator",
+    "yeoman",
+    "generator",
+    "framework",
+    "bower",
+    "coffeescript",
+    "requirejs",
+    "backbone",
+    "front-end",
+    "app"
+  ],
+  "homepage": "https://github.com/mazerte/generator-footguard",
+  "bugs": "https://github.com/mazerte/generator-footguard/issues",
+  "author": "Mathieu Desvé",
+  "main": "app/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mazerte/generator-footguard.git"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "dependencies": {
+    "yeoman-generator": "~0.10.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "BSD"
+    }
+  ]
+}
