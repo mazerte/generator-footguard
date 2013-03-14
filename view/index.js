@@ -3,9 +3,8 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../utils.js'),
-	ModelGenerator = require('../model/index.js'),
-  yeoman = require('yeoman');
+  generatorUtil = require('../util.js'),
+	ModelGenerator = require('../model/index.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -88,21 +87,18 @@ Generator.prototype.askFor = function askFor (argument) {
 Generator.prototype.createViewFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
 	//console.log('Use unit test: ' + this.test);
-	this.template('view.coffee', path.join('src/coffee/app/views', this.name + '_view.coffee'));
+	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
 		mg = new ModelGenerator();
 		mg.name = this.model;
+		mg.folder = this.folder;
 		mg.test = this.test;
 		mg.createModelFiles();
 	}
 	
 	if( this.sass ) {
-		this.template('view.sass', path.join('src/sass', '_' + this.name + '.sass'));
-	}
-	
-	if( this.tpl ) {
-		this.template('view.html', path.join('app/templates', this.name + '.html'));
+		this.template('view.sass', path.join('src/sass', this.folder, '_' + this.name + '.sass'));
 		
 		var file = 'src/sass/main.sass';
 	  var body = grunt.file.read(file);
@@ -111,28 +107,32 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	    needle: '// <here> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
-	      '@import ' + this.name
+	      '@import ' + path.join(this.folder, this.name)
 	    ]
 	  });
 
 	  grunt.file.write(file, body);
 	}
 	
+	if( this.tpl ) {
+		this.template('view.html', path.join('app/templates', this.folder, this.name + '.html'));
+	}
+	
 	if( this.test ) {
-		this.template('view_spec.coffee', path.join('src/coffee/spec/views', this.name + '_view_spec.coffee'));
+		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
 		
 		if( this.tpl ) {
-			this.template('view.html', path.join('test/templates', this.name + '.html'));
+			this.template('view.html', path.join('test/templates', this.folder, this.name + '.html'));
 		}
 		
 		var file = 'src/coffee/spec/all_tests.coffee';
 	  var body = grunt.file.read(file);
 
 	  body = generatorUtil.rewrite({
-	    needle: '# <here> don\'t remove this comment',
+	    needle: '# <unit> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
-	      '	"spec/views/' + this.name + '_view_spec"'
+	      '	"' + path.join('spec/unit/views/', this.folder, this.name + '_view_spec') + '"'
 	    ]
 	  });
 

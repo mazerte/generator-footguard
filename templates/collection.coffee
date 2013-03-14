@@ -1,9 +1,9 @@
 define [
 	'backbone'<% if( model ) { %>
-	'app/models/<%= model %>_model' <% } %>
-], (Backbone<% if( model ) { print(", " + grunt.util._.classify(model)); } %>)->
+	'app/models/<% if( folder ) { print(folder +"/"); } %><%= model %>_model' <% } %>
+], (Backbone<% if( model ) { print(", " + _.classify(model)); } %>)->
 	
-	class <%= grunt.util._.classify(name) %> extends Backbone.Collection
+	class <%= _.classify(name) %>Collection extends Backbone.Collection
 		<% if( model ) { %>
-		model: <%= grunt.util._.classify(model) %>
+		model: <%= _.classify(model) %>
 		<% } %>

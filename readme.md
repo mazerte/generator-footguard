@@ -40,7 +40,7 @@ Available generators:
 
 Available commands:
 
-* [yo server](#server)
-* [yo compile](#compile)
-* [yo build](#build)
-* [yo server-dist](#server-dist)
+* [grunt server](#server)
+* [grunt compile](#compile)
+* [grunt build](#build)
+* [grunt server-dist](#server-dist)

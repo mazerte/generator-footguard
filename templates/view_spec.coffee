@@ -1,6 +1,6 @@
-define ['app/views/<%= name %>_view'], (<%= grunt.util._.classify(name) %>)->
+define ['app/views/<% if( folder ) { print(folder +"/"); } %><%= name %>_view'], (<%= _.classify(name) %>)->
 
-	describe 'Test <%= grunt.util._.classify(name) %> View', ()->
+	describe 'Test <%= _.classify(name) %> View', ()->
 
-		it '<%= grunt.util._.classify(name) %> is defined', ()->
-			expect(<%= grunt.util._.classify(name) %>).not.to.be(undefined)
+		it '<%= _.classify(name) %> is defined', ()->
+			expect(<%= _.classify(name) %>).not.to.be(undefined)

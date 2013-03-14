@@ -3,8 +3,7 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../utils.js'),
-  yeoman = require('yeoman');
+  generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -44,19 +43,19 @@ Generator.prototype.askFor = function askFor (argument) {
 
 Generator.prototype.createHelperFiles = function createCollectionFiles() {
 	
-	this.template('helper.coffee', path.join('src/coffee/app/helpers', this.name + '_helper.coffee'));
+	this.template('helper.coffee', path.join('src/coffee/app/helpers', this.folder, this.name + '_helper.coffee'));
 	
 	if( this.test ) {
-		this.template('helper_spec.coffee', path.join('src/coffee/spec/helpers', this.name + '_helper_spec.coffee'));
+		this.template('helper_spec.coffee', path.join('src/coffee/spec/unit/helpers', this.folder, this.name + '_helper_spec.coffee'));
 		
 		var file = 'src/coffee/spec/all_tests.coffee';
 	  var body = grunt.file.read(file);
 
 	  body = generatorUtil.rewrite({
-	    needle: '# <here> don\'t remove this comment',
+	    needle: '# <unit> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
-	      '	"spec/helpers/' + this.name + '_helper_spec"'
+	      '	"' + path.join('spec/unit/helpers/', this.folder, this.name + '_helper_spec') + '"'
 	    ]
 	  });
 

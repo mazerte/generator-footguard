@@ -1,7 +1,0 @@
-node_modules
-dist
-app/js/app
-app/js/spec
-app/js/main.js
-.sass-cache
-app/components

@@ -44,11 +44,11 @@ module.exports = (grunt)->
 		yeoman: yeomanConfig
 		watch:
 			coffee:
-				files: ['<%= yeoman.src %>/coffee/{,*/}*.coffee']
+				files: ['<%= yeoman.src %>/coffee/{,**/}*.coffee']
 				tasks: ['coffee:dist']
 			
 			compass:
-				files: ['<%= yeoman.src %>/sass/{,*/}*.{scss,sass}']
+				files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
 				tasks: ['compass']
 			
 			livereload:

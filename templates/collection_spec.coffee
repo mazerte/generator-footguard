@@ -1,6 +1,6 @@
-define ['app/collections/<%= name %>_collection'], (<%= grunt.util._.classify(name) %>)->
+define ['app/collections/<% if( folder ) { print(folder +"/"); } %><%= name %>_collection'], (<%= _.classify(name) %>)->
 
-	describe 'Test <%= grunt.util._.classify(name) %> Collection', ()->
+	describe 'Test <%= _.classify(name) %> Collection', ()->
 
-		it '<%= grunt.util._.classify(name) %> is defined', ()->
-			expect(<%= grunt.util._.classify(name) %>).not.to.be(undefined)
+		it '<%= _.classify(name) %> is defined', ()->
+			expect(<%= _.classify(name) %>).not.to.be(undefined)

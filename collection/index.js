@@ -3,9 +3,8 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../utils.js'),
-	ModelGenerator = require('../model/index.js'),
-  yeoman = require('yeoman');
+  generatorUtil = require('../util.js'),
+	ModelGenerator = require('../model/index.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -60,26 +59,27 @@ Generator.prototype.askFor = function askFor (argument) {
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
 	//console.log('Use unit test: ' + this.test);
-	this.template('collection.coffee', path.join('src/coffee/app/collections', this.name + '_collection.coffee'));
+	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 	
 	if( this.model ) {
 		mg = new ModelGenerator();
 		mg.name = this.model;
+		mg.folder = this.folder;
 		mg.test = this.test;
 		mg.createModelFiles();
 	}
 	
 	if( this.test ) {
-		this.template('collection_spec.coffee', path.join('src/coffee/spec/collections', this.name + '_collection_spec.coffee'));
+		this.template('collection_spec.coffee', path.join('src/coffee/spec/unit/collections', this.folder, this.name + '_collection_spec.coffee'));
 		
 		var file = 'src/coffee/spec/all_tests.coffee';
 	  var body = grunt.file.read(file);
 
 	  body = generatorUtil.rewrite({
-	    needle: '# <here> don\'t remove this comment',
+	    needle: '# <unit> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
-	      '	"spec/collections/' + this.name + '_collection_spec"'
+	      '	"' + path.join('spec/unit/collections', this.folder, this.name + '_collection_spec') + '"'
 	    ]
 	  });
 
