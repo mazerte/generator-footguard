@@ -90,7 +90,7 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator();
+		mg = new ModelGenerator(this.options);
 		mg.name = this.model;
 		mg.folder = this.folder;
 		mg.test = this.test;

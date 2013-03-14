@@ -62,7 +62,7 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator();
+		mg = new ModelGenerator(this.options);
 		mg.name = this.model;
 		mg.folder = this.folder;
 		mg.test = this.test;
