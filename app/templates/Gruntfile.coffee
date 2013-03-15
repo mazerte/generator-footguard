@@ -26,6 +26,9 @@ module.exports = (grunt)->
 		app: 'app'
 		src: 'src'
 		dist: 'dist'
+
+		tmp: '.tmp'
+		tmp_dist: '.tmp-dist'
 	}
 
 	try
@@ -49,14 +52,15 @@ module.exports = (grunt)->
 			
 			compass:
 				files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
-				tasks: ['compass']
+				tasks: ['compass:server']
 			
 			livereload:
 				files: [
-					'<%= yeoman.app %>/{,*/}*.html'
-					'<%= yeoman.app %>/css/{,*/}*.css'
-					'<%= yeoman.app %>/js/{,*/}*.js'
-					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg}'
+					'<%= yeoman.tmp %>/{,**/}*.{css,js}'
+					'<%= yeoman.app %>/{,**/}*.html'
+					'<%= yeoman.app %>/css/{,**/}*.css'
+					'<%= yeoman.app %>/js/{,**/}*.js'
+					'<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg}'
 				]
 				
 				tasks: ['livereload']
@@ -70,6 +74,7 @@ module.exports = (grunt)->
 					middleware: (connect)->
 						return [
 							lrSnippet
+							mountFolder(connect, yeomanConfig.tmp)
 							mountFolder(connect, yeomanConfig.app)
 						]
 			dist:
@@ -90,6 +95,8 @@ module.exports = (grunt)->
 
 		clean:
 			dist: ['<%= yeoman.dist %>']
+			tmp: ['<%= yeoman.tmp %>']
+			tmp_dist: ['<%= yeoman.tmp_dist %>']
 			components: ['<%= yeoman.dist %>/components']
 			templates: ['<%= yeoman.dist %>/templates']
 
@@ -98,31 +105,52 @@ module.exports = (grunt)->
 				expand: true
 				cwd: 'src/coffee/'
 				src: ['**/*.coffee']
-				dest: 'app/js'
+				dest: '<%= yeoman.tmp %>/js'
 				ext: '.js'
 
 		compass:
 			options:
 				sassDir: '<%= yeoman.src %>/sass'
-				cssDir: 'app/css'
+				cssDir: '<%= yeoman.tmp %>/css'
 				imagesDir: '<%= yeoman.app %>/images'
 				javascriptsDir: '<%= yeoman.app %>/js'
-				fontsDir: '<%= yeoman.app %>/css/fonts'
-				importPath: '<%= yeoman.app %>/components'
+				fontsDir: './css/fonts'
+				importPath: ['<%= yeoman.app %>/components']
 				relativeAssets: true
+				config: 'compass.rb'
 
-			dist: {}
+			dist: 
+				options:
+					force: true
+					outputStyle: 'compressed'
+					environment: 'production'
 			server:
 				options:
 					debugInfo: true
 
 		less:
-			dist:
+			server:
+				options:
+					dumpLineNumbers: 'all'
 				files:
-    				'<%= yeoman.app %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
+    				'<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
+
+			dist:
+				options:
+					compress: true
+					yuicompress: true
+				files:
+    				'<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
+
+		copy:
+			dist:
+				files: [
+					{ expand: true, cwd: '<%= yeoman.tmp %>/', src: ['**'], dest: '<%= yeoman.tmp_dist %>/' }
+					{ expand: true, cwd: '<%= yeoman.app %>/', src: ['**'], dest: '<%= yeoman.tmp_dist %>/' }
+				]
 
 		useminPrepare:
-			html: '<%= yeoman.app %>/index.html'
+			html: '<%= yeoman.tmp_dist %>/index.html'
 			options:
 				dest: '<%= yeoman.dist %>'
 
@@ -173,7 +201,7 @@ module.exports = (grunt)->
 				options:
 					# no minification, is done by the min task
 					baseUrl: 'js/'
-					appDir: 'app/'
+					appDir: './<%= yeoman.tmp_dist %>/'
 					dir: './<%= yeoman.dist %>/'
 					
 					wrap: true
@@ -182,7 +210,7 @@ module.exports = (grunt)->
 					keepBuildDir: true
 
 					inlineText: true
-					mainConfigFile: '<%= yeoman.app %>/js/main.js'
+					mainConfigFile: '<%= yeoman.tmp_dist %>/js/main.js'
 
 					optimize: "uglify"
 
@@ -197,7 +225,7 @@ module.exports = (grunt)->
 	grunt.registerTask('server', [
 		'coffee:dist'
 		'compass:server'
-		'less:dist'
+		'less:server'
 		'livereload-start'
 		'connect:livereload'
 		'open:livereload'
@@ -218,9 +246,12 @@ module.exports = (grunt)->
 
 	grunt.registerTask('build', [
 		'clean:dist'
+		'clean:tmp'
+		'clean:tmp_dist'
 		'coffee'
 		'compass:dist'
 		'less:dist'
+		'copy:dist'
 		'requirejs:compile'
 		'useminPrepare'
 		'imagemin'
@@ -229,6 +260,7 @@ module.exports = (grunt)->
 		'concat'
 		'usemin'
 		'uglify'
+		'clean:tmp_dist'
 		'clean:components'
 		'clean:templates'
 	])
