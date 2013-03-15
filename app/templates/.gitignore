@@ -3,4 +3,5 @@
 node_modules
 dist/
 .tmp/
+.tmp-dist/
 app/components/
