@@ -117,7 +117,6 @@ module.exports = (grunt)->
 				fontsDir: './css/fonts'
 				importPath: ['<%= yeoman.app %>/components']
 				relativeAssets: true
-				config: 'compass.rb'
 
 			dist: 
 				options:
