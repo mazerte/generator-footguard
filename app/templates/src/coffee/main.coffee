@@ -51,28 +51,30 @@ requirejs.config
 
 		'config': 		'app/config/config_base'
 
-if !window.isTest
-	require ['app/vendors'], ->
+require ['app/vendors'], ->
 
-		require ['app/app'], (App) ->
-			App.initialize()
+	require ['app/app', 'jquery'], (App, $) ->
+		App.initialize()
 
-# else
-# 	require [
-# 		'../components/chai/chai',
-# 		'../components/expect/expect',
-# 		'../components/mocha/mocha'
-# 	], (chai)->
-  
-# 		mocha.setup('bdd')
-# 		#expect = chai.expect
-  
-# 		if location.hash is '#testem'
-# 			require ['../../testem']
-  
-# 		require [
-# 			'../runner/mocha',
-# 			'spec/all_tests'
-# 		], (runner)->
-# 			expect = chai.expect
-# 			runner()
+		if window.is_test
+			mocha_div = $('<div />', { id: 'mocha' })
+			$('body').prepend(mocha_div)
+
+			$('head').append('<link rel="stylesheet" href="components/mocha/mocha.css">')
+			$('head').append('<link rel="stylesheet" href="runner/test.css">')
+
+			require [
+				'../components/chai/chai',
+				'../components/expect/expect',
+				'../components/mocha/mocha'
+			], (chai)->
+		  
+				mocha.setup('bdd')
+				#expect = chai.expect
+		  
+				require [
+					'../runner/mocha',
+					'spec/all_tests'
+				], (runner)->
+					expect = chai.expect
+					runner()

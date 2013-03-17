@@ -20,7 +20,8 @@
     "grunt-regarde": "~0.1.1",
     "grunt-requirejs": "~0.3.3",
     "grunt-open": "~0.2.0",
-    "grunt-usemin": "~0.1.10"
+    "grunt-usemin": "~0.1.10",
+    "grunt-mocha": "~0.2.3"
   },
   "engines": {
     "node": ">=0.8.0"

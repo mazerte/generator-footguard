@@ -1,9 +1,5 @@
 define [
-	"spec/app_spec"
-	"spec/router_spec"
-	"spec/config/config_base_spec"
-
-	"spec/helpers/modernizr_test_spec"
-	"spec/helpers/underscore_mixin_spec"
-	# <here> don't remove this comment
+	"spec/unit/all_unit_tests"
+	"spec/functional/all_functional_tests"
+	"spec/integration/all_integration_tests"
 ], ()->

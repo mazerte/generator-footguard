@@ -1,4 +1,5 @@
 lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet
+testSnippet = require('./test/runner/utils').testSnippet
 mountFolder = (connect, dir)->
 	return connect.static(require('path').resolve(dir))
 
@@ -20,12 +21,14 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks('grunt-regarde')
 	grunt.loadNpmTasks('grunt-open')
 	grunt.loadNpmTasks('grunt-usemin')
+	grunt.loadNpmTasks('grunt-mocha')
 
 	# configurable paths
 	yeomanConfig = {
 		app: 'app'
 		src: 'src'
 		dist: 'dist'
+		test: 'test'
 
 		tmp: '.tmp'
 		tmp_dist: '.tmp-dist'
@@ -87,11 +90,26 @@ module.exports = (grunt)->
 							mountFolder(connect, yeomanConfig.dist)
 						]
 
+			test:
+				options:
+					port: 9002
+					# Change this to '0.0.0.0' to access the server from outside.
+					hostname: 'localhost'
+					middleware: (connect)->
+						return [
+							testSnippet
+							mountFolder(connect, yeomanConfig.test)
+							mountFolder(connect, yeomanConfig.tmp)
+							mountFolder(connect, yeomanConfig.app)
+						]
+
 		open:
 			livereload:
 				path: 'http://localhost:<%= connect.livereload.options.port %>'
 			dist:
 				path: 'http://localhost:<%= connect.dist.options.port %>'
+			test:
+				path: 'http://localhost:<%= connect.test.options.port %>'
 
 		clean:
 			dist: ['<%= yeoman.dist %>']
@@ -140,6 +158,15 @@ module.exports = (grunt)->
 					yuicompress: true
 				files:
     				'<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
+
+		test:
+			all: 
+				options:
+					mocha:
+						ignoreLeaks: false
+
+					urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
+					run: true
 
 		copy:
 			dist:
@@ -220,6 +247,7 @@ module.exports = (grunt)->
 					]
 
 	grunt.renameTask('regarde', 'watch')
+	grunt.renameTask('mocha', 'test')
 
 	grunt.registerTask('server', [
 		'coffee:dist'
@@ -228,6 +256,16 @@ module.exports = (grunt)->
 		'livereload-start'
 		'connect:livereload'
 		'open:livereload'
+		'watch'
+	])
+
+	grunt.registerTask('server-test', [
+		'coffee:dist'
+		'compass:server'
+		'less:server'
+		'livereload-start'
+		'connect:test'
+		'open:test'
 		'watch'
 	])
 
@@ -251,6 +289,8 @@ module.exports = (grunt)->
 		'compass:dist'
 		'less:dist'
 		'copy:dist'
+		'connect:test'
+		'test'
 		'requirejs:compile'
 		'useminPrepare'
 		'imagemin'
