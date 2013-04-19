@@ -13,7 +13,7 @@ mkdir my-new-project && cd $_
 
 Then install `generator-footguard`:
 ```
-npm install generator-footguard
+npm install -g generator-footguard
 ```
 
 Run `yo footguard`, optionally passing an app name:
