@@ -197,17 +197,6 @@ module.exports = (grunt)->
 
 		htmlmin:
 			dist:
-				# options:
-				#   removeCommentsFromCDATA: true
-				#   # https://github.com/yeoman/grunt-usemin/issues/44
-				#   collapseWhitespace: true
-				#   collapseBooleanAttributes: true
-				#   removeAttributeQuotes: true
-				#   removeRedundantAttributes: true
-				#   useShortDoctype: true
-				#   removeEmptyAttributes: true
-				#   removeOptionalTags: true
-
 				files: [{
 					expand: true,
 					cwd: '<%= yeoman.app %>',
@@ -247,7 +236,14 @@ module.exports = (grunt)->
 					]
 
 	grunt.renameTask('regarde', 'watch')
-	grunt.renameTask('mocha', 'test')
+
+	grunt.registerTask('test', [
+		'coffee:dist'
+		'compass:server'
+		'less:server'
+		'connect:test'
+		'mocha'
+	])
 
 	grunt.registerTask('server', [
 		'coffee:dist'
@@ -290,7 +286,7 @@ module.exports = (grunt)->
 		'less:dist'
 		'copy:dist'
 		'connect:test'
-		'test'
+		'mocha'
 		'requirejs:compile'
 		'useminPrepare'
 		'imagemin'

@@ -26,6 +26,8 @@ requirejs.config
 		'modernizr':
 			exports: 'Modernizr'
 
+		'sinon': { exports: 'sinon' }
+
 	paths:
 		'underscore': '../components/underscore/underscore'
 		'backbone': 	'../components/backbone/backbone'
@@ -34,6 +36,8 @@ requirejs.config
 		'domReady': 	'../components/domReady/domReady'
 		'modernizr': 	'../components/modernizr/modernizr'
 		'templates': '../templates'
+
+		'sinon': 'lib/sinon/sinon'
 
 		'bootstrap-affix': 			'../components/bootstrap/js/bootstrap-affix'
 		'bootstrap-alert': 			'../components/bootstrap/js/bootstrap-alert'
@@ -64,13 +68,26 @@ require ['app/vendors'], ->
 			$('head').append('<link rel="stylesheet" href="runner/test.css">')
 
 			require [
-				'../components/chai/chai',
-				'../components/expect/expect',
+				'../components/chai/chai'
+				'../components/chai-backbone/chai-backbone'
+				'../components/chai-jquery/chai-jquery'
+				'../components/Chai-Things/lib/chai-things'
+				'../components/sinon-chai/lib/sinon-chai'
 				'../components/mocha/mocha'
-			], (chai)->
-		  
-				mocha.setup('bdd')
-				#expect = chai.expect
+			], (chai, chaiBackbone, chaiJQuery, chaiThings, sinonChai)->
+
+				mocha.setup
+					ui: 'bdd'
+					bail: false
+					ignoreLeaks: true
+
+				expect = window.expect = chai.expect
+
+				chai.should()
+				chai.use chaiBackbone
+				chai.use chaiJQuery
+				chai.use chaiThings
+				chai.use sinonChai
 		  
 				require [
 					'../runner/mocha',

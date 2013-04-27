@@ -14,7 +14,10 @@
   },
   "devDependencies": {
     "chai": "~1.5.0",
-    "expect": "~0.2.0",
-    "mocha": "~1.8.1"
+    "mocha": "~1.8.1",
+    "chai-backbone": "latest",
+    "chai-jquery": "~1.1.1",
+    "sinon-chai": "~2.4.0",
+    "Chai-Things": "git://github.com/RubenVerborgh/Chai-Things.git#~0.2.0"
   }
 }
