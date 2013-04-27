@@ -3,7 +3,7 @@ define [
 	'underscore'<% if( tpl ) { %>
 	'text!templates/<% if( folder ) { print(folder +"/"); } %><%= tpl %>.html'<% } %><% if( model ) { %>
 	'app/models/<% if( folder ) { print(folder +"/"); } %><%= model %>_model'<% } %>
-], (Bacbone, _<% if( tpl ) { print(', tpl'); } %><% if( model ) { print(', ' + _.classify(model)); } %>)->
+], (Backbone, _<% if( tpl ) { print(', tpl'); } %><% if( model ) { print(', ' + _.classify(model)); } %>)->
 
 	class <%= _.classify(name) %>View extends Backbone.View
 		
