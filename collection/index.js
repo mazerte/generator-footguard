@@ -71,6 +71,7 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('collection_spec.coffee', path.join('src/coffee/spec/unit/collections', this.folder, this.name + '_collection_spec.coffee'));
+		this.template('collection.coffee', path.join('src/coffee/spec/fixtures/collections', this.folder, this.name + '_collection.coffee'));
 		
 		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
 	  var body = grunt.file.read(file);

@@ -48,6 +48,7 @@ Generator.prototype.createModelFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('model_spec.coffee', path.join('src/coffee/spec/unit/models', this.folder, this.name + '_model_spec.coffee'));
+		this.template('model_fixture.coffee', path.join('src/coffee/spec/fixtures/models', this.folder, this.name + '_model.coffee'));
 		
 		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
 	  var body = grunt.file.read(file);

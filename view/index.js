@@ -120,6 +120,7 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
+		this.template('view_fixture.coffee', path.join('src/coffee/spec/fixtures/views', this.folder, this.name + '_view.coffee'));
 		
 		if( this.tpl ) {
 			this.template('view.html', path.join('test/templates', this.folder, this.name + '.html'));

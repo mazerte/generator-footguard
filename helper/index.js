@@ -47,6 +47,7 @@ Generator.prototype.createHelperFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('helper_spec.coffee', path.join('src/coffee/spec/unit/helpers', this.folder, this.name + '_helper_spec.coffee'));
+		this.template('helper_fixture.coffee', path.join('src/coffee/spec/fixtures/helpers', this.folder, this.name + '_helper.coffee'));
 		
 		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
 	  var body = grunt.file.read(file);
