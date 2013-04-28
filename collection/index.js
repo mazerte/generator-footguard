@@ -72,11 +72,11 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	if( this.test ) {
 		this.template('collection_spec.coffee', path.join('src/coffee/spec/unit/collections', this.folder, this.name + '_collection_spec.coffee'));
 		
-		var file = 'src/coffee/spec/all_tests.coffee';
+		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
 	  var body = grunt.file.read(file);
 
 	  body = generatorUtil.rewrite({
-	    needle: '# <unit> don\'t remove this comment',
+	    needle: '# <collections> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
 	      '	"' + path.join('spec/unit/collections', this.folder, this.name + '_collection_spec') + '"'

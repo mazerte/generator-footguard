@@ -16,7 +16,7 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createTestFile = function createTestFile() {
 	this.template('test_integration.coffee', path.join('src/coffee/spec/integration', this.folder, this.name + '_spec.coffee'));
 	
-	var file = 'src/coffee/spec/all_tests.coffee';
+	var file = 'src/coffee/spec/integration/all_integration_tests.coffee';
 	var body = grunt.file.read(file);
 	
 	body = generatorUtil.rewrite({

@@ -159,7 +159,7 @@ module.exports = (grunt)->
 				files:
     				'<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
 
-		test:
+		mocha:
 			all: 
 				options:
 					mocha:

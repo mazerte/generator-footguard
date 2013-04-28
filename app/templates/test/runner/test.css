@@ -17,6 +17,10 @@ body {
 	background-color: white;
 }
 
+#mocha h2 {
+	line-height: 20px;
+}
+
 #mocha .progress {
 	height: 40px;
 	width: 40px;
