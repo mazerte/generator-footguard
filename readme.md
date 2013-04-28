@@ -35,12 +35,16 @@ Available generators:
 * [footguard:model](#model)
 * [footguard:helper](#helper)
 * [footguard:view](#view)
+* [footguard:test-unit](#test)
+* [footguard:test-functional](#test)
+* [footguard:test-integration](#test)
 
 ## Commands
 
 Available commands:
 
 * [grunt server](#server)
+* [grunt test](#server)
 * [grunt compile](#compile)
 * [grunt build](#build)
 * [grunt server-dist](#server-dist)
