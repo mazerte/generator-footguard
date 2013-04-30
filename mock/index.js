@@ -92,6 +92,13 @@ var walk = function(dir, done) {
 	});
 };
 
-// Regex 				  	   		  nombre de tabulations ⁊
+// Regex Method				  	   		  nombre de tabulations ⁊
 // \r([\t ]{2})([\w_@]+)(:| *= *)([ {}()\w_@,]*)->((\s[\t ]{2}[\t]+.*)|(\s(?!.)))+
 // $1$2:$3->\r\t\t\treturn @get('fake_$2')\r
+
+// Regex ClassName
+// \r\t(((class *)(\w*))|((\w*)( *= *[\w(), {}]*->)))
+// \r\t$3 $4$6Mock$7
+
+// Regex Find define dependencies
+// define\(* *\[([\w'"\s-, /]*)]
