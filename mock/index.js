@@ -102,3 +102,12 @@ var walk = function(dir, done) {
 
 // Regex Find define dependencies
 // define\(* *\[([\w'"\s-, /]*)]
+// ["']([\w-/_]*)['"]
+
+// Regex Find define dependencies
+// define\(* *\[([\w'"\s-, /]*)]
+// ["']([\w-/_]*)['"]
+
+// Regex Find define var dependencies
+// define\(* *\[(?:[\w'"\s-, /]*)], *\(([\w,$_\s]*)\) *->
+// ([a-zA-Z0-9$_]+)
