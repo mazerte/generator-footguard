@@ -92,6 +92,6 @@ var walk = function(dir, done) {
 	});
 };
 
-// Regex 				  	  nombre de tabulations ⁊
-// \r([\t ]{2})([\w_@]+):([ {}()\w_@,]*)->((\s[\t ]{2}[\t]+.*)|(\s(?!.)))+
+// Regex 				  	   		  nombre de tabulations ⁊
+// \r([\t ]{2})([\w_@]+)(:| *= *)([ {}()\w_@,]*)->((\s[\t ]{2}[\t]+.*)|(\s(?!.)))+
 // $1$2:$3->\r\t\t\treturn @get('fake_$2')\r
