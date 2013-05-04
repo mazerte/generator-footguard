@@ -3,6 +3,8 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   yeoman = require('yeoman-generator'),
+  mkdirp = require('mkdirp'),
+  _ = require('underscore'),
   generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
@@ -60,11 +62,76 @@ Generator.prototype.updateAll = function updateAll() {
 };
 
 function createMock(classpath) {
-	console.log('	create mock: ' + classpath);
+	var base = process.cwd();
+	var src_path = path.join(base, classpath);
+	var dest_path = path.join(base, classpath.replace(/^src\/coffee\/app/, 'src/coffee/spec/fixtures'));
+	console.log('	create mock: ' + dest_path);
+
+	src = fs.readFileSync(src_path, 'utf8')
+	var regex, tmp;
+
+	// fake all method
+	regex = /\n([\t ]{1})([\w_@]+)(:| *= *)([ {}()\w_@,]*)->((\s[\t ]{1}[\t]+.*)|(\s(?!.)))+/g;
+	src = src.replace(regex, "\n$1$2$3$4->\n\t\t\treturn @get('fake_$2')\n");
+	regex = /\n([\t ]{2})([\w_@]+)(:| *= *)([ {}()\w_@,]*)->((\s[\t ]{2}[\t]+.*)|(\s(?!.)))+/g;
+	src = src.replace(regex, "\n$1$2$3$4->\n\t\t\treturn @get('fake_$2')\n");
+
+	// Change class name
+	regex = /\n\t(((class *)(\w*))|((\w*)( *= *[\w(), {}]*->)))/g;
+	src = src.replace(regex, "\n\t$3$4$6Mock$7");
+
+	// Remove unused dependencies
+	regex = /define\(* *\[([\w'"\s-, \/.!]*)]/g;
+	tmp = regex.exec(src)[1];
+	regex = /["']([\w-\/_.!]*)['"]/g;
+	var defines = [];
+	while ( match = regex.exec(tmp) ) defines.push(match[1]);
+
+	regex = /define\(* *\[(?:[\w'"\s-, \/.!]*)], *\(([\w,$_\s]*)\) *->/g;
+	tmp = regex.exec(src)[1];
+	regex = /([a-zA-Z0-9$_]+)/g;
+	var requires = [];
+	while ( match = regex.exec(tmp) ) requires.push(match[1]);
+
+	defines = _(defines).first(requires.length);
+	obj = _.object( requires, defines );
+	for(var i = 0; i < requires.length; i++) {
+		dep = requires[i];
+		if( src.match(new RegExp(dep, 'g')).length < 2 )
+			delete obj[dep];
+	}
+	var newDeps = "define [\n";
+	for (var prop in obj) {
+		var value = obj[prop];
+		newDeps += "\t'" + value + "'\n";
+	}
+	newDeps += "], (";
+	for (var prop in obj) {
+		newDeps += prop + ", ";
+	}
+	newDeps = newDeps.substring(0, newDeps.lastIndexOf(", "));
+	newDeps += ")->";
+	src = src.replace(/define[.\s\[\]'"\w!\/,()-]*->/g, newDeps);
+
+	console.log(src);
+	writeFile(dest_path, src);
+}
+
+function writeFile(filepath, content) {
+	mkdirp(path.dirname(filepath), function(err) {
+		if (err) return console.log("ERROR: " + err);
+		fs.writeFileSync(filepath, content);
+	});
 }
 
 function updateMock(classpath) {
-	console.log('	update mock: ' + classpath);
+	base = process.cwd()
+	src_path = path.join(base, classpath)
+	dest_path = path.join(base, classpath.replace(/^src\/coffee\/app/, 'src/coffee/spec/fixtures'))
+	console.log('	update mock: ' + dest_path)
+
+	src = fs.readFileSync(src_path, 'utf8')
+	dest = fs.readFileSync(src_path, 'utf8')
 }
 
 var fs = require('fs');
@@ -92,22 +159,6 @@ var walk = function(dir, done) {
 	});
 };
 
-// Regex Method				  	   		  nombre de tabulations ⁊
-// \r([\t ]{2})([\w_@]+)(:| *= *)([ {}()\w_@,]*)->((\s[\t ]{2}[\t]+.*)|(\s(?!.)))+
-// $1$2:$3->\r\t\t\treturn @get('fake_$2')\r
-
-// Regex ClassName
-// \r\t(((class *)(\w*))|((\w*)( *= *[\w(), {}]*->)))
-// \r\t$3 $4$6Mock$7
-
-// Regex Find define dependencies
-// define\(* *\[([\w'"\s-, /]*)]
-// ["']([\w-/_]*)['"]
-
-// Regex Find define dependencies
-// define\(* *\[([\w'"\s-, /]*)]
-// ["']([\w-/_]*)['"]
-
-// Regex Find define var dependencies
-// define\(* *\[(?:[\w'"\s-, /]*)], *\(([\w,$_\s]*)\) *->
-// ([a-zA-Z0-9$_]+)
+// TODO
+// if class if not a backbone model (don't @get('fake_*'))
+// rename new Class line if the class is a singleton
