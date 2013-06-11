@@ -12,7 +12,7 @@ define [
 		model: new <%= _.classify(model) %>()<% } %>
 		
 		initialize: (options)->
-			<% if( model ) { %>if options.model?
+			<% if( model ) { %>if options?.model?
 				@model = model<% } %>
 			
 		render: ->

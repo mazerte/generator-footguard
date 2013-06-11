@@ -120,16 +120,17 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
+		this.template('view_fixture.coffee', path.join('src/coffee/spec/fixtures/views', this.folder, this.name + '_view.coffee'));
 		
 		if( this.tpl ) {
 			this.template('view.html', path.join('test/templates', this.folder, this.name + '.html'));
 		}
 		
-		var file = 'src/coffee/spec/all_tests.coffee';
+		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
 	  var body = grunt.file.read(file);
 
 	  body = generatorUtil.rewrite({
-	    needle: '# <unit> don\'t remove this comment',
+	    needle: '# <views> don\'t remove this comment',
 	    haystack: body,
 	    splicable: [
 	      '	"' + path.join('spec/unit/views/', this.folder, this.name + '_view_spec') + '"'
