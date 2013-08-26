@@ -9,7 +9,7 @@ function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
   this.appname = path.basename(process.cwd());
 
-  this.argument('folder', { type: String, required: false, default: "" });
+  this.argument('folder', { type: String, required: false, defaults: "" });
 
   this.sourceRoot(path.join(__dirname, './templates'));
 }
