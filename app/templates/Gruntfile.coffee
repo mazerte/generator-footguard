@@ -1,11 +1,11 @@
-lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet
+LIVERELOAD_PORT = 35729
+lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT})
 testSnippet = require('./test/runner/utils').testSnippet
 mountFolder = (connect, dir)->
 	return connect.static(require('path').resolve(dir))
 
 module.exports = (grunt)->
 
-	grunt.loadNpmTasks('grunt-contrib-livereload')
 	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-coffee')
 	grunt.loadNpmTasks('grunt-contrib-compass')
@@ -17,7 +17,7 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks('grunt-contrib-htmlmin')
 	grunt.loadNpmTasks('grunt-contrib-imagemin')
 	grunt.loadNpmTasks('grunt-contrib-uglify')
-	grunt.loadNpmTasks('grunt-requirejs')
+	grunt.loadNpmTasks('grunt-contrib-requirejs')
 	grunt.loadNpmTasks('grunt-regarde')
 	grunt.loadNpmTasks('grunt-open')
 	grunt.loadNpmTasks('grunt-usemin')
@@ -253,7 +253,6 @@ module.exports = (grunt)->
 		'coffee:dist'
 		'compass:server'
 		'less:server'
-		'livereload-start'
 		'connect:livereload'
 		'open:livereload'
 		'watch'
@@ -263,7 +262,6 @@ module.exports = (grunt)->
 		'coffee:dist'
 		'compass:server'
 		'less:server'
-		'livereload-start'
 		'connect:test'
 		'open:test'
 		'watch'
