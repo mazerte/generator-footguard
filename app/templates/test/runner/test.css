@@ -5,6 +5,7 @@ body {
 #mocha {
 	display: block;
 	padding: 60px;
+	margin: 0;
 
 	position: absolute;
 	top: 0;
@@ -20,4 +21,8 @@ body {
 #mocha .progress {
 	height: 40px;
 	width: 40px;
+}
+
+#mocha h2, #mocha li {
+	line-height: 12px;
 }

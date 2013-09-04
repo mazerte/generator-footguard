@@ -29,9 +29,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
 	}];
   
-	this.prompt(prompts, function(e, props) {
-		if(e) { return self.emit('error', e); }
-		
+	this.prompt(prompts, function(props) {		
 		// manually deal with the response, get back and store the results.
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.test = (/y/i).test(props.test);

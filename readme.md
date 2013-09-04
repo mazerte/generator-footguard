@@ -44,3 +44,5 @@ Available commands:
 * [grunt compile](#compile)
 * [grunt build](#build)
 * [grunt server-dist](#server-dist)
+* [grunt test](#test)
+* [grunt server-test](#server-test)

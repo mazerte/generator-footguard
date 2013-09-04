@@ -45,9 +45,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
 	}];
   
-	this.prompt(prompts, function(e, props) {
-		if(e) { return self.emit('error', e); }
-		
+	this.prompt(prompts, function(props) {
 		// manually deal with the response, get back and store the results.
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.model = false;
@@ -90,7 +88,9 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator(this.options);
+		mg = new ModelGenerator([
+			this.model, this.folder
+		], this.options);
 		mg.name = this.model;
 		mg.folder = this.folder;
 		mg.test = this.test;
@@ -101,17 +101,17 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 		this.template('view.sass', path.join('src/sass', this.folder, '_' + this.name + '.sass'));
 		
 		var file = 'src/sass/main.sass';
-	  var body = grunt.file.read(file);
+		var body = grunt.file.read(file);
 
-	  body = generatorUtil.rewrite({
-	    needle: '// <here> don\'t remove this comment',
-	    haystack: body,
-	    splicable: [
-	      '@import ' + path.join(this.folder, this.name)
-	    ]
-	  });
+		body = generatorUtil.rewrite({
+			needle: '// <here> don\'t remove this comment',
+			haystack: body,
+			splicable: [
+			  '@import ' + path.join(this.folder, this.name)
+			]
+		});
 
-	  grunt.file.write(file, body);
+		grunt.file.write(file, body);
 	}
 	
 	if( this.tpl ) {

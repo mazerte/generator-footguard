@@ -35,9 +35,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
 	}];
   
-	this.prompt(prompts, function(e, props) {
-		if(e) { return self.emit('error', e); }
-		
+	this.prompt(prompts, function(props) {		
 		// manually deal with the response, get back and store the results.
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.model = false;
@@ -62,7 +60,9 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator(this.options);
+		mg = new ModelGenerator([
+			this.model, this.folder
+		], this.options);
 		mg.name = this.model;
 		mg.folder = this.folder;
 		mg.test = this.test;

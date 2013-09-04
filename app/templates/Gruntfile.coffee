@@ -17,8 +17,8 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks('grunt-contrib-htmlmin')
 	grunt.loadNpmTasks('grunt-contrib-imagemin')
 	grunt.loadNpmTasks('grunt-contrib-uglify')
-	grunt.loadNpmTasks('grunt-requirejs')
-	grunt.loadNpmTasks('grunt-regarde')
+	grunt.loadNpmTasks('grunt-contrib-requirejs')
+	grunt.loadNpmTasks('grunt-contrib-watch')
 	grunt.loadNpmTasks('grunt-open')
 	grunt.loadNpmTasks('grunt-usemin')
 	grunt.loadNpmTasks('grunt-mocha')
@@ -52,24 +52,30 @@ module.exports = (grunt)->
 			coffee:
 				files: ['<%= yeoman.src %>/coffee/{,**/}*.coffee']
 				tasks: ['coffee:dist']
+				options: 
+					livereload: true
 			
 			compass:
 				files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
 				tasks: ['compass:server']
+				options: 
+					livereload: true
 			
-			livereload:
+			files:
 				files: [
 					'<%= yeoman.tmp %>/{,**/}*.{css,js}'
 					'<%= yeoman.app %>/{,**/}*.html'
 					'<%= yeoman.app %>/css/{,**/}*.css'
 					'<%= yeoman.app %>/js/{,**/}*.js'
 					'<%= yeoman.app %>/images/{,**/}*.{png,jpg,jpeg}'
+					'!<%= yeoman.app %>/components/**'
 				]
-				
-				tasks: ['livereload']
+				tasks: []
+				options: 
+					livereload: true
 
 		connect:
-			livereload:
+			server:
 				options:
 					port: 9000
 					# Change this to '0.0.0.0' to access the server from outside.
@@ -104,8 +110,8 @@ module.exports = (grunt)->
 						]
 
 		open:
-			livereload:
-				path: 'http://localhost:<%= connect.livereload.options.port %>'
+			server:
+				path: 'http://localhost:<%= connect.server.options.port %>'
 			dist:
 				path: 'http://localhost:<%= connect.dist.options.port %>'
 			test:
@@ -159,13 +165,13 @@ module.exports = (grunt)->
 				files:
     				'<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
 
-		test:
+		mocha:
 			all: 
 				options:
 					mocha:
 						ignoreLeaks: false
 
-					urls: ['http://localhost:<%= connect.test.options.port %>/index.html']
+					urls: ['http://localhost:<%= connect.test.options.port %>/']
 					run: true
 
 		copy:
@@ -245,17 +251,21 @@ module.exports = (grunt)->
 						{ name: 'app/app', exclude: ['app/vendors'] }
 						{ name: 'main', exclude: ['config', 'app/app', 'app/vendors'] }
 					]
-
-	grunt.renameTask('regarde', 'watch')
-	grunt.renameTask('mocha', 'test')
+	
+	grunt.registerTask('test', [
+		'coffee:dist'
+		'compass:server'
+		'less:server'
+		'connect:test'
+		'mocha'
+	])
 
 	grunt.registerTask('server', [
 		'coffee:dist'
 		'compass:server'
 		'less:server'
-		'livereload-start'
-		'connect:livereload'
-		'open:livereload'
+		'connect:server'
+		'open:server'
 		'watch'
 	])
 
@@ -263,7 +273,6 @@ module.exports = (grunt)->
 		'coffee:dist'
 		'compass:server'
 		'less:server'
-		'livereload-start'
 		'connect:test'
 		'open:test'
 		'watch'
@@ -272,7 +281,7 @@ module.exports = (grunt)->
 	grunt.registerTask('server-dist', [
 		'connect:dist'
 		'open:dist'
-		'watch:livereload'
+		'watch:files'
 	])
 
 	grunt.registerTask('compile', [
@@ -290,7 +299,7 @@ module.exports = (grunt)->
 		'less:dist'
 		'copy:dist'
 		'connect:test'
-		'test'
+		'mocha'
 		'requirejs:compile'
 		'useminPrepare'
 		'imagemin'
