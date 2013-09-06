@@ -1,6 +1,6 @@
 {
   "name": "generator-footguard",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Yeoman generator for single page application",
   "keywords": [
     "yeoman-generator",
@@ -12,6 +12,10 @@
     "requirejs",
     "backbone",
     "front-end",
+    "bootstrap",
+    "workflow",
+    "mocha",
+    "unit test",
     "app"
   ],
   "homepage": "https://github.com/mazerte/generator-footguard",
