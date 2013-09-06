@@ -2,19 +2,21 @@
   "name": "MyProject",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "git://github.com/components/jquery.git#1.8.3",
-    "backbone": "git://github.com/documentcloud/backbone.git#~1.0.0",
-    "requirejs": "git://github.com/jrburke/requirejs#2.1.5",
-    "raphael": "git://github.com/DmitryBaranovskiy/raphael.git#2.1.0",
-    "modernizr": "git://github.com/Modernizr/Modernizr.git#2.6.2",
-    "bootstrap": "git://github.com/twbs/bootstrap#2.3.1",
-    "requirejs-text": "git://github.com/requirejs/text#2.0.5",
-    "domReady": "git://github.com/requirejs/domReady.git#2.0.1",
-    "underscore": "git://github.com/documentcloud/underscore.git#1.4.4"
+    "jquery": "~1.9.1",
+    "backbone": "~1.0.0",
+    "requirejs": "*",
+    "raphael": "~2.1.1",
+    "modernizr": "~2.6.2",
+    "bootstrap": "~2.3.2",
+    "requirejs-text": "~2.0.5",
+    "requirejs-domready": "~2.0.1",
+    "underscore": "~1.4.4"
   },
   "devDependencies": {
-    "chai": "~1.5.0",
-    "expect": "~0.2.0",
-    "mocha": "~1.12.1"
+    "chai": "~1.7.2",
+    "chai-backbone": "latest",
+    "chai-jquery": "~1.1.1",
+    "sinon-chai": "~2.4.0",
+    "mocha": "~1.12.0"
   }
 }

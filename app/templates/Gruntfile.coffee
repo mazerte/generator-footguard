@@ -1,11 +1,50 @@
-lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet
-testSnippet = require('./test/runner/utils').testSnippet
 mountFolder = (connect, dir)->
 	return connect.static(require('path').resolve(dir))
 
+fileHTMLRewriter = ({regex, snippet})->
+	excludeList = [".woff", ".js", ".css", ".ico"]
+
+	acceptsHtmlExplicit = (req)->
+		accept = req.headers["accept"]
+		return false unless accept
+		return (~accept.indexOf("html"))
+
+	isExcluded = (req)->
+		url = req.url
+		excluded = false
+		return true unless url
+
+		excludeList.forEach (exclude)->
+			if ~url.indexOf(exclude)
+				excluded = true
+		return excluded
+
+	return (req, res, next)->
+		write = res.write
+
+		# Select just html file
+		if !acceptsHtmlExplicit(req) or isExcluded(req)
+      		return next()
+
+		res.write = (string, encoding)->
+			body = if string instanceof Buffer then string.toString() else string
+			body = body.replace regex, snippet
+
+			if string instanceof Buffer
+				string = new Buffer(body)
+			else
+				string = body
+
+			unless this.headerSent
+				this.setHeader 'content-length', Buffer.byteLength(body)+snippet.lenght
+				this._implicitHeader()
+
+			write.call(res, string, encoding)
+
+		next()
+
 module.exports = (grunt)->
 
-	grunt.loadNpmTasks('grunt-contrib-livereload')
 	grunt.loadNpmTasks('grunt-contrib-clean')
 	grunt.loadNpmTasks('grunt-contrib-coffee')
 	grunt.loadNpmTasks('grunt-contrib-compass')
@@ -32,6 +71,9 @@ module.exports = (grunt)->
 
 		tmp: '.tmp'
 		tmp_dist: '.tmp-dist'
+
+		server_port: 9000
+		livereload_port: 35729
 	}
 
 	try
@@ -49,17 +91,16 @@ module.exports = (grunt)->
 		# ---------------------
 		yeoman: yeomanConfig
 		watch:
+			options:
+				interrupt: true
+
 			coffee:
 				files: ['<%= yeoman.src %>/coffee/{,**/}*.coffee']
 				tasks: ['coffee:dist']
-				options: 
-					livereload: true
 			
 			compass:
 				files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
 				tasks: ['compass:server']
-				options: 
-					livereload: true
 			
 			files:
 				files: [
@@ -71,26 +112,24 @@ module.exports = (grunt)->
 					'!<%= yeoman.app %>/components/**'
 				]
 				tasks: []
-				options: 
-					livereload: true
+				options:
+					livereload: yeomanConfig.livereload_port
 
 		connect:
 			server:
 				options:
-					port: 9000
-					# Change this to '0.0.0.0' to access the server from outside.
-					hostname: 'localhost'
+					port: yeomanConfig.server_port
+					hostname: '0.0.0.0'
 					middleware: (connect)->
 						return [
-							lrSnippet
+							require('connect-livereload')(port: yeomanConfig.livereload_port)
 							mountFolder(connect, yeomanConfig.tmp)
 							mountFolder(connect, yeomanConfig.app)
 						]
 			dist:
 				options:
-					port: 9001
-					# Change this to '0.0.0.0' to access the server from outside.
-					hostname: 'localhost'
+					port: yeomanConfig.server_port + 1
+					hostname: '0.0.0.0'
 					middleware: (connect)->
 						return [
 							mountFolder(connect, yeomanConfig.dist)
@@ -98,12 +137,22 @@ module.exports = (grunt)->
 
 			test:
 				options:
-					port: 9002
-					# Change this to '0.0.0.0' to access the server from outside.
-					hostname: 'localhost'
+					port: yeomanConfig.server_port + 2
+					hostname: '0.0.0.0'
 					middleware: (connect)->
 						return [
-							testSnippet
+							require('connect-livereload')(port: yeomanConfig.livereload_port)
+							fileHTMLRewriter
+								snippet: [
+					        		"<!-- Test snippet -->",
+					        		"<script src=\"components/mocha/mocha.js\"></script>",
+					        		"<link rel=\"stylesheet\" href=\"components/mocha/mocha.css\">",
+					        		"<script>",
+					        		"    window.is_test = true;",
+					        		"</script>",
+					        		""
+					        	].join('\n')
+								regex: /<!-- Test snippet -->/
 							mountFolder(connect, yeomanConfig.test)
 							mountFolder(connect, yeomanConfig.tmp)
 							mountFolder(connect, yeomanConfig.app)
@@ -172,7 +221,9 @@ module.exports = (grunt)->
 						ignoreLeaks: false
 
 					urls: ['http://localhost:<%= connect.test.options.port %>/']
-					run: true
+					run: false
+					reporter: 'Spec'
+					timeout: 60000
 
 		copy:
 			dist:
