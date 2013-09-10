@@ -144,14 +144,14 @@ module.exports = (grunt)->
 							require('connect-livereload')(port: yeomanConfig.livereload_port)
 							fileHTMLRewriter
 								snippet: [
-					        		"<!-- Test snippet -->",
-					        		"<script src=\"components/mocha/mocha.js\"></script>",
-					        		"<link rel=\"stylesheet\" href=\"components/mocha/mocha.css\">",
-					        		"<script>",
-					        		"    window.is_test = true;",
-					        		"</script>",
-					        		""
-					        	].join('\n')
+									"<!-- Test snippet -->",
+									"<script src=\"components/mocha/mocha.js\"></script>",
+									"<link rel=\"stylesheet\" href=\"components/mocha/mocha.css\">",
+									"<script>",
+									"    window.is_test = true;",
+									"</script>",
+									""
+								].join('\n')
 								regex: /<!-- Test snippet -->/
 							mountFolder(connect, yeomanConfig.test)
 							mountFolder(connect, yeomanConfig.tmp)
