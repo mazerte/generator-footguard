@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/mazerte/generator-footguard.png?branch=master)](https://travis-ci.org/mazerte/generator-footguard)
 [![Coverage Status](https://coveralls.io/repos/mazerte/generator-footguard/badge.png?branch=master)](https://coveralls.io/r/mazerte/generator-footguard?branch=master)
 
+[![NPM](https://nodei.co/npm/generator-footguard.png?downloads=true)](https://nodei.co/npm/generator-footguard/) 
+
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
 Based on [yeoman-generator](https://github.com/yeoman/yeoman-generator/)
