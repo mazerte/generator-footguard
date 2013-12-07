@@ -29,7 +29,7 @@
     "url": "git://github.com/mazerte/generator-footguard.git"
   },
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha"
   },
   "dependencies": {
     "yeoman-generator": "~0.14.0",

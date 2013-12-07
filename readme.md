@@ -1,5 +1,7 @@
 # Footguard generator
 
+[![Dependency Status](https://gemnasium.com/mazerte/generator-footguard.png)](https://gemnasium.com/mazerte/generator-footguard)
+
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
 Based on [yeoman-generator](https://github.com/yeoman/yeoman-generator/)
