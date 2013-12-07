@@ -32,14 +32,14 @@
     "test": "mocha test"
   },
   "dependencies": {
-    "yeoman-generator": "~0.10.2",
+    "yeoman-generator": "~0.14.0",
     "path": "~0.4.9",
-    "util": "~0.4.9",
-    "underscore.inflections": "~0.1.4",
+    "util": "~0.10.1",
+    "underscore.inflections": "~0.2.1",
     "grunt": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "~1.8.1"
+    "mocha": "~1.15.1"
   },
   "engines": {
     "node": ">=0.8.0"
