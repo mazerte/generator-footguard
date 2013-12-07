@@ -1,6 +1,7 @@
 # Footguard generator
 
 [![Dependency Status](https://gemnasium.com/mazerte/generator-footguard.png)](https://gemnasium.com/mazerte/generator-footguard)
+[![Build Status](https://travis-ci.org/mazerte/generator-footguard.png?branch=master)](https://travis-ci.org/mazerte/generator-footguard)
 
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
