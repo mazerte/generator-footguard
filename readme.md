@@ -2,6 +2,7 @@
 
 [![Dependency Status](https://gemnasium.com/mazerte/generator-footguard.png)](https://gemnasium.com/mazerte/generator-footguard)
 [![Build Status](https://travis-ci.org/mazerte/generator-footguard.png?branch=master)](https://travis-ci.org/mazerte/generator-footguard)
+[![Coverage Status](https://coveralls.io/repos/mazerte/generator-footguard/badge.png?branch=master)](https://coveralls.io/r/mazerte/generator-footguard?branch=master)
 
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
