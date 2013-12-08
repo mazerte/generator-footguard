@@ -46,17 +46,12 @@ Generator.prototype.createHelperFiles = function createCollectionFiles() {
 	if( this.test ) {
 		this.template('helper_spec.coffee', path.join('src/coffee/spec/unit/helpers', this.folder, this.name + '_helper_spec.coffee'));
 		
-		var file = 'src/coffee/spec/unit/all_unit_tests.coffee';
-	  var body = grunt.file.read(file);
-
-	  body = generatorUtil.rewrite({
-	    needle: "# <unit> don't remove this comment",
-	    haystack: body,
-	    splicable: [
-	      '	"' + path.join('spec/unit/helpers/', this.folder, this.name + '_helper_spec') + '"'
-	    ]
-	  });
-
-	  grunt.file.write(file, body);
+		generatorUtil.rewriteFile({
+			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
+			needle: "# <unit> don't remove this comment",
+			splicable: [
+				'	"' + path.join('spec/unit/helpers/', this.folder, this.name + '_helper_spec') + '"'
+			]
+		});
 	}
 };
