@@ -18,6 +18,8 @@ describe('Yeoman generator', function () {
 				'../../app'
 			]);
 
+			this.footguard.app.options['skip-install'] = true;
+
 			done();
 		}.bind(this));
 	});
