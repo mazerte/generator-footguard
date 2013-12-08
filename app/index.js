@@ -39,29 +39,3 @@ Generator.prototype.setupEnv = function setupEnv() {
 	console.log("=======================".cyan);
 	this.directory('.','.', true);
 };
-
-// Generator.prototype.installNodeModules = function setupEnv() {
-// 	var cb = this.async();
-	
-// 	console.log("".cyan);
-// 	console.log("Install node modules dependencies".cyan);
-// 	console.log("=================================".cyan);
-	
-// 	exec('npm install', function(error, stdout, stderr) {
-// 		console.log(stdout);
-// 		cb();
-// 	});
-// };
-
-// Generator.prototype.installBowerModules = function setupEnv() {
-// 	var cb = this.async();
-	
-// 	console.log("".cyan);
-// 	console.log("Install bower modules dependencies".cyan);
-// 	console.log("==================================".cyan);
-	
-// 	exec('yeoman install', function(error, stdout, stderr) {
-// 		console.log(stdout);
-// 		cb();
-// 	});
-// };
