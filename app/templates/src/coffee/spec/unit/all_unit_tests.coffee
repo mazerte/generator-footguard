@@ -5,5 +5,5 @@ define [
 
 	"spec/unit/helpers/modernizr_test_spec"
 	"spec/unit/helpers/underscore_mixin_spec"
-	# <here> don't remove this comment
+	# <unit> don't remove this comment
 ], ()->

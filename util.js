@@ -27,7 +27,6 @@ function rewrite (args) {
   var re = new RegExp(args.splicable.map(function (line) {
     return '\s*' + escapeRegExp(line);
   }).join('\n'));
-
   if (re.test(args.haystack)) {
     return args.haystack;
   }

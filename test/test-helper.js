@@ -41,4 +41,22 @@ describe('Yeoman generator - helper', function () {
 		});
 	});
 
+	it('create helper with test', function (done) {
+		var helper = helpers.createGenerator('footguard:helper', ['../../helper'], ['foo']);
+
+		helpers.mockPrompt(helper, {
+			test: 'y'
+		});
+
+		helper.run([], function() {
+			helpers.assertFiles([
+				['src/coffee/app/helpers/foo_helper.coffee', /Foo = \(\)->/],
+				['src/coffee/spec/unit/helpers/foo_helper_spec.coffee', /Test Foo Helper/],
+				['src/coffee/spec/unit/helpers/foo_helper_spec.coffee', /define \['app\/helpers\/foo_helper'\], \(Foo\)->/],
+				['src/coffee/spec/unit/all_unit_tests.coffee', /"spec\/unit\/helpers\/foo_helper_spec"/]
+			]);
+			done();
+		});
+	});
+
 });
