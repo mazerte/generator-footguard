@@ -8,12 +8,9 @@ define [
 	class <%= _.classify(name) %>View extends Backbone.View
 		
 		events: {}
-		<% if( model ) { %>
-		model: new <%= _.classify(model) %>()<% } %>
 		
 		initialize: (options)->
-			<% if( model ) { %>if options.model?
-				@model = model<% } %>
+			<% if( model ) { %>@model = options.model if options.model <% } %>
 			
 		render: ->
 			<% if( tpl ) { %>@$el.html _.template( tpl, { <% if( model ) { %>model: @model<% } %> } )<% } %>

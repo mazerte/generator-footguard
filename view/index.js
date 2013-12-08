@@ -50,16 +50,18 @@ Generator.prototype.askFor = function askFor (argument) {
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.model = false;
 		if( props.model != "y/model/N" ) {
-			if( props.model == "y" ) {
+			if( (/^y$/i).test(props.model) ) {
 				self.model = self.name;
-			} else if( !(/n/i).test(props.model) ) {
+			} else if( !(/^n$/i).test(props.model) ) {
 				self.model = props.model;
 			}
 		}
 		
 		self.tpl = self.name;
 		if( props.tpl != "Y/template/n" ) {
-			if( props.tpl == "n" ) {
+			if( (/^y$/i).test(props.tpl) ) {
+				self.tpl = self.name;
+			} else if( (/^n$/i).test(props.tpl) ) {
 				self.tpl = false;
 			} else {
 				self.tpl = props.tpl;
@@ -67,8 +69,10 @@ Generator.prototype.askFor = function askFor (argument) {
 		}
 		
 		self.sass = self.name;
-		if( props.sass != "Y/sass/n" ) {
-			if( props.sass == "n" ) {
+		if( props.sass != "Y/template/n" ) {
+			if( (/^y$/i).test(props.sass) ) {
+				self.sass = self.name;
+			} else if( (/^n$/i).test(props.sass) ) {
 				self.sass = false;
 			} else {
 				self.sass = props.sass;
@@ -88,7 +92,7 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator([
+		var mg = new ModelGenerator([
 			this.model, this.folder
 		], this.options);
 		mg.name = this.model;
@@ -98,44 +102,34 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	}
 	
 	if( this.sass ) {
-		this.template('view.sass', path.join('src/sass', this.folder, '_' + this.name + '.sass'));
+		this.template('view.sass', path.join('src/sass', this.folder, '_' + this.sass + '.sass'));
 		
-		var file = 'src/sass/main.sass';
-		var body = grunt.file.read(file);
-
-		body = generatorUtil.rewrite({
-			needle: '// <here> don\'t remove this comment',
-			haystack: body,
+		generatorUtil.rewriteFile({
+			file: 'src/sass/main.sass',
+			needle: "# <here> don't remove this comment",
 			splicable: [
-			  '@import ' + path.join(this.folder, this.name)
+				'@import ' + path.join(this.folder, this.sass)
 			]
 		});
-
-		grunt.file.write(file, body);
 	}
 	
 	if( this.tpl ) {
-		this.template('view.html', path.join('app/templates', this.folder, this.name + '.html'));
+		this.template('view.html', path.join('app/templates', this.folder, this.tpl + '.html'));
 	}
 	
 	if( this.test ) {
 		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
 		
 		if( this.tpl ) {
-			this.template('view.html', path.join('test/templates', this.folder, this.name + '.html'));
+			this.template('view.html', path.join('test/templates', this.folder, this.tpl + '.html'));
 		}
-		
-		var file = 'src/coffee/spec/all_tests.coffee';
-	  var body = grunt.file.read(file);
 
-	  body = generatorUtil.rewrite({
-	    needle: '# <unit> don\'t remove this comment',
-	    haystack: body,
-	    splicable: [
-	      '	"' + path.join('spec/unit/views/', this.folder, this.name + '_view_spec') + '"'
-	    ]
-	  });
-
-	  grunt.file.write(file, body);
+		generatorUtil.rewriteFile({
+			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
+			needle: "# <unit> don't remove this comment",
+			splicable: [
+				'	"' + path.join('spec/unit/views/', this.folder, this.name + '_view_spec') + '"'
+			]
+		});
 	}
 };

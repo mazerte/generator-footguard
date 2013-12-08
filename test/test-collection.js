@@ -186,4 +186,21 @@ describe('Yeoman generator - collection', function () {
 		});
 	});
 
+	it('create collection and change model name', function(done) {
+		var helper = helpers.createGenerator('footguard:collection', ['../../collection'], ['people']);
+
+		helpers.mockPrompt(helper, {
+			model: 'animal',
+			test: 'n'
+		});
+
+		helper.run([], function() {
+			helpers.assertFiles([
+				['src/coffee/app/collections/people_collection.coffee', /class PeopleCollection extends Backbone.Collection/],
+				['src/coffee/app/models/animal_model.coffee', /class AnimalModel extends Backbone.Model/]
+			]);
+			done();
+		});
+	});
+
 });

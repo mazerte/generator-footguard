@@ -42,7 +42,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		if( props.model != "y/model/N" ) {
 			if( props.model == "y" ) {
 				self.model = grunt.util._.singularize(self.name);
-			} else if( !(/n/i).test(props.model) ) {
+			} else if( !(/^n$/i).test(props.model) ) {
 				self.model = props.model;
 			}
 		}
@@ -58,7 +58,7 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
 	//console.log('Use unit test: ' + this.test);
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
-	
+
 	if( this.model ) {
 		var mg = new ModelGenerator([
 			this.model, this.folder
