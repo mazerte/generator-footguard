@@ -46,18 +46,13 @@ Generator.prototype.createModelFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('model_spec.coffee', path.join('src/coffee/spec/unit/models', this.folder, this.name + '_model_spec.coffee'));
-		
-		var file = 'src/coffee/spec/all_tests.coffee';
-	  var body = grunt.file.read(file);
 
-	  body = generatorUtil.rewrite({
-	    needle: '# <unit> don\'t remove this comment',
-	    haystack: body,
-	    splicable: [
-	      '	"' + path.join('spec/unit/models/', this.folder, this.name + '_model_spec') + '"'
-	    ]
-	  });
-
-	  grunt.file.write(file, body);
+		generatorUtil.rewriteFile({
+			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
+			needle: "# <unit> don't remove this comment",
+			splicable: [
+				'	"' + path.join('spec/unit/models/', this.folder, this.name + '_model_spec') + '"'
+			]
+		});
 	}
 };
