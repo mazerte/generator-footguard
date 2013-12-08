@@ -4,14 +4,14 @@ var path = require('path'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js'),
-	ModelGenerator = require('../model/index.js');
+  ModelGenerator = require('../model/index.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
 module.exports = Generator;
 
 function Generator() {
-  ScriptBase.apply(this, arguments);
+	ScriptBase.apply(this, arguments);
 }
 
 util.inherits(Generator, ScriptBase);
@@ -60,7 +60,7 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 	
 	if( this.model ) {
-		mg = new ModelGenerator([
+		var mg = new ModelGenerator([
 			this.model, this.folder
 		], this.options);
 		mg.name = this.model;
@@ -72,17 +72,12 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	if( this.test ) {
 		this.template('collection_spec.coffee', path.join('src/coffee/spec/unit/collections', this.folder, this.name + '_collection_spec.coffee'));
 		
-		var file = 'src/coffee/spec/all_tests.coffee';
-	  var body = grunt.file.read(file);
-
-	  body = generatorUtil.rewrite({
-	    needle: '# <unit> don\'t remove this comment',
-	    haystack: body,
-	    splicable: [
-	      '	"' + path.join('spec/unit/collections', this.folder, this.name + '_collection_spec') + '"'
-	    ]
-	  });
-
-	  grunt.file.write(file, body);
+		generatorUtil.rewriteFile({
+			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
+			needle: "# <unit> don't remove this comment",
+			splicable: [
+				'	"' + path.join('spec/unit/collections/', this.folder, this.name + '_collection_spec') + '"'
+			]
+		});
 	}
 };
