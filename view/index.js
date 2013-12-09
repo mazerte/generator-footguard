@@ -16,7 +16,7 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.askFor = function askFor (argument) {
+Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
 		self = this;
 
@@ -49,7 +49,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		// manually deal with the response, get back and store the results.
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.model = false;
-		if( props.model != "y/model/N" ) {
+		if( props.model !== "y/model/N" ) {
 			if( (/^y$/i).test(props.model) ) {
 				self.model = self.name;
 			} else if( !(/^n$/i).test(props.model) ) {
@@ -58,7 +58,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		}
 		
 		self.tpl = self.name;
-		if( props.tpl != "Y/template/n" ) {
+		if( props.tpl !== "Y/template/n" ) {
 			if( (/^y$/i).test(props.tpl) ) {
 				self.tpl = self.name;
 			} else if( (/^n$/i).test(props.tpl) ) {
@@ -69,7 +69,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		}
 		
 		self.sass = self.name;
-		if( props.sass != "Y/template/n" ) {
+		if( props.sass !== "Y/template/n" ) {
 			if( (/^y$/i).test(props.sass) ) {
 				self.sass = self.name;
 			} else if( (/^n$/i).test(props.sass) ) {
@@ -84,7 +84,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		// we're done, go through next step
 		cb();
 	});
-}
+};
 
 Generator.prototype.createViewFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
