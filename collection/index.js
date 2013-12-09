@@ -16,7 +16,7 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.askFor = function askFor (argument) {
+Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
 		self = this;
 
@@ -39,13 +39,13 @@ Generator.prototype.askFor = function askFor (argument) {
 		// manually deal with the response, get back and store the results.
 		// We change a bit this way of doing to automatically do this in the self.prompt() method.
 		self.model = false;
-		if( props.model != "y/model/N" ) {
-			if( props.model == "y" ) {
+		if( props.model !== "y/model/N" ) {
+			if( props.model === "y" ) {
 				self.model = grunt.util._.singularize(self.name);
 			} else if( !(/^n$/i).test(props.model) ) {
 				self.model = props.model;
 			}
-		}
+		};
 		
 		self.test = (/y/i).test(props.test);
 		
