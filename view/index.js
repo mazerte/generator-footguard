@@ -119,10 +119,6 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	
 	if( this.test ) {
 		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
-		
-		if( this.tpl ) {
-			this.template('view.html', path.join('test/templates', this.folder, this.tpl + '.html'));
-		}
 
 		generatorUtil.rewriteFile({
 			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
