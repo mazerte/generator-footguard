@@ -1,7 +1,7 @@
 'use strict';
 var path = require('path');
 var fs = require('fs');
-var ModelGenerator = require('../model/index.js');
+var ModelGenerator = require('model/index.js');
 
 
 module.exports = {
