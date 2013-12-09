@@ -45,14 +45,14 @@ Generator.prototype.askFor = function askFor() {
 			} else if( !(/^n$/i).test(props.model) ) {
 				self.model = props.model;
 			}
-		};
+		}
 		
 		self.test = (/y/i).test(props.test);
 		
 		// we're done, go through next step
 		cb();
 	});
-}
+};
 
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
