@@ -4,6 +4,7 @@ var path = require('path'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js'),
+  ModelUtil = require('../model/util.js')
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -59,7 +60,7 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 
 	if( this.model ) {
-		generatorUtil.generateModel(this);
+		ModelUtil.create(this);
 	}
 	
 	if( this.test ) {

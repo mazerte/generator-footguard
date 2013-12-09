@@ -1,14 +1,10 @@
 'use strict';
 var path = require('path');
 var fs = require('fs');
-var ModelGenerator = require('model/index.js');
-
 
 module.exports = {
   rewrite: rewrite,
-  rewriteFile: rewriteFile,
-
-  generateModel: generateModel
+  rewriteFile: rewriteFile
 };
 
 function rewriteFile (args) {
@@ -58,14 +54,4 @@ function rewrite (args) {
   }).join('\n'));
 
   return lines.join('\n');
-}
-
-function generateModel(parent) {
-  var mg = new ModelGenerator([
-    parent.model, parent.folder
-  ], parent.options);
-  mg.name = parent.model;
-  mg.folder = parent.folder;
-  mg.test = parent.test;
-  mg.createModelFiles();
 }

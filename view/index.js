@@ -4,7 +4,7 @@ var path = require('path'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js'),
-	ModelGenerator = require('../model/index.js');
+  ModelUtil = require('../model/util.js')
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -92,7 +92,7 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
-		generatorUtil.generateModel(this);
+		ModelUtil.create(this);
 	}
 	
 	if( this.sass ) {
