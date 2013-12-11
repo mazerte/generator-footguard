@@ -1,7 +1,5 @@
 'use strict';
-var path = require('path');
 var util = require('util');
-var exec = require('child_process').exec;
 var yeoman = require('yeoman-generator');
 
 var Generator = module.exports = function Generator() {
@@ -24,10 +22,10 @@ var Generator = module.exports = function Generator() {
 	'\n                                                I8   8I                                                '.red        +
 	'\n                                                `8, ,8I                                                '.red        +
 	'\n                                                 `Y8P"                                                 '.red        +
-	'\n                                                                                                       '.red
+	'\n                                                                                                       '.red;
 	
 	console.log(welcome);
-}
+};
 
 util.inherits(Generator, yeoman.generators.NamedBase);
 
