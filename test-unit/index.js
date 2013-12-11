@@ -1,7 +1,6 @@
 /*jshint latedef:false */
 var path = require('path'),
   util = require('util'),
-  grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js');
 
