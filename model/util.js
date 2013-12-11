@@ -12,4 +12,4 @@ function create(parent) {
 
 module.exports = {
 	create: create
-}
+};

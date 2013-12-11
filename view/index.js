@@ -4,7 +4,7 @@ var path = require('path'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js'),
-  ModelUtil = require('../model/util.js')
+  ModelUtil = require('../model/util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
