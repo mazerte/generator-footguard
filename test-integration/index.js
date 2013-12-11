@@ -16,16 +16,11 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.createTestFile = function createTestFile() {
 	this.template('test_integration.coffee', path.join('src/coffee/spec/integration', this.folder, this.name + '_spec.coffee'));
 	
-	var file = 'src/coffee/spec/all_tests.coffee';
-	var body = grunt.file.read(file);
-	
-	body = generatorUtil.rewrite({
-	  needle: '# <integration> don\'t remove this comment',
-	  haystack: body,
-	  splicable: [
-	    '	"' + path.join('spec/integration', this.folder, this.name + '_spec') + '"'
-	  ]
+	generatorUtil.rewriteFile({
+		file: 'src/coffee/spec/integration/all_integration_tests.coffee',
+		needle: "# <integration> don't remove this comment",
+		splicable: [
+			'	"' + path.join('spec/integration/', this.folder, this.name + '_spec') + '"'
+		]
 	});
-	
-	grunt.file.write(file, body);
 };

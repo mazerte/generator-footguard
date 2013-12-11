@@ -15,7 +15,7 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.askFor = function askFor (argument) {
+Generator.prototype.askFor = function askFor () {
 	var cb = this.async(),
 		self = this;
 
@@ -37,7 +37,7 @@ Generator.prototype.askFor = function askFor (argument) {
 		// we're done, go through next step
 		cb();
 	});
-}
+};
 
 Generator.prototype.createModelFiles = function createCollectionFiles() {
 	//console.log('Model: ' + this.model);
