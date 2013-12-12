@@ -86,7 +86,7 @@ Generator.prototype.askFor = function askFor() {
 	});
 };
 
-Generator.prototype.createViewFiles = function createCollectionFiles() {
+Generator.prototype.createViewFiles = function createViewFiles() {
 	//console.log('Model: ' + this.model);
 	//console.log('Use unit test: ' + this.test);
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
@@ -112,14 +112,6 @@ Generator.prototype.createViewFiles = function createCollectionFiles() {
 	}
 	
 	if( this.test ) {
-		this.template('view_spec.coffee', path.join('src/coffee/spec/unit/views', this.folder, this.name + '_view_spec.coffee'));
-
-		generatorUtil.rewriteFile({
-			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
-			needle: "# <unit> don't remove this comment",
-			splicable: [
-				'	"' + path.join('spec/unit/views/', this.folder, this.name + '_view_spec') + '"'
-			]
-		});
+		generatorUtil.createTest(this, 'unit', 'view_spec.coffee', path.join('views', this.folder, this.name + '_view'));
 	}
 };

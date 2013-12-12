@@ -39,20 +39,12 @@ Generator.prototype.askFor = function askFor () {
 	});
 };
 
-Generator.prototype.createModelFiles = function createCollectionFiles() {
+Generator.prototype.createModelFiles = function createModelFiles() {
 	//console.log('Model: ' + this.model);
 	//console.log('Use unit test: ' + this.test);
 	this.template('model.coffee', path.join('src/coffee/app/models', this.folder, this.name + '_model.coffee'));
 	
 	if( this.test ) {
-		this.template('model_spec.coffee', path.join('src/coffee/spec/unit/models', this.folder, this.name + '_model_spec.coffee'));
-
-		generatorUtil.rewriteFile({
-			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
-			needle: "# <unit> don't remove this comment",
-			splicable: [
-				'	"' + path.join('spec/unit/models/', this.folder, this.name + '_model_spec') + '"'
-			]
-		});
+		generatorUtil.createTest(this, 'unit', 'model_spec.coffee', path.join('models', this.folder, this.name + '_model'));
 	}
 };

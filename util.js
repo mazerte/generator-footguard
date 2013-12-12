@@ -4,7 +4,8 @@ var fs = require('fs');
 
 module.exports = {
   rewrite: rewrite,
-  rewriteFile: rewriteFile
+  rewriteFile: rewriteFile,
+  createTest: createTest
 };
 
 function rewriteFile (args) {
@@ -54,4 +55,16 @@ function rewrite (args) {
   }).join('\n'));
 
   return lines.join('\n');
+}
+
+function createTest(generator, type, template, file) {
+    generator.template(template, path.join('src/coffee/spec/', type, file + '_spec.coffee'));
+
+    rewriteFile({
+      file: 'src/coffee/spec/' + type + '/all_' + type + '_tests.coffee',
+      needle: "# <" + type + "> don't remove this comment",
+      splicable: [
+        ' "' + path.join('spec/', type, file) + '_spec"'
+      ]
+    });
 }

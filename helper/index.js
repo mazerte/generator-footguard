@@ -39,19 +39,10 @@ Generator.prototype.askFor = function askFor () {
 	});
 };
 
-Generator.prototype.createHelperFiles = function createCollectionFiles() {
-	
+Generator.prototype.createHelperFiles = function createHelperFiles() {	
 	this.template('helper.coffee', path.join('src/coffee/app/helpers', this.folder, this.name + '_helper.coffee'));
 	
 	if( this.test ) {
-		this.template('helper_spec.coffee', path.join('src/coffee/spec/unit/helpers', this.folder, this.name + '_helper_spec.coffee'));
-		
-		generatorUtil.rewriteFile({
-			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
-			needle: "# <unit> don't remove this comment",
-			splicable: [
-				'	"' + path.join('spec/unit/helpers/', this.folder, this.name + '_helper_spec') + '"'
-			]
-		});
+		generatorUtil.createTest(this, 'unit', 'helper_spec.coffee', path.join('helpers', this.folder, this.name + '_helper'));
 	}
 };

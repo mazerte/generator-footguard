@@ -13,13 +13,5 @@ function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createTestFile = function createTestFile() {
-	this.template('test_integration.coffee', path.join('src/coffee/spec/integration', this.folder, this.name + '_spec.coffee'));
-	
-	generatorUtil.rewriteFile({
-		file: 'src/coffee/spec/integration/all_integration_tests.coffee',
-		needle: "# <integration> don't remove this comment",
-		splicable: [
-			'	"' + path.join('spec/integration/', this.folder, this.name + '_spec') + '"'
-		]
-	});
+	generatorUtil.createTest(this, 'integration', 'test_integration.coffee', path.join(this.folder, this.name));
 };

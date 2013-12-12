@@ -4,7 +4,7 @@ var path = require('path'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
   generatorUtil = require('../util.js'),
-  ModelUtil = require('../model/util.js')
+  ModelUtil = require('../model/util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -64,14 +64,6 @@ Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	}
 	
 	if( this.test ) {
-		this.template('collection_spec.coffee', path.join('src/coffee/spec/unit/collections', this.folder, this.name + '_collection_spec.coffee'));
-		
-		generatorUtil.rewriteFile({
-			file: 'src/coffee/spec/unit/all_unit_tests.coffee',
-			needle: "# <unit> don't remove this comment",
-			splicable: [
-				'	"' + path.join('spec/unit/collections/', this.folder, this.name + '_collection_spec') + '"'
-			]
-		});
+		generatorUtil.createTest(this, 'unit', 'collection_spec.coffee', path.join('collections', this.folder, this.name + '_collection'));
 	}
 };
