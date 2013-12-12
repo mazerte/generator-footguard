@@ -3,8 +3,7 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../util.js'),
-  ModelUtil = require('../model/util.js');
+  generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -26,13 +25,11 @@ Generator.prototype.askFor = function askFor() {
 	var prompts = [{
 		name: 'model',
 		message: 'Would you like to create associate model (' + grunt.util._.singularize(this.name) + ')?',
-		default: 'y/model/N',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'y/model/N'
 	}, {
 		name: 'test',
 		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/n'
 	}];
   
 	this.prompt(prompts, function(props) {		
@@ -55,12 +52,10 @@ Generator.prototype.askFor = function askFor() {
 };
 
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
-	//console.log('Model: ' + this.model);
-	//console.log('Use unit test: ' + this.test);
 	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
 
 	if( this.model ) {
-		ModelUtil.create(this);
+		generatorUtil.createModel(this, this.model, this.folder, this.test);
 	}
 	
 	if( this.test ) {

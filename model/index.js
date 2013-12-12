@@ -2,8 +2,7 @@
 var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
-  ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../util.js');
+  ScriptBase = require('../script-base.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -25,8 +24,7 @@ Generator.prototype.askFor = function askFor () {
 	var prompts = [{
 		name: 'test',
 		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/n'
 	}];
   
 	this.prompt(prompts, function(props) {
@@ -40,11 +38,10 @@ Generator.prototype.askFor = function askFor () {
 };
 
 Generator.prototype.createModelFiles = function createModelFiles() {
-	//console.log('Model: ' + this.model);
-	//console.log('Use unit test: ' + this.test);
 	this.template('model.coffee', path.join('src/coffee/app/models', this.folder, this.name + '_model.coffee'));
 	
 	if( this.test ) {
+		generatorUtil = require('../util.js');
 		generatorUtil.createTest(this, 'unit', 'model_spec.coffee', path.join('models', this.folder, this.name + '_model'));
 	}
 };

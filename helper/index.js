@@ -25,8 +25,7 @@ Generator.prototype.askFor = function askFor () {
 	var prompts = [{
 		name: 'test',
 		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/n'
 	}];
   
 	this.prompt(prompts, function(props) {		

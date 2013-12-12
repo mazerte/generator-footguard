@@ -3,8 +3,7 @@ var path = require('path'),
   util = require('util'),
   grunt = require('grunt'),
   ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../util.js'),
-  ModelUtil = require('../model/util.js');
+  generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -26,23 +25,19 @@ Generator.prototype.askFor = function askFor() {
 	var prompts = [{
 		name: 'model',
 		message: 'Would you like to create associate model (' + this.name + ')?',
-		default: 'y/model/N',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'y/model/N'
 	}, {	
 		name: 'tpl',
 		message: 'Would you like to create associate template (' + this.name + ')?',
-		default: 'Y/template/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/template/n'
 	}, {
 		name: 'sass',
 		message: 'Would you like to create associate sass file (' + this.name + ')?',
-		default: 'Y/sass/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/sass/n'
 	}, {
 		name: 'test',
 		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n',
-		warning: 'Yes: All Twitter Bootstrap files will be placed into the styles directory.'
+		default: 'Y/n'
 	}];
   
 	this.prompt(prompts, function(props) {
@@ -92,7 +87,7 @@ Generator.prototype.createViewFiles = function createViewFiles() {
 	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
 	
 	if( this.model ) {
-		ModelUtil.create(this);
+		generatorUtil.createModel(this, this.model, this.folder, this.test);
 	}
 	
 	if( this.sass ) {
