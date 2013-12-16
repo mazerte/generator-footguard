@@ -7,4 +7,4 @@ script:
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 after_success:
-  - deploy_test.sh
+  - ./deploy_test.sh
