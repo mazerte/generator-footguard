@@ -8,9 +8,11 @@ then
     ln -s ../generator-footguard node_modules/generator-footguard
     npm install -g yo grunt-cli bower
     gem install compass
+    ls -Flash
     ls -Flash node_modules/
-    yo footguard --no-insight
-    git add --all && git commit -m "ref to build $TRAVIS_BUILD_ID"
+    ls -Flash node_modules/generator-footguard
+    # yo footguard --no-insight
+    # git add --all && git commit -m "ref to build $TRAVIS_BUILD_ID"
 else
 	echo "Do nothing"
 fi
