@@ -6,6 +6,8 @@ then
     rm -r ./* -f
     mkdir node_modules
     ln -s ../generator-footguard node_modules/generator-footguard
+    npm install -g yo grunt-cli bower
+    gem install compass
     yo footguard
     git add --all && git commit -m "ref to build $TRAVIS_BUILD_ID"
 else
