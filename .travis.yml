@@ -1,9 +1,13 @@
 language: node_js
 node_js:
-  - "0.10"
+  - '0.10'
 
-script: 
-  - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec 
+env:
+  global:
+    secure: RKmtDqHqK1CokgNUTT4piRN+Fz0guBzgisHtncwyPv4V81jfPzohB5y/pPZ6cmC+znc8w2qGMJoUrptiiFhb5LvtCji/iWLinAiOBfhHYqUExPk8yz9qfW1+jTUQ5i8wn/YNiR1Thysop3GpNG9jk+n2CqLEs5pKrp4DrfRk47Y=
+
+script:
+  - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
   - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 after_success:
