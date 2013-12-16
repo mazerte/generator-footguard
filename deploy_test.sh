@@ -17,7 +17,7 @@ then
     yo footguard --no-insight
 
     git add --all && git commit -m "ref to build $TRAVIS_BUILD_ID"
-    git push https://$(GH_USER):$(GH_PASSWORD)@github.com/mazerte/test-footguard master
+    git push -fq https://$(GH_USER):$(GH_PASSWORD)@github.com/mazerte/test-footguard master > /dev/null
 else
 	echo "Do nothing"
 fi
