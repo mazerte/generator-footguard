@@ -6,13 +6,13 @@
 [![Code Climate](https://codeclimate.com/github/mazerte/generator-footguard.png)](https://codeclimate.com/github/mazerte/generator-footguard)
 
 [![NPM](https://nodei.co/npm/generator-footguard.png?downloads=true&stars=true)](https://nodei.co/npm/generator-footguard/) 
-[![Dependency Status](https://gemnasium.com/mazerte/test-footguard.png)](https://gemnasium.com/mazerte/test-footguard)
 
 ## Status of generated project
 
 [test-footguard](https://github.com/mazerte/test-footguard/)
 
 [![Build Status](https://travis-ci.org/mazerte/test-footguard.png?branch=master)](https://travis-ci.org/mazerte/test-footguard)
+[![Dependency Status](https://gemnasium.com/mazerte/test-footguard.png)](https://gemnasium.com/mazerte/test-footguard)
 
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
