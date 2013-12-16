@@ -5,7 +5,7 @@ then
     git clone https://github.com/mazerte/test-footguard.git && cd test-footguard
     rm -r ./* -f
     mkdir node_modules
-    ln -s node_modules/generator-footguard ../generator-footguard/
+    ln -s ../../generator-footguard/ node_modules/generator-footguard
     npm install -g yo grunt-cli bower
     gem install compass
     ls -Flash
