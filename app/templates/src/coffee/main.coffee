@@ -60,6 +60,7 @@ require ['app/vendors'], ->
 			mocha_div = $('<div />', { id: 'mocha' })
 			$('body').prepend(mocha_div)
 
+			$('head').append('<link rel="stylesheet" href="components/mocha/mocha.css">')
 			$('head').append('<link rel="stylesheet" href="runner/test.css">')
 
 			require [
@@ -85,5 +86,6 @@ require ['app/vendors'], ->
 		  
 				require [
 					'spec/all_tests'
+					'../runner/bridge'
 				], (runner)->
 					mocha.run()

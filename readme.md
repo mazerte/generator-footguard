@@ -11,12 +11,12 @@
 
 [test-footguard](https://github.com/mazerte/test-footguard/)
 
-[![Build Status](https://travis-ci.org/mazerte/test-footguard.png?branch=master)](https://travis-ci.org/mazerte/test-footguard)
 [![Dependency Status](https://gemnasium.com/mazerte/test-footguard.png)](https://gemnasium.com/mazerte/test-footguard)
+[![Build Status](https://travis-ci.org/mazerte/test-footguard.png?branch=master)](https://travis-ci.org/mazerte/test-footguard)
 
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
-Based on [yeoman-generator](https://github.com/yeoman/yeoman-generator/)
+Based on [generator-generator](https://github.com/yeoman/generator-generator/)
 
 ## Usage
 
@@ -33,11 +33,6 @@ npm install -g generator-footguard
 Run `yo footguard`, optionally passing an app name:
 ```
 yo footguard
-```
-
-Finally, install npm and bower dependencies:
-```
-npm install && bower install --dev
 ```
 
 ## Generators
