@@ -11,10 +11,9 @@ then
     mkdir node_modules
     ln -s ../../generator-footguard/ node_modules/generator-footguard
     
-    npm install -g yo grunt-cli bower
-    gem install compass
+    npm install -g yo
 
-    yo footguard --no-insight
+    yo footguard --no-insight --skip-install
 
     git add --all && git commit -m "ref to build $TRAVIS_BUILD_ID"
     git push -fq https://$GH_USER:$GH_PASSWORD@github.com/mazerte/test-footguard master > /dev/null
