@@ -13,6 +13,7 @@
 
 [![Dependency Status](https://gemnasium.com/mazerte/test-footguard.png)](https://gemnasium.com/mazerte/test-footguard)
 [![Build Status](https://travis-ci.org/mazerte/test-footguard.png?branch=master)](https://travis-ci.org/mazerte/test-footguard)
+[![Coverage Status](https://coveralls.io/repos/mazerte/test-footguard/badge.png?branch=master)](https://coveralls.io/r/mazerte/test-footguard?branch=master)
 
 Maintainer: [Mathieu Desvé](https://github.com/mazerte)
 
