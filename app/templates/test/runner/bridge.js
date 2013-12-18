@@ -29,6 +29,16 @@
 					data.fullTitle = test.fullTitle();
 				}
 
+				if (ev == 'end' && window._$jscoverage) {
+					var cov = {};
+					for(var prop in window._$jscoverage) {
+						var file = window._$jscoverage[prop];
+						file[0] = file.source;
+						cov[prop] = file;
+					}
+					data.cov = cov;
+				}
+
 				sendMessage('mocha.' + ev, data);
 
 			});

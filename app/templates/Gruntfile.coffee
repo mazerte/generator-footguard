@@ -61,6 +61,7 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks('grunt-open')
 	grunt.loadNpmTasks('grunt-usemin')
 	grunt.loadNpmTasks('grunt-mocha')
+	grunt.loadNpmTasks('grunt-coffeecov')
 
 	# configurable paths
 	yeomanConfig = {
@@ -176,10 +177,15 @@ module.exports = (grunt)->
 		coffee:
 			dist:
 				expand: true
-				cwd: 'src/coffee/'
+				cwd: '<%= yeoman.src %>/coffee/'
 				src: ['**/*.coffee']
 				dest: '<%= yeoman.tmp %>/js'
 				ext: '.js'
+
+		coffeecov:
+			dist:
+				src: '<%= yeoman.src %>/coffee/app'
+				dest: '<%= yeoman.tmp %>/js/app'
 
 		compass:
 			options:
@@ -222,7 +228,7 @@ module.exports = (grunt)->
 
 					urls: ['http://localhost:<%= connect.test.options.port %>/']
 					run: false
-					reporter: 'Spec'
+					reporter: 'mocha-phantom-coverage-reporter'
 					timeout: 60000
 
 		copy:
@@ -305,6 +311,7 @@ module.exports = (grunt)->
 	
 	grunt.registerTask('test', [
 		'coffee:dist'
+		'coffeecov:dist'
 		'compass:server'
 		'less:server'
 		'connect:test'
@@ -322,6 +329,7 @@ module.exports = (grunt)->
 
 	grunt.registerTask('server-test', [
 		'coffee:dist'
+		'coffeecov:dist'
 		'compass:server'
 		'less:server'
 		'connect:test'
