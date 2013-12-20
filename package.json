@@ -32,15 +32,15 @@
     "test": "mocha"
   },
   "dependencies": {
-    "yeoman-generator": "~0.14.0",
+    "yeoman-generator": "~0.14.1",
     "path": "~0.4.9",
     "util": "~0.10.1",
     "underscore.inflections": "~0.2.1",
     "grunt": "~0.4.0"
   },
   "devDependencies": {
-    "mocha": "~1.15.1",
-    "istanbul": "~0.1.46",
+    "mocha": "~1.16.1",
+    "istanbul": "~0.2.0",
     "coveralls": "~2.6.0"
   },
   "engines": {
