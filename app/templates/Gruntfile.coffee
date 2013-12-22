@@ -226,7 +226,7 @@ module.exports = (grunt)->
 			all: 
 				options:
 					mocha:
-						ignoreLeaks: false
+						ignoreLeaks: true
 
 					urls: ['http://localhost:<%= connect.test.options.port %>/']
 					run: false
