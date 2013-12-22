@@ -21,8 +21,8 @@
     "grunt-usemin": "~2.0.0",
     "grunt-mocha": "~0.4.1",
     "connect-livereload": "~0.3.0",
-    "mocha-phantom-coverage-reporter": "~0.0.1",
-    "grunt-coffeecov": "~0.0.3",
+    "mocha-phantom-coverage-reporter": "~0.1.0",
+    "grunt-coffeecov": "~0.1.0",
     "coveralls": "~2.6.0"
   },
   "engines": {
