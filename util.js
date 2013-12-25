@@ -1,7 +1,7 @@
 'use strict';
 var path = require('path');
 var fs = require('fs');
-var ModelGenerator = require('./model/index.js');
+var helpers = require('yeoman-generator').test;
 
 module.exports = {
   rewrite: rewrite,
@@ -60,24 +60,22 @@ function rewrite (args) {
 }
 
 function createTest(generator, type, template, file) {
-    generator.template(template, path.join('src/coffee/spec/', type, file + '_spec.coffee'));
+  generator.template(template, path.join('src/coffee/spec/', type, file + '_spec.coffee'));
 
-    rewriteFile({
-      file: 'src/coffee/spec/' + type + '/all_' + type + '_tests.coffee',
-      needle: "# <" + type + "> don't remove this comment",
-      splicable: [
-        ' "' + path.join('spec/', type, file) + '_spec"'
-      ]
-    });
+  rewriteFile({
+    file: 'src/coffee/spec/' + type + '/all_' + type + '_tests.coffee',
+    needle: "# <" + type + "> don't remove this comment",
+    splicable: [
+      ' "' + path.join('spec/', type, file) + '_spec"'
+    ]
+  });
 }
 
 function createModel(generator, name, folder, test) {
-  var mg = new ModelGenerator([
-    name, folder
-  ], generator.options);
-  mg.name = name;
-  mg.folder = folder;
-  mg.test = test;
-  mg.createModelFiles();
+  var mg = helpers.createGenerator('footguard:model', [__dirname + "/model"], [name, folder]);
+  helpers.mockPrompt(mg, {
+    test: test ? "y" : "n"
+  });
+  mg.run();
 }
 
