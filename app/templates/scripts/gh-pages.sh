@@ -20,3 +20,4 @@ git checkout -b gh-pages
 git add --all
 git commit -m "$message"
 git push origin gh-pages > /dev/null 2>&1
+cd ..

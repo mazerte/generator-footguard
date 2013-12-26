@@ -4,7 +4,7 @@ node_js:
 
 env:
   global:
-    secure: RKmtDqHqK1CokgNUTT4piRN+Fz0guBzgisHtncwyPv4V81jfPzohB5y/pPZ6cmC+znc8w2qGMJoUrptiiFhb5LvtCji/iWLinAiOBfhHYqUExPk8yz9qfW1+jTUQ5i8wn/YNiR1Thysop3GpNG9jk+n2CqLEs5pKrp4DrfRk47Y=
+    secure: B8roIKodiTL29MuIJti/iujkzlymhwlWhA+zYh0UV/mm6OARrtZJOg1ZlCRZ1dqGUt06kd6JV1QsvqNxwCatuH3CrRG8eWbUFlvm/jd+/+DxRGBkiGyWcjSP7teXniQ5WhX8pdHCe0vR982KZ7WeCd6/abygIC4r20D91gX8zC4=
 
 script:
   - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
