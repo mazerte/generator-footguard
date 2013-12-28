@@ -303,7 +303,7 @@ module.exports = (grunt)->
 					inlineText: true
 					mainConfigFile: '<%= yeoman.tmp_dist %>/js/main.js'
 
-					optimize: "uglify"
+					optimize: "none"
 
 					modules: [
 						{ name: 'app/vendors', exclude: [] }
