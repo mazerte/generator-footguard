@@ -173,6 +173,7 @@ module.exports = (grunt)->
 			tmp_dist: ['<%= yeoman.tmp_dist %>']
 			components: ['<%= yeoman.dist %>/components']
 			templates: ['<%= yeoman.dist %>/templates']
+			spec: ['<%= yeoman.dist %>/js/spec']
 
 		coffee:
 			dist:
@@ -282,10 +283,12 @@ module.exports = (grunt)->
 
 		uglify:
 			dist:
-				files:
-					'<%= yeoman.dist %>/js/all.js': [
-						'<%= yeoman.dist %>/js/all.js'
-					]
+				files: [{
+					expand: true,
+					cwd: '<%= yeoman.dist %>/js',
+					src: '**/*.js',
+					dest: '<%= yeoman.dist %>/js'
+				}]
 
 		requirejs:
 			compile:
@@ -367,11 +370,12 @@ module.exports = (grunt)->
 		'htmlmin'
 		'concat'
 		'usemin'
-		'uglify'
 		'cssmin'
 		'clean:tmp_dist'
 		'clean:components'
 		'clean:templates'
+		'clean:spec'
+		'uglify'
 	])
 
 	grunt.registerTask('default', ['build'])
