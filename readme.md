@@ -56,3 +56,35 @@ Available commands:
 * [grunt server-dist](#server-dist)
 * [grunt test](#test)
 * [grunt server-test](#server-test)
+
+## Deployment
+
+### Github Pages
+
+You can deploy your footguard application to [Github Pages](http://pages.github.com/). For that you have some helper scripts in `scripts` folder.
+
+```shell
+grunt build
+./scripts/gh-pages.sh
+```
+
+This script initialize a new git repository in `build` folder and commit in `gh-pages` branch.
+
+If you want to deploy automaticly with [Travis CI](https://travis-ci.org). Add this to your `.travis.yml`
+
+```yaml
+REPO="https://$GH_USER:$GH_PASSWORD@github.com/user/repository" ./scripts/gh-pages.sh
+```
+
+Replace `user` and `repository` by your username and your deploy repository. `gh-pages.sh` use HTTPS authentification, for create secure `GH_USER` and `GH_PASSWORD` use [Travis encrypt](http://about.travis-ci.org/docs/user/encryption-keys/) gem
+
+```shell
+gem install travis
+travis encrypt GH_USER=username GH_PASSWORD=mypass
+```
+Add the output in your `.travis.yml`
+```
+env:
+  global:
+    - secure: "hc0s49uOKKAlM/np6jCd4il3K0f....PtPSGS7DZA="
+```
