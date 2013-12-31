@@ -68,6 +68,8 @@ Generator.prototype.parsePromptsResult = function parsePromptsResult(callback) {
 			sass: "Y/sass/n"
 		};
 		for(var p in fields) {
+			if (!fields.hasOwnProperty(p)) continue;
+
 			self[p] = self.name;
 			if( props[p] !== fields[p] ) {
 				if( (/^y$/i).test(props[p]) ) {
