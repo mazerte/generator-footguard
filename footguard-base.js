@@ -75,7 +75,7 @@ Generator.prototype.parsePromptsResult = function parsePromptsResult(callback) {
 		}
 		
 		self.sass = self.name;
-		if( props.sass !== "Y/template/n" ) {
+		if( props.sass !== "Y/sass/n" ) {
 			if( (/^y$/i).test(props.sass) ) {
 				self.sass = self.name;
 			} else if( (/^n$/i).test(props.sass) ) {
@@ -110,7 +110,7 @@ Generator.prototype.getElementDest = function getElementDest(type) {
 Generator.prototype.createElementTest = function createElementTest(type) {
 	if( this.test ) {
 		var folder = grunt.util._.pluralize(type);
-		dest = path.join(folder, this.folder, this.name + '_' + type);
+		var dest = path.join(folder, this.folder, this.name + '_' + type);
 		this.createTest('unit', type + '_spec.coffee', dest);
 	}
 };

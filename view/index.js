@@ -13,8 +13,7 @@ function Generator() {
 util.inherits(Generator, FooguardBase);
 
 Generator.prototype.askFor = function askFor() {
-	var cb = this.async(),
-		self = this;
+	var cb = this.async();
 
 	var prompts = [
 		this.promptForModel(this.name),
@@ -23,7 +22,7 @@ Generator.prototype.askFor = function askFor() {
 		this.promptForTest()
 	];
   
-	this.prompt(prompts, this.parsePromptsResult( function(props) {
+	this.prompt(prompts, this.parsePromptsResult( function() {
 		cb();
 	}));
 };
