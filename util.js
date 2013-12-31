@@ -26,9 +26,9 @@ function escapeRegExp(str) {
 
 function rewrite (args) {
 	// check if splicable is already in the body text
-	var re = new RegExp(args.splicable.map(function (line) {
-		return '\s*' + escapeRegExp(line);
-	}).join('\n'));
+	// var re = new RegExp(args.splicable.map(function (line) {
+	// 	return '\s*' + escapeRegExp(line);
+	// }).join('\n'));
 	// if (re.test(args.haystack)) {
 	//   return args.haystack;
 	// }
@@ -42,7 +42,7 @@ function rewrite (args) {
 		}
 	});
 
-	var spaces = 0;
+	// var spaces = 0;
 	// while (lines[otherwiseLineIndex].charAt(spaces) === ' ') {
 	//   spaces += 1;
 	// }
