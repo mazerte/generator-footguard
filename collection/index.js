@@ -1,6 +1,9 @@
 /*jshint latedef:false */
 var util = require('util'),
+	grunt = require('grunt'),
 	FootguardBase = require('../footguard-base.js');
+
+grunt.util._.mixin( require('underscore.inflections') );
 
 module.exports = Generator;
 
@@ -21,7 +24,7 @@ Generator.prototype.askFor = function askFor() {
 		default: 'y/model/N'
 	}, this.promptForTest()];
   
-	this.prompt(prompts, function(props) {		
+	this.prompt(prompts, function(props) {
 		self.model = false;
 		if( props.model !== "y/model/N" ) {
 			if( props.model === "y" ) {
@@ -40,6 +43,6 @@ Generator.prototype.askFor = function askFor() {
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
 	this.template('collection.coffee', this.getElementDest('collection'));
 
-	this.createModel();
+	this.createModel(this.model);
 	this.createElementTest('collection');
 };

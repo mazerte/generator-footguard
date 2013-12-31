@@ -20,7 +20,7 @@ Generator.prototype.askFor = function askFor() {
 		name: 'model',
 		message: 'Would you like to create associate model (' + this.name + ')?',
 		default: 'y/model/N'
-	}, {	
+	}, {
 		name: 'tpl',
 		message: 'Would you like to create associate template (' + this.name + ')?',
 		default: 'Y/template/n'
@@ -73,8 +73,8 @@ Generator.prototype.createViewFiles = function createViewFiles() {
 
 	this.template('view.coffee', this.getElementDest('view'));
 	
-	this.createModel();
-	this.createElementTest('collection');
+	this.createModel(this.model);
+	this.createElementTest('view');
 	
 	if( this.sass ) {
 		dest = path.join('src/sass', this.folder, '_' + this.sass + '.sass');

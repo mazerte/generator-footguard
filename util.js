@@ -1,13 +1,10 @@
-'use strict';
+/*jshint latedef:false */
 var path = require('path');
 var fs = require('fs');
-var helpers = require('yeoman-generator').test;
 
 module.exports = {
 	rewrite: rewrite,
-	rewriteFile: rewriteFile,
-	createTest: createTest,
-	createModel: createModel
+	rewriteFile: rewriteFile
 };
 
 function rewriteFile (args) {
@@ -21,7 +18,7 @@ function rewriteFile (args) {
 }
 
 // function escapeRegExp(str) {
-// 	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+//	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 // }
 
 function rewrite (args) {
@@ -57,30 +54,5 @@ function rewrite (args) {
 	}).join('\n'));
 
 	return lines.join('\n');
-}
-
-function createTest(generator, type, template, file) {
-	var dest = path.join('src/coffee/spec/', type, file + '_spec.coffee');
-	generator.template(template, dest);
-
-	rewriteFile({
-		file: 'src/coffee/spec/' + type + '/all_' + type + '_tests.coffee',
-		needle: "# <" + type + "> don't remove this comment",
-		splicable: [
-			' "' + path.join('spec/', type, file) + '_spec"'
-		]
-	});
-}
-
-function createModel(generator, name, folder, test) {
-	var mg = helpers.createGenerator(
-		'footguard:model', 
-		[__dirname + "/model"], 
-		[name, folder]
-	);
-	helpers.mockPrompt(mg, {
-		test: test ? "y" : "n"
-	});
-	mg.run();
 }
 

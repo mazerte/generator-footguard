@@ -1,5 +1,5 @@
 /*jshint latedef:false */
-var FootguardBase = require('../footguard-base.js')
+var FootguardBase = require('../footguard-base.js'),
 	util = require('util');
 
 module.exports = Generator;
@@ -17,14 +17,14 @@ Generator.prototype.askFor = function askFor () {
 	var prompts = [
 		this.promptForTest()
 	];
-  
-	this.prompt(prompts, function(props) {		
+
+	this.prompt(prompts, function(props) {
 		self.test = (/y/i).test(props.test);
 		cb();
 	});
 };
 
-Generator.prototype.createHelperFiles = function createHelperFiles() {	
+Generator.prototype.createHelperFiles = function createHelperFiles() {
 	this.template('helper.coffee', this.getElementDest('helper'));
 	
 	this.createElementTest('helper');

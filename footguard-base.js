@@ -19,7 +19,7 @@ util.inherits(Generator, ScriptBase);
 Generator.prototype.getElementDest = function getElementDest(type) {
 	return path.join(
 		'src/coffee/app/' + grunt.util._.pluralize(type),
-		this.folder, 
+		this.folder,
 		this.name + "_" + type + ".coffee"
 	);
 };
@@ -29,7 +29,7 @@ Generator.prototype.promptForTest = function promptForTest() {
 		name: 'test',
 		message: 'Would you like to create associate unit test ?',
 		default: 'Y/n'
-	}
+	};
 };
 
 Generator.prototype.createElementTest = function createElementTest(type) {
@@ -53,15 +53,19 @@ Generator.prototype.createTest = function createTest(type, template, file) {
 	});
 };
 
-Generator.prototype.createModel = function createModel() {
+Generator.prototype.createModel = function createModel(name, folder, test) {
+	name = name || this.name;
+	folder = folder || this.folder;
+	test = test || this.test;
+	
 	if( this.model ) {
 		var mg = helpers.createGenerator(
-			'footguard:model', 
-			[__dirname + "/model"], 
-			[this.name, this.folder]
+			'footguard:model',
+			[__dirname + "/model"],
+			[name, folder]
 		);
 		helpers.mockPrompt(mg, {
-			test: this.test ? "y" : "n"
+			test: test ? "y" : "n"
 		});
 		mg.run();
 	}
