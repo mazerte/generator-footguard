@@ -1,19 +1,16 @@
 /*jshint latedef:false */
 var path = require('path'),
 	util = require('util'),
-	grunt = require('grunt'),
-	ScriptBase = require('../script-base.js'),
-	generatorUtil = require('../util.js');
-
-grunt.util._.mixin( require('underscore.inflections') );
+	generatorUtil = require('../util.js'),
+	FooguardBase = require('../footguard-base.js');
 
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	FooguardBase.apply(this, arguments);
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, FooguardBase);
 
 Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
@@ -31,11 +28,7 @@ Generator.prototype.askFor = function askFor() {
 		name: 'sass',
 		message: 'Would you like to create associate sass file (' + this.name + ')?',
 		default: 'Y/sass/n'
-	}, {
-		name: 'test',
-		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n'
-	}];
+	}, this.promptForTest()];
   
 	this.prompt(prompts, function(props) {
 		self.model = false;
@@ -76,16 +69,12 @@ Generator.prototype.askFor = function askFor() {
 };
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-	var dest = path.join(
-		'src/coffee/app/views', 
-		this.folder, 
-		this.name + '_view.coffee'
-	);
-	this.template('view.coffee', dest);
+	var dest;
+
+	this.template('view.coffee', this.getElementDest('view'));
 	
-	if( this.model ) {
-		generatorUtil.createModel(this, this.model, this.folder, this.test);
-	}
+	this.createModel();
+	this.createElementTest('collection');
 	
 	if( this.sass ) {
 		dest = path.join('src/sass', this.folder, '_' + this.sass + '.sass');
@@ -103,10 +92,5 @@ Generator.prototype.createViewFiles = function createViewFiles() {
 	if( this.tpl ) {
 		dest = path.join('app/templates', this.folder, this.tpl + '.html');
 		this.template('view.html', dest);
-	}
-	
-	if( this.test ) {
-		dest = path.join('views', this.folder, this.name + '_view');
-		generatorUtil.createTest(this, 'unit', 'view_spec.coffee', dest);
 	}
 };

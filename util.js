@@ -20,17 +20,17 @@ function rewriteFile (args) {
 	fs.writeFileSync(fullPath, body);
 }
 
-function escapeRegExp(str) {
-	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
-}
+// function escapeRegExp(str) {
+// 	return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+// }
 
 function rewrite (args) {
 	// check if splicable is already in the body text
 	// var re = new RegExp(args.splicable.map(function (line) {
-	// 	return '\s*' + escapeRegExp(line);
+	//	return '\s*' + escapeRegExp(line);
 	// }).join('\n'));
 	// if (re.test(args.haystack)) {
-	//   return args.haystack;
+	//	return args.haystack;
 	// }
 
 	var lines = args.haystack.split('\n');

@@ -1,19 +1,14 @@
 /*jshint latedef:false */
-var path = require('path'),
-	util = require('util'),
-	grunt = require('grunt'),
-	ScriptBase = require('../script-base.js'),
-	generatorUtil = require('../util.js');
-
-grunt.util._.mixin( require('underscore.inflections') );
+var util = require('util'),
+	FootguardBase = require('../footguard-base.js');
 
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	FootguardBase.apply(this, arguments);
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, FootguardBase);
 
 Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
@@ -24,11 +19,7 @@ Generator.prototype.askFor = function askFor() {
 		name: 'model',
 		message: 'Would you like to create associate model (' + modelName + ')?',
 		default: 'y/model/N'
-	}, {
-		name: 'test',
-		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n'
-	}];
+	}, this.promptForTest()];
   
 	this.prompt(prompts, function(props) {		
 		self.model = false;
@@ -47,19 +38,8 @@ Generator.prototype.askFor = function askFor() {
 };
 
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
-	var dest =  path.join(
-		'src/coffee/app/collections', 
-		this.folder, 
-		this.name + '_collection.coffee'
-	);
-	this.template('collection.coffee', dest);
+	this.template('collection.coffee', this.getElementDest('collection'));
 
-	if( this.model ) {
-		generatorUtil.createModel(this, this.model, this.folder, this.test);
-	}
-	
-	if( this.test ) {
-		dest = path.join('collections', this.folder, this.name + '_collection');
-		generatorUtil.createTest(this, 'unit', 'collection_spec.coffee', dest);
-	}
+	this.createModel();
+	this.createElementTest('collection');
 };

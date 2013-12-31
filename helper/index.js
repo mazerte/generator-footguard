@@ -1,29 +1,22 @@
 /*jshint latedef:false */
-var path = require('path'),
-	util = require('util'),
-	grunt = require('grunt'),
-	ScriptBase = require('../script-base.js'),
-	generatorUtil = require('../util.js');
-
-grunt.util._.mixin( require('underscore.inflections') );
+var FootguardBase = require('../footguard-base.js')
+	util = require('util');
 
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	FootguardBase.apply(this, arguments);
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, FootguardBase);
 
 Generator.prototype.askFor = function askFor () {
 	var cb = this.async(),
 		self = this;
 
-	var prompts = [{
-		name: 'test',
-		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n'
-	}];
+	var prompts = [
+		this.promptForTest()
+	];
   
 	this.prompt(prompts, function(props) {		
 		self.test = (/y/i).test(props.test);
@@ -32,15 +25,7 @@ Generator.prototype.askFor = function askFor () {
 };
 
 Generator.prototype.createHelperFiles = function createHelperFiles() {	
-	var dest = path.join(
-		'src/coffee/app/helpers', 
-		this.folder, 
-		this.name + '_helper.coffee'
-	);
-	this.template('helper.coffee', dest);
+	this.template('helper.coffee', this.getElementDest('helper'));
 	
-	if( this.test ) {
-		dest = path.join('helpers', this.folder, this.name + '_helper');
-		generatorUtil.createTest(this, 'unit', 'helper_spec.coffee', dest);
-	}
+	this.createElementTest('helper');
 };
