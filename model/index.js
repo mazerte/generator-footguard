@@ -18,10 +18,9 @@ Generator.prototype.askFor = function askFor () {
 		this.promptForTest()
 	];
   
-	this.prompt(prompts, function(props) {
-		self.test = (/y/i).test(props.test);
+	this.prompt(prompts, this.parsePromptsResult( function(props) {
 		cb();
-	});
+	}));
 };
 
 Generator.prototype.createModelFiles = function createModelFiles() {

@@ -16,14 +16,9 @@ function Generator() {
 
 util.inherits(Generator, ScriptBase);
 
-Generator.prototype.getElementDest = function getElementDest(type) {
-	return path.join(
-		'src/coffee/app/' + grunt.util._.pluralize(type),
-		this.folder,
-		this.name + "_" + type + ".coffee"
-	);
-};
-
+/////////////
+// PROMPTS //
+/////////////
 Generator.prototype.promptForTest = function promptForTest() {
 	return {
 		name: 'test',
@@ -32,6 +27,86 @@ Generator.prototype.promptForTest = function promptForTest() {
 	};
 };
 
+Generator.prototype.promptForModel = function promptForModel(name) {
+	return {
+		name: 'model',
+		message: 'Would you like to create associate model (' + name + ')?',
+		default: 'y/model/N'
+	};
+};
+
+Generator.prototype.promptForTemplate = function promptForTemplate(name) {
+	return {
+		name: 'tpl',
+		message: 'Would you like to create associate template (' + name + ')?',
+		default: 'Y/template/n'
+	};
+};
+
+Generator.prototype.promptForSass = function promptForSass(name) {
+	return {
+		name: 'sass',
+		message: 'Would you like to create associate sass file (' + name + ')?',
+		default: 'Y/sass/n'
+	};
+};
+
+Generator.prototype.parsePromptsResult = function parsePromptsResult(callback) {
+	var self = this;
+	return function(props) {
+		self.model = false;
+		if( props.model !== "y/model/N" ) {
+			if( (/^y$/i).test(props.model) ) {
+				self.model = self.name;
+			} else if( !(/^n$/i).test(props.model) ) {
+				self.model = props.model;
+			}
+		}
+		
+		self.tpl = self.name;
+		if( props.tpl !== "Y/template/n" ) {
+			if( (/^y$/i).test(props.tpl) ) {
+				self.tpl = self.name;
+			} else if( (/^n$/i).test(props.tpl) ) {
+				self.tpl = false;
+			} else {
+				self.tpl = props.tpl;
+			}
+		}
+		
+		self.sass = self.name;
+		if( props.sass !== "Y/template/n" ) {
+			if( (/^y$/i).test(props.sass) ) {
+				self.sass = self.name;
+			} else if( (/^n$/i).test(props.sass) ) {
+				self.sass = false;
+			} else {
+				self.sass = props.sass;
+			}
+		}
+		
+		self.test = (/y/i).test(props.test);
+
+		callback(props);
+	};
+};
+
+
+//////////////////
+// DESTINATIONS //
+//////////////////
+Generator.prototype.getElementDest = function getElementDest(type) {
+	return path.join(
+		'src/coffee/app/' + grunt.util._.pluralize(type),
+		this.folder,
+		this.name + "_" + type + ".coffee"
+	);
+};
+
+
+////////////
+// CREATE //
+////////////
 Generator.prototype.createElementTest = function createElementTest(type) {
 	if( this.test ) {
 		var folder = grunt.util._.pluralize(type);
@@ -57,7 +132,7 @@ Generator.prototype.createModel = function createModel(name, folder, test) {
 	name = name || this.name;
 	folder = folder || this.folder;
 	test = test || this.test;
-	
+
 	if( this.model ) {
 		var mg = helpers.createGenerator(
 			'footguard:model',

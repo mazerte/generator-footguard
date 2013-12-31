@@ -16,56 +16,16 @@ Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
 		self = this;
 
-	var prompts = [{
-		name: 'model',
-		message: 'Would you like to create associate model (' + this.name + ')?',
-		default: 'y/model/N'
-	}, {
-		name: 'tpl',
-		message: 'Would you like to create associate template (' + this.name + ')?',
-		default: 'Y/template/n'
-	}, {
-		name: 'sass',
-		message: 'Would you like to create associate sass file (' + this.name + ')?',
-		default: 'Y/sass/n'
-	}, this.promptForTest()];
+	var prompts = [
+		this.promptForModel(this.name),
+		this.promptForTemplate(this.name),
+		this.promptForSass(this.name),
+		this.promptForTest()
+	];
   
-	this.prompt(prompts, function(props) {
-		self.model = false;
-		if( props.model !== "y/model/N" ) {
-			if( (/^y$/i).test(props.model) ) {
-				self.model = self.name;
-			} else if( !(/^n$/i).test(props.model) ) {
-				self.model = props.model;
-			}
-		}
-		
-		self.tpl = self.name;
-		if( props.tpl !== "Y/template/n" ) {
-			if( (/^y$/i).test(props.tpl) ) {
-				self.tpl = self.name;
-			} else if( (/^n$/i).test(props.tpl) ) {
-				self.tpl = false;
-			} else {
-				self.tpl = props.tpl;
-			}
-		}
-		
-		self.sass = self.name;
-		if( props.sass !== "Y/template/n" ) {
-			if( (/^y$/i).test(props.sass) ) {
-				self.sass = self.name;
-			} else if( (/^n$/i).test(props.sass) ) {
-				self.sass = false;
-			} else {
-				self.sass = props.sass;
-			}
-		}
-		
-		self.test = (/y/i).test(props.test);
-		
+	this.prompt(prompts, this.parsePromptsResult( function(props) {
 		cb();
-	});
+	}));
 };
 
 Generator.prototype.createViewFiles = function createViewFiles() {
