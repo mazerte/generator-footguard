@@ -63,25 +63,20 @@ Generator.prototype.parsePromptsResult = function parsePromptsResult(callback) {
 			}
 		}
 		
-		self.tpl = self.name;
-		if( props.tpl !== "Y/template/n" ) {
-			if( (/^y$/i).test(props.tpl) ) {
-				self.tpl = self.name;
-			} else if( (/^n$/i).test(props.tpl) ) {
-				self.tpl = false;
-			} else {
-				self.tpl = props.tpl;
-			}
-		}
-		
-		self.sass = self.name;
-		if( props.sass !== "Y/sass/n" ) {
-			if( (/^y$/i).test(props.sass) ) {
-				self.sass = self.name;
-			} else if( (/^n$/i).test(props.sass) ) {
-				self.sass = false;
-			} else {
-				self.sass = props.sass;
+		var fields = {
+			tpl: "Y/template/n",
+			sass: "Y/sass/n"
+		};
+		for(var p in fields) {
+			self[p] = self.name;
+			if( props[p] !== fields[p] ) {
+				if( (/^y$/i).test(props[p]) ) {
+					self[p] = self.name;
+				} else if( (/^n$/i).test(props[p]) ) {
+					self[p] = false;
+				} else {
+					self[p] = props[p];
+				}
 			}
 		}
 		
