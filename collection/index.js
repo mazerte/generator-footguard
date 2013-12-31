@@ -1,9 +1,9 @@
 /*jshint latedef:false */
 var path = require('path'),
-  util = require('util'),
-  grunt = require('grunt'),
-  ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../util.js');
+	util = require('util'),
+	grunt = require('grunt'),
+	ScriptBase = require('../script-base.js'),
+	generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -20,11 +20,13 @@ Generator.prototype.askFor = function askFor() {
 		self = this;
 
 	// a bit verbose prompt configuration, maybe we can improve that
-	// demonstration purpose. Also, probably better to have this in other generator, whose responsability is to ask
-	// and fetch all realated bootstrap stuff, that we hook from this generator.
+	// demonstration purpose. Also, probably better to have this in other 
+	// generator, whose responsability is to ask and fetch all realated 
+	// bootstrap stuff, that we hook from this generator.
+	var modelName = grunt.util._.singularize(this.name)
 	var prompts = [{
 		name: 'model',
-		message: 'Would you like to create associate model (' + grunt.util._.singularize(this.name) + ')?',
+		message: 'Would you like to create associate model (' + modelName + ')?',
 		default: 'y/model/N'
 	}, {
 		name: 'test',
@@ -34,7 +36,8 @@ Generator.prototype.askFor = function askFor() {
   
 	this.prompt(prompts, function(props) {		
 		// manually deal with the response, get back and store the results.
-		// We change a bit this way of doing to automatically do this in the self.prompt() method.
+		// We change a bit this way of doing to automatically do this in the 
+		// self.prompt() method.
 		self.model = false;
 		if( props.model !== "y/model/N" ) {
 			if( props.model === "y" ) {
@@ -52,13 +55,19 @@ Generator.prototype.askFor = function askFor() {
 };
 
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
-	this.template('collection.coffee', path.join('src/coffee/app/collections', this.folder, this.name + '_collection.coffee'));
+	var dest =  path.join(
+		'src/coffee/app/collections', 
+		this.folder, 
+		this.name + '_collection.coffee'
+	);
+	this.template('collection.coffee', dest);
 
 	if( this.model ) {
 		generatorUtil.createModel(this, this.model, this.folder, this.test);
 	}
 	
 	if( this.test ) {
-		generatorUtil.createTest(this, 'unit', 'collection_spec.coffee', path.join('collections', this.folder, this.name + '_collection'));
+		dest = path.join('collections', this.folder, this.name + '_collection');
+		generatorUtil.createTest(this, 'unit', 'collection_spec.coffee', dest);
 	}
 };

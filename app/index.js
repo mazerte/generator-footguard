@@ -39,7 +39,9 @@ Generator.prototype.setupEnv = function setupEnv() {
 
 	this.on('end', function () {
 		if (['app', 'footguard'].indexOf(this.generatorName) >= 0) {
-			this.installDependencies({ skipInstall: this.options['skip-install'] });
+			this.installDependencies({ 
+				skipInstall: this.options['skip-install'] 
+			});
 		}
 	});
 };

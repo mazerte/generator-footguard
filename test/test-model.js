@@ -27,7 +27,11 @@ describe('Yeoman generator - model', function () {
 	});
 
 	it('create model without test', function (done) {
-		var helper = helpers.createGenerator('footguard:model', ['../../model'], ['foo']);
+		var helper = helpers.createGenerator(
+			'footguard:model', 
+			['../../model'], 
+			['foo']
+		);
 
 		helpers.mockPrompt(helper, {
 			test: 'n'
@@ -35,14 +39,19 @@ describe('Yeoman generator - model', function () {
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/app/models/foo_model.coffee', /class FooModel extends Backbone.Model/]
+				['src/coffee/app/models/foo_model.coffee', 
+					/class FooModel extends Backbone.Model/]
 			]);
 			done();
 		});
 	});
 
 	it('create model in folder without test', function (done) {
-		var helper = helpers.createGenerator('footguard:model', ['../../model'], ['foo', 'boo']);
+		var helper = helpers.createGenerator(
+			'footguard:model', 
+			['../../model'], 
+			['foo', 'boo']
+		);
 
 		helpers.mockPrompt(helper, {
 			test: 'n'
@@ -50,14 +59,19 @@ describe('Yeoman generator - model', function () {
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/app/models/boo/foo_model.coffee', /class FooModel extends Backbone.Model/]
+				['src/coffee/app/models/boo/foo_model.coffee', 
+					/class FooModel extends Backbone.Model/]
 			]);
 			done();
 		});
 	});
 
 	it('create model with test', function (done) {
-		var helper = helpers.createGenerator('footguard:model', ['../../model'], ['foo']);
+		var helper = helpers.createGenerator(
+			'footguard:model', 
+			['../../model'], 
+			['foo']
+		);
 
 		helpers.mockPrompt(helper, {
 			test: 'y'
@@ -65,17 +79,25 @@ describe('Yeoman generator - model', function () {
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/app/models/foo_model.coffee', /class FooModel extends Backbone.Model/],
-				['src/coffee/spec/unit/models/foo_model_spec.coffee', /Test Foo Model/],
-				['src/coffee/spec/unit/models/foo_model_spec.coffee', /define \['app\/models\/foo_model'\], \(Foo\)->/],
-				['src/coffee/spec/unit/all_unit_tests.coffee', /"spec\/unit\/models\/foo_model_spec"/]
+				['src/coffee/app/models/foo_model.coffee', 
+					/class FooModel extends Backbone.Model/],
+				['src/coffee/spec/unit/models/foo_model_spec.coffee', 
+					/Test Foo Model/],
+				['src/coffee/spec/unit/models/foo_model_spec.coffee', 
+					/define \['app\/models\/foo_model'\], \(Foo\)->/],
+				['src/coffee/spec/unit/all_unit_tests.coffee', 
+					/"spec\/unit\/models\/foo_model_spec"/]
 			]);
 			done();
 		});
 	});
 
 	it('create model in folder with test', function (done) {
-		var helper = helpers.createGenerator('footguard:model', ['../../model'], ['foo', 'boo']);
+		var helper = helpers.createGenerator(
+			'footguard:model', 
+			['../../model'], 
+			['foo', 'boo']
+		);
 
 		helpers.mockPrompt(helper, {
 			test: 'y'
@@ -83,10 +105,14 @@ describe('Yeoman generator - model', function () {
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/app/models/boo/foo_model.coffee', /class FooModel extends Backbone.Model/],
-				['src/coffee/spec/unit/models/boo/foo_model_spec.coffee', /Test Foo Model/],
-				['src/coffee/spec/unit/models/boo/foo_model_spec.coffee', /define \['app\/models\/boo\/foo_model'\], \(Foo\)->/],
-				['src/coffee/spec/unit/all_unit_tests.coffee', /"spec\/unit\/models\/boo\/foo_model_spec"/]
+				['src/coffee/app/models/boo/foo_model.coffee', 
+					/class FooModel extends Backbone.Model/],
+				['src/coffee/spec/unit/models/boo/foo_model_spec.coffee', 
+					/Test Foo Model/],
+				['src/coffee/spec/unit/models/boo/foo_model_spec.coffee', 
+					/define \['app\/models\/boo\/foo_model'\], \(Foo\)->/],
+				['src/coffee/spec/unit/all_unit_tests.coffee', 
+					/"spec\/unit\/models\/boo\/foo_model_spec"/]
 			]);
 			done();
 		});

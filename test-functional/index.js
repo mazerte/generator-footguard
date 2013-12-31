@@ -13,5 +13,6 @@ function Generator() {
 util.inherits(Generator, ScriptBase);
 
 Generator.prototype.createTestFile = function createTestFile() {
-	generatorUtil.createTest(this, 'functional', 'test_functional.coffee', path.join(this.folder, this.name));
+	var dest = path.join(this.folder, this.name);
+	generatorUtil.createTest(this, 'functional', 'test_functional.coffee', dest);
 };

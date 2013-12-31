@@ -1,16 +1,16 @@
 /*jshint latedef:false */
 var path = require('path'),
-  util = require('util'),
-  grunt = require('grunt'),
-  ScriptBase = require('../script-base.js'),
-  generatorUtil = require('../util.js');
+	util = require('util'),
+	grunt = require('grunt'),
+	ScriptBase = require('../script-base.js'),
+	generatorUtil = require('../util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
 module.exports = Generator;
 
 function Generator() {
-  ScriptBase.apply(this, arguments);
+	ScriptBase.apply(this, arguments);
 }
 
 util.inherits(Generator, ScriptBase);
@@ -20,8 +20,9 @@ Generator.prototype.askFor = function askFor() {
 		self = this;
 
 	// a bit verbose prompt configuration, maybe we can improve that
-	// demonstration purpose. Also, probably better to have this in other generator, whose responsability is to ask
-	// and fetch all realated bootstrap stuff, that we hook from this generator.
+	// demonstration purpose. Also, probably better to have this in other 
+	// generator, whose responsability is to ask and fetch all realated 
+	// bootstrap stuff, that we hook from this generator.
 	var prompts = [{
 		name: 'model',
 		message: 'Would you like to create associate model (' + this.name + ')?',
@@ -42,7 +43,8 @@ Generator.prototype.askFor = function askFor() {
   
 	this.prompt(prompts, function(props) {
 		// manually deal with the response, get back and store the results.
-		// We change a bit this way of doing to automatically do this in the self.prompt() method.
+		// We change a bit this way of doing to automatically do this in the 
+		// self.prompt() method.
 		self.model = false;
 		if( props.model !== "y/model/N" ) {
 			if( (/^y$/i).test(props.model) ) {
@@ -82,16 +84,20 @@ Generator.prototype.askFor = function askFor() {
 };
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-	//console.log('Model: ' + this.model);
-	//console.log('Use unit test: ' + this.test);
-	this.template('view.coffee', path.join('src/coffee/app/views', this.folder, this.name + '_view.coffee'));
+	var dest = path.join(
+		'src/coffee/app/views', 
+		this.folder, 
+		this.name + '_view.coffee'
+	);
+	this.template('view.coffee', dest);
 	
 	if( this.model ) {
 		generatorUtil.createModel(this, this.model, this.folder, this.test);
 	}
 	
 	if( this.sass ) {
-		this.template('view.sass', path.join('src/sass', this.folder, '_' + this.sass + '.sass'));
+		dest = path.join('src/sass', this.folder, '_' + this.sass + '.sass');
+		this.template('view.sass', dest);
 		
 		generatorUtil.rewriteFile({
 			file: 'src/sass/main.sass',
@@ -103,10 +109,12 @@ Generator.prototype.createViewFiles = function createViewFiles() {
 	}
 	
 	if( this.tpl ) {
-		this.template('view.html', path.join('app/templates', this.folder, this.tpl + '.html'));
+		dest = path.join('app/templates', this.folder, this.tpl + '.html');
+		this.template('view.html', dest);
 	}
 	
 	if( this.test ) {
-		generatorUtil.createTest(this, 'unit', 'view_spec.coffee', path.join('views', this.folder, this.name + '_view'));
+		dest = path.join('views', this.folder, this.name + '_view');
+		generatorUtil.createTest(this, 'unit', 'view_spec.coffee', dest);
 	}
 };

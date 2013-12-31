@@ -27,24 +27,36 @@ describe('Yeoman generator - test functional', function () {
 	});
 
 	it('create helper without test', function (done) {
-		var helper = helpers.createGenerator('footguard:test-functional', ['../../test-functional'], ['foo']);
+		var helper = helpers.createGenerator(
+			'footguard:test-functional', 
+			['../../test-functional'], 
+			['foo']
+		);
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/spec/functional/foo_spec.coffee', /Test \(Functional\) Foo/],
-				['src/coffee/spec/functional/all_functional_tests.coffee', /spec\/functional\/foo_spec/]
+				['src/coffee/spec/functional/foo_spec.coffee', 
+					/Test \(Functional\) Foo/],
+				['src/coffee/spec/functional/all_functional_tests.coffee', 
+					/spec\/functional\/foo_spec/]
 			]);
 			done();
 		});
 	});
 
 	it('create helper in folder without test', function (done) {
-		var helper = helpers.createGenerator('footguard:test-functional', ['../../test-functional'], ['foo', 'boo']);
+		var helper = helpers.createGenerator(
+			'footguard:test-functional', 
+			['../../test-functional'], 
+			['foo', 'boo']
+		);
 
 		helper.run([], function() {
 			helpers.assertFiles([
-				['src/coffee/spec/functional/boo/foo_spec.coffee', /Test \(Functional\) Foo/],
-				['src/coffee/spec/functional/all_functional_tests.coffee', /spec\/functional\/boo\/foo_spec/]
+				['src/coffee/spec/functional/boo/foo_spec.coffee', 
+					/Test \(Functional\) Foo/],
+				['src/coffee/spec/functional/all_functional_tests.coffee', 
+					/spec\/functional\/boo\/foo_spec/]
 			]);
 			done();
 		});
