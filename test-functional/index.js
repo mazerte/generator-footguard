@@ -1,18 +1,17 @@
 /*jshint latedef:false */
 var path = require('path'),
 	util = require('util'),
-	ScriptBase = require('../script-base.js'),
-	generatorUtil = require('../util.js');
+	FootguardBase = require('../footguard-base.js');
 
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	FootguardBase.apply(this, arguments);
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, FootguardBase);
 
 Generator.prototype.createTestFile = function createTestFile() {
 	var dest = path.join(this.folder, this.name);
-	generatorUtil.createTest(this, 'functional', 'test_functional.coffee', dest);
+	this.createTest('functional', 'test_functional.coffee', dest);
 };

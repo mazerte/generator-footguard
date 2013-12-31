@@ -1,91 +1,40 @@
 /*jshint latedef:false */
 var path = require('path'),
 	util = require('util'),
-	grunt = require('grunt'),
-	ScriptBase = require('../script-base.js'),
-	generatorUtil = require('../util.js');
-
-grunt.util._.mixin( require('underscore.inflections') );
+	generatorUtil = require('../util.js'),
+	FooguardBase = require('../footguard-base.js');
 
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	FooguardBase.apply(this, arguments);
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, FooguardBase);
 
 Generator.prototype.askFor = function askFor() {
 	var cb = this.async(),
 		self = this;
 
-	var prompts = [{
-		name: 'model',
-		message: 'Would you like to create associate model (' + this.name + ')?',
-		default: 'y/model/N'
-	}, {	
-		name: 'tpl',
-		message: 'Would you like to create associate template (' + this.name + ')?',
-		default: 'Y/template/n'
-	}, {
-		name: 'sass',
-		message: 'Would you like to create associate sass file (' + this.name + ')?',
-		default: 'Y/sass/n'
-	}, {
-		name: 'test',
-		message: 'Would you like to create associate unit test ?',
-		default: 'Y/n'
-	}];
+	var prompts = [
+		this.promptForModel(this.name),
+		this.promptForTemplate(this.name),
+		this.promptForSass(this.name),
+		this.promptForTest()
+	];
   
-	this.prompt(prompts, function(props) {
-		self.model = false;
-		if( props.model !== "y/model/N" ) {
-			if( (/^y$/i).test(props.model) ) {
-				self.model = self.name;
-			} else if( !(/^n$/i).test(props.model) ) {
-				self.model = props.model;
-			}
-		}
-		
-		self.tpl = self.name;
-		if( props.tpl !== "Y/template/n" ) {
-			if( (/^y$/i).test(props.tpl) ) {
-				self.tpl = self.name;
-			} else if( (/^n$/i).test(props.tpl) ) {
-				self.tpl = false;
-			} else {
-				self.tpl = props.tpl;
-			}
-		}
-		
-		self.sass = self.name;
-		if( props.sass !== "Y/template/n" ) {
-			if( (/^y$/i).test(props.sass) ) {
-				self.sass = self.name;
-			} else if( (/^n$/i).test(props.sass) ) {
-				self.sass = false;
-			} else {
-				self.sass = props.sass;
-			}
-		}
-		
-		self.test = (/y/i).test(props.test);
-		
+	this.prompt(prompts, this.parsePromptsResult( function(props) {
 		cb();
-	});
+	}));
 };
 
 Generator.prototype.createViewFiles = function createViewFiles() {
-	var dest = path.join(
-		'src/coffee/app/views', 
-		this.folder, 
-		this.name + '_view.coffee'
-	);
-	this.template('view.coffee', dest);
+	var dest;
+
+	this.template('view.coffee', this.getElementDest('view'));
 	
-	if( this.model ) {
-		generatorUtil.createModel(this, this.model, this.folder, this.test);
-	}
+	this.createModel(this.model);
+	this.createElementTest('view');
 	
 	if( this.sass ) {
 		dest = path.join('src/sass', this.folder, '_' + this.sass + '.sass');
@@ -103,10 +52,5 @@ Generator.prototype.createViewFiles = function createViewFiles() {
 	if( this.tpl ) {
 		dest = path.join('app/templates', this.folder, this.tpl + '.html');
 		this.template('view.html', dest);
-	}
-	
-	if( this.test ) {
-		dest = path.join('views', this.folder, this.name + '_view');
-		generatorUtil.createTest(this, 'unit', 'view_spec.coffee', dest);
 	}
 };
