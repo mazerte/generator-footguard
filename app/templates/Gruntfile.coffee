@@ -263,17 +263,6 @@ module.exports = (grunt)->
 
 		htmlmin:
 			dist:
-				# options:
-				#   removeCommentsFromCDATA: true
-				#   # https://github.com/yeoman/grunt-usemin/issues/44
-				#   collapseWhitespace: true
-				#   collapseBooleanAttributes: true
-				#   removeAttributeQuotes: true
-				#   removeRedundantAttributes: true
-				#   useShortDoctype: true
-				#   removeEmptyAttributes: true
-				#   removeOptionalTags: true
-
 				files: [{
 					expand: true,
 					cwd: '<%= yeoman.app %>',
@@ -293,7 +282,6 @@ module.exports = (grunt)->
 		requirejs:
 			compile:
 				options:
-					# no minification, is done by the min task
 					baseUrl: 'js/'
 					appDir: './<%= yeoman.tmp_dist %>/'
 					dir: './<%= yeoman.dist %>/'
@@ -306,6 +294,7 @@ module.exports = (grunt)->
 					inlineText: true
 					mainConfigFile: '<%= yeoman.tmp_dist %>/js/main.js'
 
+					# no minification, is done by the min task
 					optimize: "none"
 
 					modules: [
@@ -313,6 +302,14 @@ module.exports = (grunt)->
 						{ name: 'app/app', exclude: ['app/vendors'] }
 						{ name: 'main', exclude: ['config', 'app/app', 'app/vendors'] }
 					]
+
+	# Re-build just the changed file (Coffee)
+	grunt.event.on 'watch', (action, filepath, target) ->
+		match = grunt.file.isMatch( grunt.config('watch.coffee.files'), filepath)
+		if target is 'coffee' and match
+			grunt.config(['coffee', 'dist', 'src'], [
+				filepath.replace( "#{yeomanConfig.src}/coffee/", "" )
+			])
 	
 	grunt.registerTask('test', [
 		'coffee:dist'
