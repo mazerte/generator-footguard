@@ -2,7 +2,7 @@
 var path = require('path'),
 	util = require('util'),
 	grunt = require('grunt'),
-	ScriptBase = require('./script-base.js'),
+	yeoman = require('yeoman-generator'),
 	generatorUtil = require('./util.js'),
 	helpers = require('yeoman-generator').test;
 
@@ -11,10 +11,15 @@ grunt.util._.mixin( require('underscore.inflections') );
 module.exports = Generator;
 
 function Generator() {
-	ScriptBase.apply(this, arguments);
+	yeoman.generators.NamedBase.apply(this, arguments);
+	this.appname = path.basename(process.cwd());
+
+	this.argument('folder', { type: String, required: false, defaults: "" });
+
+	this.sourceRoot(path.join(__dirname, './templates'));
 }
 
-util.inherits(Generator, ScriptBase);
+util.inherits(Generator, yeoman.generators.NamedBase);
 
 /////////////
 // PROMPTS //
