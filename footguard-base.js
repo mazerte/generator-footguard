@@ -1,4 +1,5 @@
-/*jshint latedef:false */
+'use strict';
+
 var path = require('path'),
     util = require('util'),
     grunt = require('grunt'),
@@ -8,18 +9,17 @@ var path = require('path'),
 
 grunt.util._.mixin( require('underscore.inflections') );
 
-module.exports = Generator;
-
-function Generator() {
+var Generator = function Generator() {
   yeoman.generators.NamedBase.apply(this, arguments);
   this.appname = path.basename(process.cwd());
 
-  this.argument('folder', { type: String, required: false, defaults: "" });
+  this.argument('folder', { type: String, required: false, defaults: '' });
 
   this.sourceRoot(path.join(__dirname, './templates'));
-}
+};
 
 util.inherits(Generator, yeoman.generators.NamedBase);
+module.exports = Generator;
 
 /////////////
 // PROMPTS //
@@ -57,37 +57,37 @@ Generator.prototype.promptForSass = function promptForSass(name) {
 };
 
 Generator.prototype.parsePromptsResult = function parsePromptsResult(callback) {
-  var self = this;
+  var _this = this;
   return function(props) {
-    self.model = false;
-    if( props.model !== "y/model/N" ) {
+    _this.model = false;
+    if( props.model !== 'y/model/N' ) {
       if( (/^y$/i).test(props.model) ) {
-        self.model = self.name;
+        _this.model = _this.name;
       } else if( !(/^n$/i).test(props.model) ) {
-        self.model = props.model;
+        _this.model = props.model;
       }
     }
     
     var fields = {
-      tpl: "Y/template/n",
-      sass: "Y/sass/n"
+      tpl: 'Y/template/n',
+      sass: 'Y/sass/n'
     };
     for(var p in fields) {
       if (fields.hasOwnProperty(p)) {
-        self[p] = self.name;
+        _this[p] = _this.name;
         if( props[p] !== fields[p] ) {
           if( (/^y$/i).test(props[p]) ) {
-            self[p] = self.name;
+            _this[p] = _this.name;
           } else if( (/^n$/i).test(props[p]) ) {
-            self[p] = false;
+            _this[p] = false;
           } else {
-            self[p] = props[p];
+            _this[p] = props[p];
           }
         }
       }
     }
     
-    self.test = (/y/i).test(props.test);
+    _this.test = (/y/i).test(props.test);
 
     callback(props);
   };
@@ -101,7 +101,7 @@ Generator.prototype.getElementDest = function getElementDest(type) {
   return path.join(
     'src/coffee/app/' + grunt.util._.pluralize(type),
     this.folder,
-    this.name + "_" + type + ".coffee"
+    this.name + ' ' + type + '.coffee'
   );
 };
 
@@ -123,7 +123,7 @@ Generator.prototype.createTest = function createTest(type, template, file) {
 
   generatorUtil.rewriteFile({
     file: 'src/coffee/spec/' + type + '/all_' + type + '_tests.coffee',
-    needle: "# <" + type + "> don't remove this comment",
+    needle: '# <" + type + "> don\'t remove this comment',
     splicable: [
       ' "' + path.join('spec/', type, file) + '_spec"'
     ]
@@ -138,11 +138,11 @@ Generator.prototype.createModel = function createModel(name, folder, test) {
   if( this.model ) {
     var mg = helpers.createGenerator(
       'footguard:model',
-      [__dirname + "/model"],
+      [__dirname + '/model'],
       [name, folder]
     );
     helpers.mockPrompt(mg, {
-      test: test ? "y" : "n"
+      test: test ? 'y' : 'n'
     });
     mg.run();
   }

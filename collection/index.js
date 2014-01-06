@@ -1,17 +1,17 @@
-/*jshint latedef:false */
+'use strict';
+
 var util = require('util'),
     grunt = require('grunt'),
     FootguardBase = require('../footguard-base.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
-module.exports = Generator;
-
-function Generator() {
+var Generator = function Generator() {
   FootguardBase.apply(this, arguments);
-}
+};
 
 util.inherits(Generator, FootguardBase);
+module.exports = Generator;
 
 Generator.prototype.askFor = function askFor() {
   var cb = this.async(),
@@ -25,7 +25,7 @@ Generator.prototype.askFor = function askFor() {
   
   this.prompt(prompts, this.parsePromptsResult( function(props) {
     self.model = false;
-    if( props.model !== "y/model/N" ) {
+    if( props.model !== 'y/model/N' ) {
       if( (/^y$/i).test(props.model) ) {
         self.model = modelName;
       } else if( !(/^n$/i).test(props.model) ) {

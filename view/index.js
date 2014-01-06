@@ -1,16 +1,16 @@
-/*jshint latedef:false */
+'use strict';
+
 var path = require('path'),
     util = require('util'),
     generatorUtil = require('../util.js'),
     FooguardBase = require('../footguard-base.js');
 
-module.exports = Generator;
-
-function Generator() {
+var Generator = function Generator() {
   FooguardBase.apply(this, arguments);
-}
+};
 
 util.inherits(Generator, FooguardBase);
+module.exports = Generator;
 
 Generator.prototype.askFor = function askFor() {
   var cb = this.async();
@@ -41,7 +41,7 @@ Generator.prototype.createViewFiles = function createViewFiles() {
     
     generatorUtil.rewriteFile({
       file: 'src/sass/main.sass',
-      needle: "# <here> don't remove this comment",
+      needle: '# <here> don\'t remove this comment',
       splicable: [
         '@import ' + path.join(this.folder, this.sass)
       ]

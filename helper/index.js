@@ -1,14 +1,14 @@
-/*jshint latedef:false */
+'use strict';
+
 var FootguardBase = require('../footguard-base.js'),
     util = require('util');
 
-module.exports = Generator;
-
-function Generator() {
+var Generator = function Generator() {
   FootguardBase.apply(this, arguments);
-}
+};
 
 util.inherits(Generator, FootguardBase);
+module.exports = Generator;
 
 Generator.prototype.askFor = function askFor () {
   var cb = this.async();

@@ -1,13 +1,16 @@
-/*jshint latedef:false */
+'use strict';
+
 var path = require('path'),
-    fs = require('fs');
+    fs = require('fs'),
+    rewrite,
+    rewriteFile;
 
 module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile
 };
 
-function rewriteFile (args) {
+rewriteFile = function rewriteFile (args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
 
@@ -15,9 +18,9 @@ function rewriteFile (args) {
   var body = rewrite(args);
 
   fs.writeFileSync(fullPath, body);
-}
+};
 
-function rewrite (args) {
+rewrite = function rewrite (args) {
   var lines = args.haystack.split('\n');
 
   var otherwiseLineIndex = 0;
@@ -34,5 +37,5 @@ function rewrite (args) {
   }).join('\n'));
 
   return lines.join('\n');
-}
+};
 

@@ -33,15 +33,15 @@ util.inherits(Generator, yeoman.generators.NamedBase);
 Generator.prototype.setupEnv = function setupEnv() {
   // Copies the contents of the generator `templates`
   // directory into your users new application path
-  console.log("".cyan);
-  console.log("Install starter's files".cyan);
-  console.log("=======================".cyan);
+  console.log(''.cyan);
+  console.log('Install starter\'s files'.cyan);
+  console.log('======================='.cyan);
   this.directory('.','.', true);
 
   this.on('end', function () {
     if (['app', 'footguard'].indexOf(this.generatorName) >= 0) {
-      this.installDependencies({ 
-        skipInstall: this.options['skip-install'] 
+      this.installDependencies({
+        skipInstall: this.options['skip-install']
       });
     }
   });
