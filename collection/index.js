@@ -1,45 +1,45 @@
 /*jshint latedef:false */
 var util = require('util'),
-	grunt = require('grunt'),
-	FootguardBase = require('../footguard-base.js');
+    grunt = require('grunt'),
+    FootguardBase = require('../footguard-base.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
 module.exports = Generator;
 
 function Generator() {
-	FootguardBase.apply(this, arguments);
+  FootguardBase.apply(this, arguments);
 }
 
 util.inherits(Generator, FootguardBase);
 
 Generator.prototype.askFor = function askFor() {
-	var cb = this.async(),
-		self = this;
+  var cb = this.async(),
+    self = this;
 
-	var modelName = grunt.util._.singularize(this.name);
-	var prompts = [
-		this.promptForModel(modelName),
-		this.promptForTest()
-	];
+  var modelName = grunt.util._.singularize(this.name);
+  var prompts = [
+    this.promptForModel(modelName),
+    this.promptForTest()
+  ];
   
-	this.prompt(prompts, this.parsePromptsResult( function(props) {
-		self.model = false;
-		if( props.model !== "y/model/N" ) {
-			if( (/^y$/i).test(props.model) ) {
-				self.model = modelName;
-			} else if( !(/^n$/i).test(props.model) ) {
-				self.model = props.model;
-			}
-		}
+  this.prompt(prompts, this.parsePromptsResult( function(props) {
+    self.model = false;
+    if( props.model !== "y/model/N" ) {
+      if( (/^y$/i).test(props.model) ) {
+        self.model = modelName;
+      } else if( !(/^n$/i).test(props.model) ) {
+        self.model = props.model;
+      }
+    }
 
-		cb();
-	}));
+    cb();
+  }));
 };
 
 Generator.prototype.createCollectionFiles = function createCollectionFiles() {
-	this.template('collection.coffee', this.getElementDest('collection'));
+  this.template('collection.coffee', this.getElementDest('collection'));
 
-	this.createModel(this.model);
-	this.createElementTest('collection');
+  this.createModel(this.model);
+  this.createElementTest('collection');
 };

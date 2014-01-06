@@ -1,29 +1,29 @@
 /*jshint latedef:false */
 var FootguardBase = require('../footguard-base.js'),
-	util = require('util');
+    util = require('util');
 
 module.exports = Generator;
 
 function Generator() {
-	FootguardBase.apply(this, arguments);
+  FootguardBase.apply(this, arguments);
 }
 
 util.inherits(Generator, FootguardBase);
 
 Generator.prototype.askFor = function askFor () {
-	var cb = this.async();
+  var cb = this.async();
 
-	var prompts = [
-		this.promptForTest()
-	];
+  var prompts = [
+    this.promptForTest()
+  ];
   
-	this.prompt(prompts, this.parsePromptsResult( function() {
-		cb();
-	}));
+  this.prompt(prompts, this.parsePromptsResult( function() {
+    cb();
+  }));
 };
 
 Generator.prototype.createHelperFiles = function createHelperFiles() {
-	this.template('helper.coffee', this.getElementDest('helper'));
-	
-	this.createElementTest('helper');
+  this.template('helper.coffee', this.getElementDest('helper'));
+  
+  this.createElementTest('helper');
 };
