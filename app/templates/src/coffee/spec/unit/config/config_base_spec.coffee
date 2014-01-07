@@ -1,6 +1,6 @@
 define ['config'], (config)->
 
-	describe 'Test configuration', ()->
+  describe 'Test configuration', ()->
 
-		it 'Configuration is defined', ()->
-			expect(config).not.to.be.undefined
+    it 'Configuration is defined', ()->
+      expect(config).not.to.be.undefined

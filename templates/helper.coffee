@@ -1,4 +1,4 @@
 define [], ()->
-	
-	<%= _.classify(name) %> = ()->
-		# do something
+
+  <%= _.classify(name) %> = ()->
+    # do something

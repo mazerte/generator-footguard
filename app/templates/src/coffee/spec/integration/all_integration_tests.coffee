@@ -1,3 +1,3 @@
 define [
-	# <integration> don't remove this comment
+  # <integration> don't remove this comment
 ], ()->

@@ -1,3 +1,4 @@
+'use strict';
 /*
  * Is injected into the spec runner file
 
@@ -10,100 +11,103 @@
 /*global mocha:true, alert:true, window:true */
 
 (function() {
-		// Send messages to the parent phantom.js process via alert! Good times!!
-		function sendMessage() {
-			var args = [].slice.call(arguments);
-			alert(JSON.stringify(args));
-		}
+  // Send messages to the parent phantom.js process via alert! Good times!!
+  var sendMessage = function sendMessage() {
+    var args = [].slice.call(arguments);
+    alert(JSON.stringify(args));
+  };
 
-		// Create a listener who'll bubble events from Phantomjs to Grunt
-		function createGruntListener(ev, runner) {
+  // Create a listener who'll bubble events from Phantomjs to Grunt
+  var createGruntListener = function createGruntListener(ev, runner) {
 
-			runner.on(ev, function(test, err) {
-				var data = {
-					err: err
-				};
+    runner.on(ev, function(test, err) {
+      var data = {
+        err: err
+      };
 
-				if (test) {
-					data.title = test.title;
-					data.fullTitle = test.fullTitle();
-				}
+      if (test) {
+        data.title = test.title;
+        data.fullTitle = test.fullTitle();
+      }
 
-				if (ev == 'end' && window._$jscoverage) {
-					var cov = {};
-					for(var prop in window._$jscoverage) {
-						var file = window._$jscoverage[prop];
-						file[0] = file.source;
-						cov[prop] = file;
-					}
-					data.cov = cov;
-				}
+      if (ev === 'end' && window._$jscoverage) {
+        var cov = {};
+        for(var prop in window._$jscoverage) {
+          var file = window._$jscoverage[prop];
+          file[0] = file.source;
+          cov[prop] = file;
+        }
+        data.cov = cov;
+      }
 
-				sendMessage('mocha.' + ev, data);
+      sendMessage('mocha.' + ev, data);
 
-			});
-		}
+    });
+  };
 
-		var GruntReporter = function(runner){
-			// 1.4.2 moved reporters to Mocha instead of mocha
-			var mochaInstance = window.Mocha || window.mocha;
+  var GruntReporter = function(runner){
+    // 1.4.2 moved reporters to Mocha instead of mocha
+    var mochaInstance = window.Mocha || window.mocha;
 
-			if (!mochaInstance) {
-				throw new Error('Mocha was not found, make sure you include Mocha in your HTML spec file.');
-			}
+    if (!mochaInstance) {
+      throw new Error(
+        'Mocha was not found, make sure you include Mocha in your HTML ' +
+        'spec file.'
+      );
+    }
 
-			// Setup HTML reporter to output data on the screen
-			mochaInstance.reporters.HTML.call(this, runner);
+    // Setup HTML reporter to output data on the screen
+    mochaInstance.reporters.HTML.call(this, runner);
 
-			// Create a Grunt listener for each Mocha events
-			var events = [
-				'start',
-				'test',
-				'test end',
-				'suite',
-				'suite end',
-				'fail',
-				'pass',
-				'pending',
-				'end'
-			];
+    // Create a Grunt listener for each Mocha events
+    var events = [
+      'start',
+      'test',
+      'test end',
+      'suite',
+      'suite end',
+      'fail',
+      'pass',
+      'pending',
+      'end'
+    ];
 
-			for(var i = 0; i < events.length; i++) {
-				createGruntListener(events[i], runner);
-			}
+    for(var i = 0; i < events.length; i++) {
+      createGruntListener(events[i], runner);
+    }
 
-		};
+  };
 
-		var options = window.PHANTOMJS;
-		if (options) {
-			// Default mocha options
-			var config = {
-						ui: 'bdd',
-						ignoreLeaks: true,
-						reporter: GruntReporter
-					},
-					run = options.run,
-					key;
+  var options = window.PHANTOMJS;
+  if (options) {
+    // Default mocha options
+    var config = {
+      ui: 'bdd',
+      ignoreLeaks: true,
+      reporter: GruntReporter
+    },
+    run = options.run,
+    key;
 
-			if (options) {
-				// If options is a string, assume it is to set the UI (bdd/tdd etc)
-				if (typeof options === "string") {
-					config.ui = options;
-				} else {
-					// Extend defaults with passed options
-					for (key in options.mocha) {
-						config[key] = options.mocha[key];
-					}
-				}
-			}
+    if (options) {
+      // If options is a string, assume it is to set the UI (bdd/tdd etc)
+      if (typeof options === 'string') {
+        config.ui = options;
+      } else {
+        // Extend defaults with passed options
+        for (key in options.mocha) {
+          config[key] = options.mocha[key];
+        }
+      }
+    }
 
-			config.reporter = GruntReporter;
+    config.reporter = GruntReporter;
 
-			mocha.setup(config);
+    mocha.setup(config);
 
-			// task option `run`, automatically runs mocha for grunt only
-			if (run) {
-				mocha.run();
-			}
-		}
+    // task option `run`, automatically runs mocha for grunt only
+    if (run) {
+      mocha.run();
+    }
+  }
 }());

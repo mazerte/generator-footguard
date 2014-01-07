@@ -1,8 +1,8 @@
 define [
-	'backbone'
+  'backbone'
 ], (Backbone)->
-	
-	class <%= _.classify(name) %>Model extends Backbone.Model
-		
-		defaults:
-			key: "value"
+
+  class <%= _.classify(name) %>Model extends Backbone.Model
+
+    defaults:
+      key: "value"

@@ -1,12 +1,12 @@
 define [
-	'app/router'
-	'config'
+  'app/router'
+  'config'
 ], (Router)->
 
-	app = null
-	initialize = ->
-		app = new Router()
-	return {
-		router: app
-		initialize: initialize
-	}
+  app = null
+  initialize = ->
+    app = new Router()
+  return {
+    router: app
+    initialize: initialize
+  }

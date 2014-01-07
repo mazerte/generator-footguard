@@ -1,3 +1,3 @@
 define ['jquery', 'underscore'], ($, _)->
 
-	describe 'Test (Functional) <%= _.classify(name) %>', ()->
+  describe 'Test (Functional) <%= _.classify(name) %>', ()->

@@ -1,16 +1,16 @@
 define [
-	'backbone'
-	'app/views/app_view'
+  'backbone'
+  'app/views/app_view'
 ], (Backbone, appView)->
 
-	class Router extends Backbone.Router
+  class Router extends Backbone.Router
 
-		routes:
-			'*actions' : 'defaultAction'
+    routes:
+      '*actions' : 'defaultAction'
 
-		initialize: ()->
-			appView.render()
-			Backbone.history.start()
+    initialize: ()->
+      appView.render()
+      Backbone.history.start()
 
-		defaultAction: (actions)->
-			console.log "Unhandled route #{actions}"
+    defaultAction: (actions)->
+      console.log "Unhandled route #{actions}"
