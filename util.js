@@ -4,12 +4,7 @@ var path = require('path'),
     fs = require('fs'),
     rewrite,
     rewriteFile;
-
-module.exports = {
-  rewrite: rewrite,
-  rewriteFile: rewriteFile
-};
-
+    
 rewriteFile = function rewriteFile (args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
@@ -38,4 +33,10 @@ rewrite = function rewrite (args) {
 
   return lines.join('\n');
 };
+
+module.exports = {
+  rewrite: rewrite,
+  rewriteFile: rewriteFile
+};
+
 

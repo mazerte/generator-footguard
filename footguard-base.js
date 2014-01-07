@@ -101,7 +101,7 @@ Generator.prototype.getElementDest = function getElementDest(type) {
   return path.join(
     'src/coffee/app/' + grunt.util._.pluralize(type),
     this.folder,
-    this.name + ' ' + type + '.coffee'
+    this.name + '_' + type + '.coffee'
   );
 };
 
