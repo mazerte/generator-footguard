@@ -5,7 +5,7 @@ var util = require('util'),
 
 var Generator = module.exports = function Generator() {
   yeoman.generators.Base.apply(this, arguments);
-  
+
   var welcome =
   '\n   ,gggggggggggggg                                                                                     '.red        +
   '\n  dP""""""88""""""                   I8                                                             8I '.red        +
@@ -24,7 +24,7 @@ var Generator = module.exports = function Generator() {
   '\n                                                `8, ,8I                                                '.red        +
   '\n                                                 `Y8P"                                                 '.red        +
   '\n                                                                                                       '.red;
-  
+
   console.log(welcome);
 };
 

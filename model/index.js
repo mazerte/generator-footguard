@@ -16,7 +16,7 @@ Generator.prototype.askFor = function askFor () {
   var prompts = [
     this.promptForTest()
   ];
-  
+
   this.prompt(prompts, this.parsePromptsResult( function() {
     cb();
   }));
@@ -24,6 +24,6 @@ Generator.prototype.askFor = function askFor () {
 
 Generator.prototype.createModelFiles = function createModelFiles() {
   this.template('model.coffee', this.getElementDest('model'));
-  
+
   this.createElementTest('model');
 };

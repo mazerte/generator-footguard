@@ -4,7 +4,7 @@ var path = require('path'),
     fs = require('fs'),
     rewrite,
     rewriteFile;
-    
+
 rewriteFile = function rewriteFile (args) {
   args.path = args.path || process.cwd();
   var fullPath = path.join(args.path, args.file);
@@ -38,5 +38,3 @@ module.exports = {
   rewrite: rewrite,
   rewriteFile: rewriteFile
 };
-
-
