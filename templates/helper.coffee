@@ -1,4 +1,4 @@
-define [], ()->
+define [], ->
 
-  <%= _.classify(name) %> = ()->
+  <%= _.classify(name) %> = ->
     # do something

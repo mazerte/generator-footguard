@@ -1,5 +1,5 @@
 # Add project configuration here
-define ['underscore'], (_)->
+define ['underscore'], (_) ->
 
   _.extend
     key: "value"

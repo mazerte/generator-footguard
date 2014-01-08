@@ -2,8 +2,7 @@
 'use strict';
 
 var path = require('path'),
-    helpers = require('yeoman-generator').test,
-    assert = require('assert');
+    helpers = require('yeoman-generator').test;
 
 
 describe('Yeoman generator - test integration', function () {
@@ -28,16 +27,16 @@ describe('Yeoman generator - test integration', function () {
 
   it('create helper without test', function (done) {
     var helper = helpers.createGenerator(
-      'footguard:test-integration', 
-      ['../../test-integration'], 
+      'footguard:test-integration',
+      ['../../test-integration'],
       ['foo']
     );
 
     helper.run([], function() {
       helpers.assertFiles([
-        ['src/coffee/spec/integration/foo_spec.coffee', 
+        ['src/coffee/spec/integration/foo_spec.coffee',
           /Test \(Integration\) Foo/],
-        ['src/coffee/spec/integration/all_integration_tests.coffee', 
+        ['src/coffee/spec/integration/all_integration_tests.coffee',
           /spec\/integration\/foo_spec/]
       ]);
       done();
@@ -46,16 +45,16 @@ describe('Yeoman generator - test integration', function () {
 
   it('create helper in folder without test', function (done) {
     var helper = helpers.createGenerator(
-      'footguard:test-integration', 
-      ['../../test-integration'], 
+      'footguard:test-integration',
+      ['../../test-integration'],
       ['foo', 'boo']
     );
 
     helper.run([], function() {
       helpers.assertFiles([
-        ['src/coffee/spec/integration/boo/foo_spec.coffee', 
+        ['src/coffee/spec/integration/boo/foo_spec.coffee',
           /Test \(Integration\) Foo/],
-        ['src/coffee/spec/integration/all_integration_tests.coffee', 
+        ['src/coffee/spec/integration/all_integration_tests.coffee',
           /spec\/integration\/boo\/foo_spec/]
       ]);
       done();

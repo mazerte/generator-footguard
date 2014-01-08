@@ -1,11 +1,11 @@
-define ['app/helpers/underscore_mixin'], (_)->
+define ['app/helpers/underscore_mixin'], (_) ->
 
-  describe 'Test Underscore mixin', ()->
+  describe 'Test Underscore mixin', ->
 
-    it 'Underscore is defined', ()->
+    it 'Underscore is defined', ->
       expect(_).not.to.be.undefined
 
-    it 'isUsable mixin', ()->
+    it 'isUsable mixin', ->
       expect(_.isUsable).to.be.a('function')
 
       _.isUsable(null).should.be.false
@@ -14,7 +14,7 @@ define ['app/helpers/underscore_mixin'], (_)->
       _.isUsable({}).should.be.true
       _.isUsable("titi").should.be.true
 
-    it 'usable mixin', ()->
+    it 'usable mixin', ->
       expect(_.usable).to.be.a('function')
 
       _.usable(null, 'default').should.be.equal 'default'

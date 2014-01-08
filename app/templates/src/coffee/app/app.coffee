@@ -1,7 +1,7 @@
 define [
   'app/router'
   'config'
-], (Router)->
+], (Router) ->
 
   app = null
   initialize = ->

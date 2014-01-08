@@ -1,9 +1,9 @@
-define ['app/helpers/modernizr_test'], (Modernizr)->
+define ['app/helpers/modernizr_test'], (Modernizr) ->
 
-  describe 'Test Modernizr mixin', ()->
+  describe 'Test Modernizr mixin', ->
 
-    it 'Modernizr is defined', ()->
+    it 'Modernizr is defined', ->
       expect(Modernizr).not.to.be.undefined
 
-    it 'addTest fullscreen', ()->
+    it 'addTest fullscreen', ->
       expect(Modernizr.fullscreen).not.to.be.undefined

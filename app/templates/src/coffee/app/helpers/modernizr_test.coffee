@@ -1,6 +1,6 @@
-define ['modernizr'], (Modernizr)->
+define ['modernizr'], (Modernizr) ->
 
-  Modernizr.addTest 'fullscreen', ()->
+  Modernizr.addTest 'fullscreen', ->
     ancelFullScreen = 'ancelFullScreen' # make string minifiable
 
     # FF9 pre-check

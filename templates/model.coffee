@@ -1,6 +1,6 @@
 define [
   'backbone'
-], (Backbone)->
+], (Backbone) ->
 
   class <%= _.classify(name) %>Model extends Backbone.Model
 

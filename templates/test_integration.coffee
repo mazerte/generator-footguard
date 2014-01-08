@@ -1,3 +1,3 @@
-define ['jquery', 'underscore'], ($, _)->
+define ['jquery', 'underscore'], ($, _) ->
 
-  describe 'Test (Integration) <%= _.classify(name) %>', ()->
+  describe 'Test (Integration) <%= _.classify(name) %>', ->

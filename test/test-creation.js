@@ -2,8 +2,7 @@
 'use strict';
 
 var path = require('path'),
-    helpers = require('yeoman-generator').test,
-    assert = require('assert');
+    helpers = require('yeoman-generator').test;
 
 
 describe('Yeoman generator', function () {

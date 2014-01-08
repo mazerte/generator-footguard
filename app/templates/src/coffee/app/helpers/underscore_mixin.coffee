@@ -1,10 +1,10 @@
-define ['underscore'], (_)->
+define ['underscore'], (_) ->
 
   _.mixin
-    isUsable: ( obj )->
+    isUsable: (obj) ->
       !_.isNull( obj ) and !_.isUndefined( obj ) and obj isnt ""
 
-    usable: ( obj, value )->
+    usable: (obj, value) ->
       if !_.isNull( obj ) and !_.isUndefined( obj ) and obj isnt ""
         return obj
       else

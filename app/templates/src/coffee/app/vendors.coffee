@@ -8,4 +8,4 @@ define [
 
   'app/helpers/underscore_mixin'
   'app/helpers/modernizr_test'
-], ()->
+], ->

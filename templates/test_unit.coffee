@@ -1,3 +1,3 @@
-define [], ()->
+define [], ->
 
-  describe 'Test <%= _.classify(name) %>', ()->
+  describe 'Test <%= _.classify(name) %>', ->
