@@ -21,7 +21,7 @@ Generator.prototype.askFor = function askFor() {
     this.promptForModel(modelName),
     this.promptForTest()
   ]);
-  
+
   this.prompt(prompts, this.parsePromptsResult( function() {
     cb();
   }));

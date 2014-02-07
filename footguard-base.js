@@ -132,6 +132,7 @@ Generator.prototype.createModel = function createModel(name, folder, test) {
       [__dirname + '/model'],
       [name, folder]
     );
+    mg.options['skip-install'] = true;
     helpers.mockPrompt(mg, {
       test: test
     });

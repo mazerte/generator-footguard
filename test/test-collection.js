@@ -32,6 +32,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['foo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -53,6 +54,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['foo', 'boo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -74,6 +76,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['foo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -101,6 +104,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['foo', 'boo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -128,6 +132,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -151,6 +156,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -194,6 +200,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['people', 'bar']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -217,6 +224,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['people', 'bar']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -260,6 +268,7 @@ describe('Yeoman generator - collection', function () {
       ['../../collection'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
