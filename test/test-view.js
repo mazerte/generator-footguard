@@ -34,11 +34,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'n',
-      sass: 'n',
-      test: 'n'
-    });
+      model: false,
+      tpl: false,
+      sass: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -61,11 +61,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'y',
-      sass: 'n',
-      test: 'n'
-    });
+      model: false,
+      tpl: true,
+      sass: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -91,11 +91,12 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'my_template',
-      sass: 'n',
-      test: 'n'
-    });
+      model: false,
+      tpl: true,
+      tplName: 'my_template',
+      sass: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -121,11 +122,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      tpl: 'n',
-      sass: 'n',
-      test: 'n'
-    });
+      model: true,
+      tpl: false,
+      sass: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -150,11 +151,12 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'bar',
-      tpl: 'n',
-      sass: 'n',
-      test: 'n'
-    });
+      model: true,
+      modelName: 'bar',
+      tpl: false,
+      sass: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -179,11 +181,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'n',
-      sass: 'y',
-      test: 'n'
-    });
+      model: false,
+      tpl: false,
+      sass: true,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -209,11 +211,12 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'n',
-      sass: 'my_sass',
-      test: 'n'
-    });
+      model: false,
+      tpl: false,
+      sass: true,
+      sassName: 'my_sass',
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -240,11 +243,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'n',
-      sass: 'n',
-      test: 'y'
-    });
+      model: false,
+      tpl: false,
+      sass: false,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -274,11 +277,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'y',
-      sass: 'y',
-      test: 'n'
-    });
+      model: false,
+      tpl: true,
+      sass: true,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -306,11 +309,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      tpl: 'y',
-      sass: 'y',
-      test: 'y'
-    });
+      model: false,
+      tpl: true,
+      sass: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -346,11 +349,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      tpl: 'y',
-      sass: 'y',
-      test: 'n'
-    });
+      model: true,
+      tpl: true,
+      sass: true,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -380,11 +383,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      tpl: 'y',
-      sass: 'y',
-      test: 'y'
-    });
+      model: true,
+      tpl: true,
+      sass: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -430,11 +433,11 @@ describe('Yeoman generator - view', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      tpl: 'y',
-      sass: 'y',
-      test: 'y'
-    });
+      model: true,
+      tpl: true,
+      sass: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([

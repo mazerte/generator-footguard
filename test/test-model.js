@@ -33,7 +33,7 @@ describe('Yeoman generator - model', function () {
     );
 
     helpers.mockPrompt(helper, {
-      test: 'n'
+      test: false
     });
 
     helper.run([], function() {
@@ -53,7 +53,7 @@ describe('Yeoman generator - model', function () {
     );
 
     helpers.mockPrompt(helper, {
-      test: 'n'
+      test: false
     });
 
     helper.run([], function() {
@@ -73,7 +73,7 @@ describe('Yeoman generator - model', function () {
     );
 
     helpers.mockPrompt(helper, {
-      test: 'y'
+      test: true
     });
 
     helper.run([], function() {
@@ -99,7 +99,7 @@ describe('Yeoman generator - model', function () {
     );
 
     helpers.mockPrompt(helper, {
-      test: 'y'
+      test: true
     });
 
     helper.run([], function() {

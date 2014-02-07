@@ -33,9 +33,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      test: 'n'
-    });
+      model: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -54,9 +54,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      test: 'n'
-    });
+      model: false,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -75,9 +75,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      test: 'y'
-    });
+      model: false,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -102,9 +102,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'n',
-      test: 'y'
-    });
+      model: false,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -129,9 +129,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      test: 'n'
-    });
+      model: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -152,9 +152,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      test: 'y'
-    });
+      model: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -195,9 +195,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      test: 'n'
-    });
+      model: true,
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -218,9 +218,9 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'y',
-      test: 'y'
-    });
+      model: true,
+      test: true
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([
@@ -261,9 +261,10 @@ describe('Yeoman generator - collection', function () {
     );
 
     helpers.mockPrompt(helper, {
-      model: 'animal',
-      test: 'n'
-    });
+      model: true,
+      modelName: 'animal',
+      test: false
+    }, { useDefaults: true });
 
     helper.run([], function() {
       helpers.assertFiles([

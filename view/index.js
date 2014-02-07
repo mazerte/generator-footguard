@@ -2,6 +2,7 @@
 
 var path = require('path'),
     util = require('util'),
+    grunt = require('grunt'),
     generatorUtil = require('../util.js'),
     FooguardBase = require('../footguard-base.js');
 
@@ -15,12 +16,12 @@ module.exports = Generator;
 Generator.prototype.askFor = function askFor() {
   var cb = this.async();
 
-  var prompts = [
+  var prompts = grunt.util._.flatten([
     this.promptForModel(this.name),
     this.promptForTemplate(this.name),
     this.promptForSass(this.name),
     this.promptForTest()
-  ];
+  ]);
   
   this.prompt(prompts, this.parsePromptsResult( function() {
     cb();
