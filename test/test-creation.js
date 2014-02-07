@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path'),
+    assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
 
@@ -45,7 +46,7 @@ describe('Yeoman generator', function () {
     ];
 
     this.footguard.app.run({}, function() {
-      helpers.assertFiles(expected);
+      assert.file(expected);
       done();
     });
   });

@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path'),
+    assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
 
@@ -38,7 +39,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/]
       ]);
@@ -59,7 +60,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/boo/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/]
       ]);
@@ -80,7 +81,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/foo_collection_spec.coffee',
@@ -107,7 +108,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/boo/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/boo/foo_collection_spec.coffee',
@@ -134,7 +135,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/person_model.coffee',
@@ -157,7 +158,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/people_collection_spec.coffee',
@@ -200,7 +201,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/bar/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/bar/person_model.coffee',
@@ -223,7 +224,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/bar/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/bar/people_collection_spec.coffee',
@@ -267,7 +268,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/animal_model.coffee',

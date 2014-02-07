@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path'),
+    assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
 
@@ -33,7 +34,7 @@ describe('Yeoman generator - test unit', function () {
     );
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/spec/unit/foo_spec.coffee',
           /Test Foo/],
         ['src/coffee/spec/unit/all_unit_tests.coffee',
@@ -51,7 +52,7 @@ describe('Yeoman generator - test unit', function () {
     );
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/spec/unit/boo/foo_spec.coffee',
           /Test Foo/],
         ['src/coffee/spec/unit/all_unit_tests.coffee',
