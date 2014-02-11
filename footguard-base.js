@@ -127,15 +127,11 @@ Generator.prototype.createModel = function createModel(name, folder, test) {
   test = test || this.test;
 
   if( this.model ) {
-    var mg = helpers.createGenerator(
-      'footguard:model',
-      [__dirname + '/model'],
-      [name, folder]
-    );
-    mg.options['skip-install'] = true;
-    helpers.mockPrompt(mg, {
-      test: test
+    this.env.run(['footguard:model', name, folder], {
+      skipPrompt: true,
+      args: {
+        test: test
+      }
     });
-    mg.run();
   }
 };

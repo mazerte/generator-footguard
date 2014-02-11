@@ -29,7 +29,7 @@ describe('Yeoman generator - view', function () {
   it('create view without model, template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -56,7 +56,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template and without model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -88,7 +88,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named template and without model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -121,7 +121,7 @@ describe('Yeoman generator - view', function () {
   it('create view with model and without template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -150,7 +150,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named model and without template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -180,7 +180,7 @@ describe('Yeoman generator - view', function () {
   it('create view with sass and without template, model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -212,7 +212,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named sass and without template, model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -246,7 +246,7 @@ describe('Yeoman generator - view', function () {
   it('create view with test and without template, model and sass', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -280,7 +280,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template and sass and without model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -314,7 +314,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, test and sass and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -356,7 +356,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, model and sass and without test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -392,7 +392,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -444,7 +444,7 @@ describe('Yeoman generator - view', function () {
   it('create view folder, template, model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo', 'bar']
     );
 

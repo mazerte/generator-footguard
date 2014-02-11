@@ -29,7 +29,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection without test and model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo']
     );
     helper.options['skip-install'] = true;
@@ -51,7 +51,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder without test and model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo', 'boo']
     );
     helper.options['skip-install'] = true;
@@ -73,7 +73,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection with test and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo']
     );
     helper.options['skip-install'] = true;
@@ -101,7 +101,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with test and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo', 'boo']
     );
     helper.options['skip-install'] = true;
@@ -129,7 +129,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection with model and without test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
     helper.options['skip-install'] = true;
@@ -153,7 +153,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection with model and test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
     helper.options['skip-install'] = true;
@@ -197,7 +197,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with model and without test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people', 'bar']
     );
     helper.options['skip-install'] = true;
@@ -221,7 +221,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with model and test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people', 'bar']
     );
     helper.options['skip-install'] = true;
@@ -265,7 +265,7 @@ describe('Yeoman generator - collection', function () {
   it('create collection and change model name', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
     helper.options['skip-install'] = true;
