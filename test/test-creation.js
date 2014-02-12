@@ -14,9 +14,11 @@ describe('Yeoman generator', function () {
         return done(err);
       }
       this.footguard = {};
-      this.footguard.app = helpers.createGenerator('footguard:app', [
-        '../../app'
-      ]);
+      this.footguard.app = helpers.createGenerator(
+        'footguard:app',
+        ['../../app'],
+        ['my-project']
+      );
 
       this.footguard.app.options['skip-install'] = true;
 
@@ -47,6 +49,9 @@ describe('Yeoman generator', function () {
 
     this.footguard.app.run({}, function() {
       assert.file(expected);
+      assert.fileContent([
+        ['package.json', /"name": "my-project"/]
+      ]);
       done();
     });
   });
