@@ -4,8 +4,7 @@ var path = require('path'),
     util = require('util'),
     grunt = require('grunt'),
     yeoman = require('yeoman-generator'),
-    generatorUtil = require('./util.js'),
-    helpers = require('yeoman-generator').test;
+    generatorUtil = require('./util.js');
 
 grunt.util._.mixin( require('underscore.inflections') );
 
@@ -16,6 +15,7 @@ var Generator = function Generator() {
   this.argument('folder', { type: String, required: false, defaults: '' });
 
   this.sourceRoot(path.join(__dirname, './templates'));
+  this.options['skip-install'] = true;
 };
 
 util.inherits(Generator, yeoman.generators.NamedBase);
