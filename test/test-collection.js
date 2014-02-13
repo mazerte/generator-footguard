@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path'),
+    assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
 
@@ -28,9 +29,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection without test and model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -38,7 +40,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/]
       ]);
@@ -49,9 +51,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder without test and model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo', 'boo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -59,7 +62,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/boo/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/]
       ]);
@@ -70,9 +73,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection with test and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -80,7 +84,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/foo_collection_spec.coffee',
@@ -97,9 +101,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with test and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['foo', 'boo']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: false,
@@ -107,7 +112,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/boo/foo_collection.coffee',
           /class FooCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/boo/foo_collection_spec.coffee',
@@ -124,9 +129,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection with model and without test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -134,7 +140,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/person_model.coffee',
@@ -147,9 +153,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection with model and test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -157,7 +164,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/people_collection_spec.coffee',
@@ -190,9 +197,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with model and without test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people', 'bar']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -200,7 +208,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/bar/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/bar/person_model.coffee',
@@ -213,9 +221,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection in folder with model and test', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people', 'bar']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -223,7 +232,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/bar/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/spec/unit/collections/bar/people_collection_spec.coffee',
@@ -256,9 +265,10 @@ describe('Yeoman generator - collection', function () {
   it('create collection and change model name', function(done) {
     var helper = helpers.createGenerator(
       'footguard:collection',
-      ['../../collection'],
+      ['../../collection', '../../model'],
       ['people']
     );
+    helper.options['skip-install'] = true;
 
     helpers.mockPrompt(helper, {
       model: true,
@@ -267,7 +277,7 @@ describe('Yeoman generator - collection', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/collections/people_collection.coffee',
           /class PeopleCollection extends Backbone.Collection/],
         ['src/coffee/app/models/animal_model.coffee',

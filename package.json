@@ -33,7 +33,7 @@
     "test": "mocha -R spec"
   },
   "dependencies": {
-    "yeoman-generator": "~0.16.0",
+    "yeoman-generator": "git://github.com/mazerte/generator",
     "path": "~0.4.9",
     "util": "~0.10.1",
     "underscore.inflections": "~0.2.1",

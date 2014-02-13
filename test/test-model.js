@@ -2,6 +2,7 @@
 'use strict';
 
 var path = require('path'),
+    assert = require('yeoman-generator').assert,
     helpers = require('yeoman-generator').test;
 
 
@@ -37,7 +38,7 @@ describe('Yeoman generator - model', function () {
     });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/models/foo_model.coffee',
           /class FooModel extends Backbone.Model/]
       ]);
@@ -57,7 +58,7 @@ describe('Yeoman generator - model', function () {
     });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/models/boo/foo_model.coffee',
           /class FooModel extends Backbone.Model/]
       ]);
@@ -77,7 +78,7 @@ describe('Yeoman generator - model', function () {
     });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/models/foo_model.coffee',
           /class FooModel extends Backbone.Model/],
         ['src/coffee/spec/unit/models/foo_model_spec.coffee',
@@ -103,7 +104,7 @@ describe('Yeoman generator - model', function () {
     });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/models/boo/foo_model.coffee',
           /class FooModel extends Backbone.Model/],
         ['src/coffee/spec/unit/models/boo/foo_model_spec.coffee',

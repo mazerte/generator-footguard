@@ -2,8 +2,8 @@
 'use strict';
 
 var path = require('path'),
-    helpers = require('yeoman-generator').test,
-    assert = require('assert');
+    assert = require('yeoman-generator').assert,
+    helpers = require('yeoman-generator').test;
 
 
 describe('Yeoman generator - view', function () {
@@ -29,7 +29,7 @@ describe('Yeoman generator - view', function () {
   it('create view without model, template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -41,7 +41,7 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -56,7 +56,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template and without model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -68,7 +68,10 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/foo.html'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -76,8 +79,7 @@ describe('Yeoman generator - view', function () {
         ['src/coffee/app/views/foo_view.coffee',
           /@\$el.html _\.template\( tpl, {  } \)/],
         ['src/coffee/app/views/foo_view.coffee',
-          /(?!'app\/models\/foo_model')/],
-        'app/templates/foo.html'
+          /(?!'app\/models\/foo_model')/]
       ]);
       done();
     });
@@ -86,7 +88,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named template and without model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -99,7 +101,10 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/my_template.html'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -107,8 +112,7 @@ describe('Yeoman generator - view', function () {
         ['src/coffee/app/views/foo_view.coffee',
           /@\$el.html _\.template\( tpl, {  } \)/],
         ['src/coffee/app/views/foo_view.coffee',
-          /(?!'app\/models\/foo_model')/],
-        'app/templates/my_template.html'
+          /(?!'app\/models\/foo_model')/]
       ]);
       done();
     });
@@ -117,7 +121,7 @@ describe('Yeoman generator - view', function () {
   it('create view with model and without template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -129,7 +133,7 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -146,7 +150,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named model and without template, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -159,7 +163,7 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -176,7 +180,7 @@ describe('Yeoman generator - view', function () {
   it('create view with sass and without template, model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -188,14 +192,16 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'src/sass/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
           /(?!'text!templates\/foo\.html')/],
         ['src/coffee/app/views/foo_view.coffee',
           /(?!'app\/models\/foo_model')/],
-        'src/sass/_foo.sass',
         ['src/sass/main.sass',
           /@import foo/]
       ]);
@@ -206,7 +212,7 @@ describe('Yeoman generator - view', function () {
   it('create view with named sass and without template, model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -219,14 +225,16 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'src/sass/_my_sass.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
           /(?!'text!templates\/foo\.html')/],
         ['src/coffee/app/views/foo_view.coffee',
           /(?!'app\/models\/foo_model')/],
-        'src/sass/_my_sass.sass',
         ['src/sass/main.sass',
           /@import my_sass/]
       ]);
@@ -238,7 +246,7 @@ describe('Yeoman generator - view', function () {
   it('create view with test and without template, model and sass', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -250,7 +258,7 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -272,7 +280,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template and sass and without model and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -284,7 +292,11 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/foo.html',
+        'src/sass/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -293,8 +305,6 @@ describe('Yeoman generator - view', function () {
           /(?!'app\/models\/foo_model')/],
         ['src/coffee/app/views/foo_view.coffee',
           /@\$el.html _\.template\( tpl, {  } \)/],
-        'app/templates/foo.html',
-        'src/sass/_foo.sass',
         ['src/sass/main.sass', /@import foo/]
       ]);
       done();
@@ -304,7 +314,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, test and sass and without model', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -316,7 +326,11 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/foo.html',
+        'src/sass/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -325,8 +339,6 @@ describe('Yeoman generator - view', function () {
           /(?!'app\/models\/foo_model')/],
         ['src/coffee/app/views/foo_view.coffee',
           /@\$el.html _\.template\( tpl, {  } \)/],
-        'app/templates/foo.html',
-        'src/sass/_foo.sass',
         ['src/sass/main.sass',
           /@import foo/],
 
@@ -344,7 +356,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, model and sass and without test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -356,7 +368,11 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/foo.html',
+        'src/sass/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -367,8 +383,6 @@ describe('Yeoman generator - view', function () {
           /@\$el.html _\.template\( tpl, { model: @model } \)/],
         ['src/coffee/app/models/foo_model.coffee',
           /class FooModel extends Backbone.Model/],
-        'app/templates/foo.html',
-        'src/sass/_foo.sass',
         ['src/sass/main.sass', /@import foo/]
       ]);
       done();
@@ -378,7 +392,7 @@ describe('Yeoman generator - view', function () {
   it('create view with template, model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo']
     );
 
@@ -390,7 +404,11 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/foo.html',
+        'src/sass/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/foo_view.coffee',
@@ -401,8 +419,6 @@ describe('Yeoman generator - view', function () {
           /@\$el.html _\.template\( tpl, { model: @model } \)/],
         ['src/coffee/app/models/foo_model.coffee',
           /class FooModel extends Backbone.Model/],
-        'app/templates/foo.html',
-        'src/sass/_foo.sass',
         ['src/sass/main.sass', /@import foo/],
 
         ['src/coffee/spec/unit/views/foo_view_spec.coffee',
@@ -428,7 +444,7 @@ describe('Yeoman generator - view', function () {
   it('create view folder, template, model, sass and test', function (done) {
     var helper = helpers.createGenerator(
       'footguard:view',
-      ['../../view'],
+      ['../../view', '../../model'],
       ['foo', 'bar']
     );
 
@@ -440,7 +456,11 @@ describe('Yeoman generator - view', function () {
     }, { useDefaults: true });
 
     helper.run([], function() {
-      helpers.assertFiles([
+      assert.file([
+        'app/templates/bar/foo.html',
+        'src/sass/bar/_foo.sass'
+      ]);
+      assert.fileContent([
         ['src/coffee/app/views/bar/foo_view.coffee',
           /class FooView extends Backbone.View/],
         ['src/coffee/app/views/bar/foo_view.coffee',
@@ -451,8 +471,6 @@ describe('Yeoman generator - view', function () {
           /@\$el.html _\.template\( tpl, { model: @model } \)/],
         ['src/coffee/app/models/bar/foo_model.coffee',
           /class FooModel extends Backbone.Model/],
-        'app/templates/bar/foo.html',
-        'src/sass/bar/_foo.sass',
         ['src/sass/main.sass',
           /@import bar\/foo/],
 
