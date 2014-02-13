@@ -57,6 +57,14 @@ Available commands:
 * [grunt test](#test)
 * [grunt server-test](#server-test)
 
+## CSS Styleguide
+
+The CSS Styleguide of your project is automaticly generate by [KSS](https://github.com/kneath/kss) and inspired by [GitHub CSS Styleguide](https://github.com/styleguide/css/1.0).
+
+For use it, run `grunt server` and in an other terminal run `grunt open:styleguide` or go in your brower to `http://localhost:9000/styleguide/index.html`.
+
+Live compiling and LiveReload is enable when change some Sass file.
+
 ## Code Coverage
 
 Footguard application work with [Code coverage](http://en.wikipedia.org/wiki/Code_coverage). When you run your test with `grunt test`, all CoffeeScript file are builded for coverage with [JSCoverage](http://siliconforks.com/jscoverage/) pattern. You can see [grunt-coffeecov](https://github.com/mazerte/grunt-coffeecov) (Thanks to [Benbria](https://github.com/benbria) for [Coffee-coverage](https://github.com/benbria/coffee-coverage)). The tests are reported by [mocha-phantom-coverage-reporter](https://github.com/mazerte/mocha-phantom-coverage-reporter). This reporter create a `coverage` folder with `coverage.html` for local coverage and `coverage.lcov`.

@@ -16,6 +16,7 @@
     "workflow",
     "mocha",
     "unit test",
+    "kss",
     "app"
   ],
   "homepage": "https://github.com/mazerte/generator-footguard",
