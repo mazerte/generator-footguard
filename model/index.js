@@ -1,6 +1,7 @@
 'use strict';
 
 var util = require('util'),
+    grunt = require('grunt'),
     FootguardBase = require('../footguard-base.js');
 
 var Generator = function Generator() {
@@ -11,11 +12,18 @@ util.inherits(Generator, FootguardBase);
 module.exports = Generator;
 
 Generator.prototype.askFor = function askFor () {
+  if( this.options.skipPrompt ) {
+    for(var prop in this.options.args) {
+      this[prop] = this.options.args[prop];
+    }
+    return;
+  }
+  
   var cb = this.async();
 
-  var prompts = [
+  var prompts = grunt.util._.flatten([
     this.promptForTest()
-  ];
+  ]);
 
   this.prompt(prompts, this.parsePromptsResult( function() {
     cb();

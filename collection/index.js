@@ -14,25 +14,15 @@ util.inherits(Generator, FootguardBase);
 module.exports = Generator;
 
 Generator.prototype.askFor = function askFor() {
-  var cb = this.async(),
-    self = this;
+  var cb = this.async();
 
   var modelName = grunt.util._.singularize(this.name);
-  var prompts = [
+  var prompts = grunt.util._.flatten([
     this.promptForModel(modelName),
     this.promptForTest()
-  ];
-  
-  this.prompt(prompts, this.parsePromptsResult( function(props) {
-    self.model = false;
-    if( props.model !== 'y/model/N' ) {
-      if( (/^y$/i).test(props.model) ) {
-        self.model = modelName;
-      } else if( !(/^n$/i).test(props.model) ) {
-        self.model = props.model;
-      }
-    }
+  ]);
 
+  this.prompt(prompts, this.parsePromptsResult( function() {
     cb();
   }));
 };

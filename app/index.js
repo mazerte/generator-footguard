@@ -37,12 +37,4 @@ Generator.prototype.setupEnv = function setupEnv() {
   console.log('Install starter\'s files'.cyan);
   console.log('======================='.cyan);
   this.directory('.','.', true);
-
-  this.on('end', function () {
-    if (['app', 'footguard'].indexOf(this.generatorName) >= 0) {
-      this.installDependencies({
-        skipInstall: this.options['skip-install']
-      });
-    }
-  });
 };
