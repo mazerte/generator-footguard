@@ -103,7 +103,7 @@ module.exports = (grunt)->
 
       compass:
         files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
-        tasks: ['compass:server']
+        tasks: ['compass:server', 'kss']
 
       files:
         files: [
@@ -128,6 +128,7 @@ module.exports = (grunt)->
               require('connect-livereload')(port: yeomanConfig.livereload_port)
               mountFolder(connect, yeomanConfig.tmp)
               mountFolder(connect, yeomanConfig.app)
+              mountFolder(connect, yeomanConfig.docs)
             ]
       dist:
         options:
@@ -168,6 +169,8 @@ module.exports = (grunt)->
         path: 'http://localhost:<%= connect.dist.options.port %>'
       test:
         path: 'http://localhost:<%= connect.test.options.port %>'
+      styleguide:
+        path: '<%= open.server.path %>/styleguide/index.html'
 
     clean:
       dist: ['<%= yeoman.dist %>']
@@ -341,6 +344,7 @@ module.exports = (grunt)->
     'coffee:dist'
     'compass:server'
     'less:server'
+    'kss'
     'connect:server'
     'open:server'
     'watch'

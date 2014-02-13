@@ -16,19 +16,20 @@
 
   <link rel="stylesheet" href="public/kss.css">
   <link rel="stylesheet" href="public/style.css">
-  <link rel="stylesheet" href="../../.tmp/css/main.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/all-less.css">
 
 </head>
 <body><div id="kss-wrapper">
   <div id="kss-nav">
     <header id="kss-header">
-      <hgroup><h1>kss-node Styleguide</h1></hgroup>
+      <hgroup><h1>Styleguide</h1></hgroup>
     </header>
     <aside>
       <nav><ul>
-        <li><a href="index.html">0.0: Overview</a></li>
+        <li><a href="index.html">0. Overview</a></li>
         {{#eachRoot}}
-          <li><a href="section-{{reference}}.html">{{reference}}.0: {{header}}</a></li>
+          <li><a href="section-{{reference}}.html">{{reference}}. {{header}}</a></li>
         {{/eachRoot}}
       </ul></nav>
     </aside>
@@ -48,43 +49,56 @@
           the "#whenDepth 1" block as seen below.
         }}
         {{#eachSection rootNumber}}
+          <section class="kss-depth-{{ refDepth }}">
           {{#whenDepth 1}}
             <h1 class="kss-title"><span class="kss-ref">{{ reference }}.0</span> - {{ header }}</h1>
           {{else}}
-           <section class="kss-depth-{{ refDepth }}">
             <h1 class="kss-title"><span class="kss-ref">{{ reference }}</span> - {{ header }}</h1>
           {{/whenDepth}}
             {{#ifAny markup modifiers}}
-                <div class="kss-box">{{html description}}</div>
-                <table class="kss-mod-list">
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc"><p>Default styling</p></td>
-                    <td class="kss-mod-name"></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2">{{modifierMarkup}}</td>
-                  </tr>
+              <div class="kss-box">
+                {{html description}}
+                <ul>
                 {{#eachModifier}}
-                  <tr class="kss-mod-desc-group">
-                    <td class="kss-mod-desc">{{html description}}</td>
-                    <td class="kss-mod-name"><p>{{name}}</p></td>
-                  </tr>
-                  <tr class="kss-mod-example">
-                    <td colspan="2">{{modifierMarkup}}</td>
-                  </tr>
+                  <li>
+                    <span class="bold">{{name}}</span> - {{html description}}
+                  </li>
                 {{/eachModifier}}
-                </table>
-                <div class="kss-markup">
-                  <pre class="prettyprint lang-html">{{markup}}</pre>
+                </ul>
+              </div>
+              <div class="kss-examples">
+                <div class="kss-example">
+                  <div class="kss-example-markup">
+                    {{html markup}}
+                  </div>
                 </div>
+              {{#eachModifier}}
+                <div class="kss-example">
+                  <div class="kss-example-markup">
+                    {{modifierMarkup}}
+                  </div>
+                  <div class="kss-example-modifier">
+                    {{name}}
+                  </div>
+                </div>
+              {{/eachModifier}}
+              </div>
+              <div class="kss-markup">
+                <pre class="prettyprint lang-html">{{markup}}</pre>
+              </div>
             {{else}}
-                {{#if description}}
-                  {{html description}}
-                {{/if}}
+              <div class="kss-box">
+                {{html description}}
+                <div class="kss-examples">
+                  <div class="kss-example">
+                    <div class="kss-example-markup">
+                      {{html markup}}
+                    </div>
+                  </div>
+                </div>
+              </div>
             {{/ifAny}}
-          {{#whenDepth 1}} {{else}}
-            </section>
-          {{/whenDepth}}
+          </section>
         {{/eachSection}}
       {{/if}}
     </article>
@@ -119,13 +133,5 @@
 
     });
   </script>
-
-  {{! This won't be included in the demo page }}
-  {{#if argv.xdemo}}
-    <script type="text/javascript">
-    var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-12249588-4']); _gaq.push(['_trackPageview']);
-    (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
-    </script>
-  {{/if}}
 </div></body>
 </html>

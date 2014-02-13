@@ -1,17 +1,17 @@
 @import 'markdown';
 
 #kss-nav {
-	width:20%;
-	background-color:#eee;
+  width:20%;
+  background-color:#eee;
 
-	nav>ul {
-		padding:0;
-		margin:2em;
+  nav>ul {
+    padding:0;
+    margin:2em;
     margin-top:2.5em;
-		list-style-type:none;
-	}
+    list-style-type:none;
+  }
 
-	box-shadow: inset -15px 0px 15px -15px rgba(45, 45, 45, 0.25);
+  box-shadow: inset -15px 0px 15px -15px rgba(45, 45, 45, 0.25);
 }
 
 #kss-header h1 {
@@ -21,16 +21,16 @@
 }
 
 #kss-main, #kss-nav {
-	position:absolute;
-	top:0;
-	left:0;
+  position:absolute;
+  top:0;
+  left:0;
 }
 
 #kss-main {
-	padding-left:2.5%;
-	width:77.5%;
-	max-width:48em;
-	left:20%;
+  padding-left:2.5%;
+  width:77.5%;
+  max-width:48em;
+  left:20%;
 }
 
 .kss-mod-list {
@@ -50,16 +50,74 @@
   &>td { display:block; }
 }
 
-.kss-markup {
-  margin-bottom:40px;
+#kss-content section {
+  margin: 15px auto;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ddd;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-.kss-depth-1 > h1 { font-size: 2.5em * 0.950; }
-.kss-depth-2 > h1 { font-size: 2.5em * 0.900; }
-.kss-depth-3 > h1 { font-size: 2.5em * 0.850; }
-.kss-depth-4 > h1 { font-size: 2.5em * 0.800; }
-.kss-depth-5 > h1 { font-size: 2.5em * 0.750; }
-.kss-depth-6 > h1 { font-size: 2.5em * 0.700; }
+.kss-title {
+  background-color: #333;
+  color: white;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 8px;
+  margin: 0;
+}
+
+.kss-box {
+  padding: 10px;
+  background-color: #eee;
+}
+
+ul {
+  li {
+    .bold {
+      font-weight: bold;
+    }
+    p {
+      display: inline;
+    }
+  }
+}
+
+.kss-example {
+  position: relative;
+  border-top: 1px solid #ddd;
+
+  .kss-example-markup {
+    margin: 10px;
+  }
+
+  .kss-example-modifier {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #eee;
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 2px 10px;
+    color: #999;
+    font-size: 12px;
+  }
+}
+
+.kss-markup {
+  pre.prettyprint {
+    margin: 0;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    border: 0;
+    background: #edf6f8;
+    border-top: 1px solid #dde7ea;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 16px;
+  }
+}
+
 
 // ------------------------------------------------------------------------------
 //   @group prettyprint.js styling
