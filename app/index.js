@@ -1,6 +1,7 @@
 'use strict';
 
 var util = require('util'),
+    path = require('path'),
     yeoman = require('yeoman-generator');
 
 var Generator = module.exports = function Generator() {
@@ -26,6 +27,9 @@ var Generator = module.exports = function Generator() {
   '\n                                                                                                       '.red;
 
   console.log(welcome);
+
+  this.argument('appname', { type: String, required: false });
+  this.appname = this.appname || path.basename(process.cwd());
 };
 
 util.inherits(Generator, yeoman.generators.NamedBase);
@@ -37,4 +41,8 @@ Generator.prototype.setupEnv = function setupEnv() {
   console.log('Install starter\'s files'.cyan);
   console.log('======================='.cyan);
   this.directory('.','.', true);
+};
+
+Generator.prototype.createPackageFile = function createPackageFile() {
+  this.template('../../templates/_package.json', 'package.json');
 };
