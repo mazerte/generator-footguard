@@ -23,7 +23,8 @@
     "connect-livereload": "~0.3.0",
     "mocha-phantom-coverage-reporter": "~0.1.0",
     "grunt-coffeecov": "~0.1.0",
-    "coveralls": "~2.6.0"
+    "coveralls": "~2.6.0",
+    "grunt-kss": "git://github.com/soenkeschnoor/grunt-kss"
   },
   "engines": {
     "node": ">=0.8.0"

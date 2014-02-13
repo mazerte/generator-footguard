@@ -16,6 +16,7 @@
     "workflow",
     "mocha",
     "unit test",
+    "kss",
     "app"
   ],
   "homepage": "https://github.com/mazerte/generator-footguard",
@@ -32,7 +33,7 @@
     "test": "mocha -R spec"
   },
   "dependencies": {
-    "yeoman-generator": "git://github.com/mazerte/generator",
+    "yeoman-generator": "git://github.com/yeoman/generator",
     "path": "~0.4.9",
     "util": "~0.10.1",
     "underscore.inflections": "~0.2.1",

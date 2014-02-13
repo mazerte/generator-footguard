@@ -62,6 +62,7 @@ module.exports = (grunt)->
   grunt.loadNpmTasks('grunt-usemin')
   grunt.loadNpmTasks('grunt-mocha')
   grunt.loadNpmTasks('grunt-coffeecov')
+  grunt.loadNpmTasks('grunt-kss')
 
   # configurable paths
   yeomanConfig = {
@@ -69,6 +70,7 @@ module.exports = (grunt)->
     src: 'src'
     dist: 'dist'
     test: 'test'
+    docs: 'docs'
 
     tmp: '.tmp'
     tmp_dist: '.tmp-dist'
@@ -80,7 +82,7 @@ module.exports = (grunt)->
   try
     yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app
   catch e
-  
+
   #
   # Grunt configuration:
   #
@@ -98,11 +100,11 @@ module.exports = (grunt)->
       coffee:
         files: ['<%= yeoman.src %>/coffee/{,**/}*.coffee']
         tasks: ['coffee:dist']
-      
+
       compass:
         files: ['<%= yeoman.src %>/sass/{,**/}*.{scss,sass}']
-        tasks: ['compass:server']
-      
+        tasks: ['compass:server', 'kss']
+
       files:
         files: [
           '<%= yeoman.tmp %>/{,**/}*.{css,js}'
@@ -126,6 +128,7 @@ module.exports = (grunt)->
               require('connect-livereload')(port: yeomanConfig.livereload_port)
               mountFolder(connect, yeomanConfig.tmp)
               mountFolder(connect, yeomanConfig.app)
+              mountFolder(connect, yeomanConfig.docs)
             ]
       dist:
         options:
@@ -166,6 +169,8 @@ module.exports = (grunt)->
         path: 'http://localhost:<%= connect.dist.options.port %>'
       test:
         path: 'http://localhost:<%= connect.test.options.port %>'
+      styleguide:
+        path: '<%= open.server.path %>/styleguide/index.html'
 
     clean:
       dist: ['<%= yeoman.dist %>']
@@ -222,6 +227,14 @@ module.exports = (grunt)->
           yuicompress: true
         files:
             '<%= yeoman.tmp %>/css/all-less.css' : '<%= yeoman.app %>/components/bootstrap/less/{bootstrap,responsive}.less'
+    kss:
+      options:
+        template: '<%= yeoman.src %>/styleguide'
+        preprocessor: 'sass'
+
+      files:
+        src: '<%= yeoman.src %>/sass'
+        dest: '<%= yeoman.docs %>/styleguide'
 
     mocha:
       all:
@@ -292,7 +305,7 @@ module.exports = (grunt)->
           baseUrl: 'js/'
           appDir: './<%= yeoman.tmp_dist %>/'
           dir: './<%= yeoman.dist %>/'
-          
+
           wrap: true
 
           removeCombined: true
@@ -317,7 +330,7 @@ module.exports = (grunt)->
       grunt.config(['coffee', 'dist', 'src'], [
         filepath.replace( "#{yeomanConfig.src}/coffee/", "" )
       ])
-  
+
   grunt.registerTask('test', [
     'coffee:dist'
     'coffeecov:dist'
@@ -331,6 +344,7 @@ module.exports = (grunt)->
     'coffee:dist'
     'compass:server'
     'less:server'
+    'kss'
     'connect:server'
     'open:server'
     'watch'
