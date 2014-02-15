@@ -8,12 +8,16 @@ Printing reports are made easy, with this generator.
 
 ## Installation.
 
-Install Yeoman first.  Then type:
+Install Yeoman, Grunt and Bower first.  Then type:
 
     mkdir /path-to-dir/ && cd $_
     yo school-report
 
 Paste your HTML code in `templates/app.html`.
+
+Then, run
+
+    grunt server
 
 
 ## What's in?
