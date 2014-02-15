@@ -12,21 +12,24 @@
 // .info                 - Indicate information
 //
 // Styleguide 1
-.button
-  background-color: #bbb
-  text-decoration: none
-  padding: 10px
-  cursor: pointer
+.button {
+  background-color: #bbb;
+  text-decoration: none;
+  padding: 10px;
+  cursor: pointer;
 
-  &:hover
-    background-color: red
+  &:hover {
+    background-color: red;
+  }
 
-  &:active
-    background-color: black
+  &:active {
+    background-color: black;
+  }
 
-  &.info
-    background-color: lightblue
-
+  &.info {
+    background-color: lightblue;
+  }
+}
 // Button corners
 //
 // Buttons can be as rounded as desired.
@@ -40,9 +43,12 @@
 // .rounded               - Indicated circular buttons
 //
 // Styleguide 1.1
-.button
-  &.curved
-    border-radius: 10px
+.button {
+  &.curved {
+    border-radius: 10px;
+  }
 
-  &.rounded
-    border-radius: 50%
+  &.rounded {
+    border-radius: 50%;
+    }
+  }

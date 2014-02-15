@@ -10,7 +10,8 @@
     "bootstrap": "~2.3.2",
     "requirejs-text": "~2.0.5",
     "requirejs-domready": "~2.0.1",
-    "underscore": "~1.4.4"
+    "underscore": "~1.4.4",
+    "bourbon": "~3.1.8"
   },
   "devDependencies": {
     "chai": "~1.7.2",
