@@ -1,0 +1,1471 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"text-d",
+				"text-decoration:   (property)"
+			],
+			[
+				"border-",
+				"border-bottom"
+			],
+			[
+				"line-",
+				"line-height:   (property)"
+			],
+			[
+				"helperVali",
+				"helpherValidateSchema"
+			],
+			[
+				"font-we",
+				"font-weight:   (property)"
+			],
+			[
+				"route",
+				"routeParams	\\$routeParams"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"cb",
+				"callback"
+			],
+			[
+				"sender",
+				"senderRobot.coffee"
+			],
+			[
+				"Turke",
+				"TurkeyValidator"
+			],
+			[
+				"valida",
+				"validator"
+			],
+			[
+				"schema",
+				"schemaStr"
+			],
+			[
+				"robot",
+				"robots"
+			],
+			[
+				"helperRemo",
+				"helperRemoveOldRobotsInDb"
+			],
+			[
+				"robotName",
+				"robotNamesDb"
+			],
+			[
+				"helperUpdateOld",
+				"helperUpdateOldRobotsInUserConfig"
+			],
+			[
+				"helpUp",
+				"helperUpdateUserConfig"
+			],
+			[
+				"helper",
+				"helperCheckValidRobot"
+			],
+			[
+				"helperUpda",
+				"helperUpdateEachOldRobotDb"
+			],
+			[
+				"helpr",
+				"helperIsValidJSONAsync"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"config",
+				"configNew"
+			],
+			[
+				"conf",
+				"configNew"
+			],
+			[
+				"confi",
+				"configPath"
+			],
+			[
+				"turke",
+				"turkeyCli"
+			],
+			[
+				"tur",
+				"turkeyCli"
+			],
+			[
+				"dummy",
+				"dummyUsers.coffee"
+			],
+			[
+				"auth",
+				"authenticate"
+			],
+			[
+				"toBe",
+				"toBeFalsy	toBeFalsy"
+			],
+			[
+				"toB",
+				"toBeTruthy	toBeTruthy"
+			],
+			[
+				"Ro",
+				"Robot.js"
+			],
+			[
+				"sock",
+				"socket.io"
+			],
+			[
+				"robo",
+				"robotParams"
+			],
+			[
+				"Messa",
+				"MessageSchema"
+			],
+			[
+				"grid",
+				"gridToCopy"
+			],
+			[
+				"blue",
+				"blueFl  (variable)"
+			],
+			[
+				"to",
+				"toString (fn)"
+			],
+			[
+				"Kuler",
+				"KulerWriter (fn)"
+			],
+			[
+				"title",
+				"titleInBytes (?)"
+			],
+			[
+				"gr",
+				"greenFl  (variable)"
+			],
+			[
+				"green",
+				"greenFl  (variable)"
+			],
+			[
+				"toStrin",
+				"toString (fn)"
+			],
+			[
+				"Strin",
+				"StringDecoder (?)"
+			],
+			[
+				"byteDa",
+				"_byteDataStr"
+			],
+			[
+				"_byteData",
+				"_byteDataStr (?)"
+			],
+			[
+				"_byte",
+				"_byteDataStr (?)"
+			],
+			[
+				"inc",
+				"include	@include"
+			],
+			[
+				"print",
+				"printMemoryMap"
+			],
+			[
+				"newNode",
+				"newNodefreeMem"
+			],
+			[
+				"newNo",
+				"newNodefreeMem"
+			],
+			[
+				"start",
+				"startAddress"
+			],
+			[
+				"newNod",
+				"newNodeNext"
+			],
+			[
+				"new",
+				"newNodePtr"
+			],
+			[
+				"nu",
+				"NULL"
+			],
+			[
+				"pointer",
+				"pointerToFree"
+			],
+			[
+				"point",
+				"pointerToFree"
+			],
+			[
+				"merge",
+				"mergeNodes"
+			],
+			[
+				"request",
+				"requestedLen"
+			],
+			[
+				"find",
+				"findFreeMemory"
+			],
+			[
+				"MEMMA",
+				"MEMMANG_BESTFIT"
+			],
+			[
+				"test",
+				"test_first_fit"
+			],
+			[
+				"reque",
+				"requestedLen"
+			],
+			[
+				"curr",
+				"currOperObj (obj)"
+			],
+			[
+				"cr",
+				"createFolders (fn)"
+			],
+			[
+				"re",
+				"readFile (?)"
+			],
+			[
+				"readDir",
+				"fs.readdirSync(path);"
+			],
+			[
+				"fsreadFile",
+				"fs.readFileSync(path, encoding);"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"readFile",
+				"fs.readFileSync(path, encoding);"
+			],
+			[
+				"cal",
+				"calculator"
+			],
+			[
+				"mult",
+				"multiply"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/home/joel/repos/test-report/Gruntfile.coffee",
+			"settings":
+			{
+				"buffer_size": 11257,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "/home/joel/repos/test-report/dest/index.html",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/joel/repos/test-report/app/templates/app.html",
+			"settings":
+			{
+				"buffer_size": 520,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/joel/repos/test-report/src/browserify/build.coffee",
+			"settings":
+			{
+				"buffer_size": 179,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 314.0,
+		"selected_items":
+		[
+			[
+				"blame",
+				"Set Syntax: Git Blame"
+			],
+			[
+				"git bla",
+				"Git: Blame"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"package\\",
+				"Package Control: Upgrade/Overwrite All Packages"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown"
+			],
+			[
+				"javascr",
+				"Format: Javascript"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"lint",
+				"SublimeLint: Show All Errors"
+			],
+			[
+				"surround",
+				"Surround: change surround"
+			],
+			[
+				"reindent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinden",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"compie",
+				"Coffee: Compile File"
+			],
+			[
+				"compil",
+				"Coffee: Compile File"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"align",
+				"AlignTab"
+			],
+			[
+				"prett",
+				"HTMLPrettify: Set Keyboard Shortcuts"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"format",
+				"Format: Javascript"
+			],
+			[
+				"form",
+				"Format: Javascript"
+			],
+			[
+				":wall",
+				"SublimeLint: Show All Errors"
+			],
+			[
+				"java",
+				"Format: Javascript"
+			],
+			[
+				"forma ",
+				"Format: Javascript"
+			],
+			[
+				":qall",
+				"Snippet: querySelectorAll"
+			],
+			[
+				"js",
+				"Format: Javascript"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"package con",
+				"Package Control: Install Package"
+			],
+			[
+				"ali",
+				"AlignTab"
+			],
+			[
+				"remove pa",
+				"Package Control: Remove Package"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"control",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Package Control: Install Package"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				":install",
+				"Package Control: Install Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"instl",
+				"Package Control: Install Package"
+			],
+			[
+				"Install",
+				"Package Control: Install Package"
+			],
+			[
+				":Lint",
+				"Preferences: SublimeLint Settings – Default"
+			],
+			[
+				"Package ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Con",
+				"Package Control: Install Package"
+			],
+			[
+				"Packag",
+				"Package Control: Add Channel"
+			],
+			[
+				"Git",
+				"Package Control: Install Package"
+			],
+			[
+				"Packa",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 427.0
+	},
+	"console":
+	{
+		"height": 109.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) ",
+			"ls"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/joel/repos/test-report/app/index.html",
+		"/home/joel/repos/test-report/src/html/app.html",
+		"/home/joel/repos/test-report/app/templates/app.html",
+		"/home/joel/repos/test-report/Gruntfile.coffee",
+		"/home/joel/repos/test-report/package.json",
+		"/home/joel/repos/test-report/src/markdown/main2.md",
+		"/home/joel/repos/test-report/combined.md",
+		"/home/joel/repos/test-report/src/markdown/main.md",
+		"/home/joel/repos/test-report/src/browserify/build.coffee",
+		"/home/joel/repos/test-report/src/browserify/build.coffee.old",
+		"/home/joel/repos/test-report/app/.htaccess",
+		"/home/joel/repos/EE2024/templates/webpage/app/templates/app.html",
+		"/home/joel/repos/EE2024/lab-1/EE2024Assign1S21314/doc/lab1-jhtong-mohit-1_background.md",
+		"/home/joel/repos/EE2024/templates/webpage/src/sass/_app.scss",
+		"/home/joel/repos/EE2024/lab-1/EE2024Assign1S21314/doc/lab1-jhtong-mohit-3_discussion.md",
+		"/home/joel/repos/EE2024/lab-1/EE2024Assign1S21314/doc/lab1-jhtong-mohit-2_1_code (copy).md",
+		"/home/joel/repos/EE2024/lab-1/EE2024Assign1S21314/doc/lab1-jhtong-mohit-2_0_code.md",
+		"/home/joel/repos/EE2024/templates/webpage/app/index.html",
+		"/home/joel/repos/generator-school-report/.travis.yml",
+		"/home/joel/repos/generator-school-report/README.md",
+		"/home/joel/repos/generator-school-report/package.json",
+		"/home/joel/repos/generator-school-report/app/templates/app/index.html",
+		"/home/joel/repos/generator-school-report/app/templates/app/templates/app.html",
+		"/home/joel/repos/generator-school-report/README.md.old",
+		"/home/joel/repos/school-report/app/templates/app/templates/app.html",
+		"/home/joel/repos/generator-school-report/app/templates/src/sass/main.scss",
+		"/home/joel/repos/helloworld/src/sass/_components.scss",
+		"/home/joel/repos/helloworld/src/sass/main.scss",
+		"/home/joel/repos/generator-school-report/app/templates/src/sass/_components.scss",
+		"/home/joel/repos/school-report/package.json",
+		"/home/joel/repos/school-report/app/templates/bower.json",
+		"/home/joel/repos/school-report/app/templates/src/sass/_mixins.scss",
+		"/home/joel/repos/school-report/app/templates/src/sass/_palette.scss",
+		"/home/joel/repos/school-report/app/templates/src/sass/_app.scss",
+		"/home/joel/repos/EE2024/templates/webpage/src/sass/_mixins.scss",
+		"/home/joel/repos/EE2024/templates/webpage/src/sass/_palette.scss",
+		"/home/joel/repos/EE2024/templates/webpage/src/sass/main.scss",
+		"/home/joel/repos/EE2024/lab-1/EE2024Assign1S21314/doc/lab1-jhtong-mohit-4_experimentation.md",
+		"/home/joel/repos/EE2024/templates/webpage/src/sass/_app.sass",
+		"/home/joel/repos/snazz-server/lib/controllers/api.coffee",
+		"/home/joel/repos/snazz-server/lib/db/dummyUsers.coffee",
+		"/home/joel/repos/gridmesh-preview/src/sass/main.scss",
+		"/home/joel/repos/gridmesh-preview/src/sass/_app.scss",
+		"/home/joel/.config/sublime-text-3/Packages/User/Ruby Haml.sublime-settings",
+		"/home/joel/.config/sublime-text-3/Packages/User/HTML.sublime-settings",
+		"/home/joel/repos/gridmesh-preview/src/sass/_app.sass",
+		"/home/joel/repos/gridmesh-preview/src/coffee/gridmesh.coffee",
+		"/home/joel/repos/robot-temperature/Gruntfile.js",
+		"/home/joel/repos/robot-temperature/lib/robot-temperature.coffee",
+		"/home/joel/repos/snazz-client/app.coffee",
+		"/home/joel/repos/snazz-client/lib/cli/SnazzCli.coffee",
+		"/home/joel/repos/snazz-server/lib/controllers/SnazzSocket.coffee",
+		"/home/joel/repos/snazz-client/lib/Chat.coffee",
+		"/home/joel/repos/robot-temperature/lib/robot-temperature.js",
+		"/home/joel/repos/robotTemp/lib/robottemp.coffee",
+		"/home/joel/repos/robotTemp/Gruntfile.js",
+		"/home/joel/repos/snazz-client/lib/Robot.coffee",
+		"/home/joel/repos/robot-temperature-config/gridmesh.json",
+		"/home/joel/repos/robot-temperature/package.json",
+		"/home/joel/repos/snazz-client/package.json",
+		"/home/joel/repos/robot-temperature/spec/robot-temperature_spec.coffee",
+		"/home/joel/repos/robot-temperature/spec/robot-temperature_spec.js",
+		"/home/joel/repos/turkey-server/lib/controllers/TurkeySocket.coffee",
+		"/home/joel/repos/turkey-server/app/styles/main.scss",
+		"/home/joel/repos/turkey-server/app/views/index.html",
+		"/home/joel/repos/turkey-server/package.json",
+		"/home/joel/repos/testRobot/lib/testrobot.js",
+		"/home/joel/repos/testRobot/lib/testrobot.coffee",
+		"/home/joel/repos/turkey-server/Gruntfile.js",
+		"/home/joel/Desktop/test/Set.h",
+		"/home/joel/Desktop/test/new.h",
+		"/home/joel/repos/tempRobot/lib/temprobot.coffee",
+		"/home/joel/repos/turkey-server/server.coffee",
+		"/home/joel/repos/generator-turkey-robot/app/templates/Gruntfile.js",
+		"/home/joel/repos/testRobot/Gruntfile.js",
+		"/home/joel/repos/generator-turkey-robot/app/index.js",
+		"/home/joel/repos/turkey-client/lib/Chat.coffee",
+		"/home/joel/repos/turkey-client/user.json",
+		"/home/joel/repos/turkey-server/lib/validationSchemas/UserConfig.json",
+		"/home/joel/repos/generator-turkey-robot/app/templates/_package.json",
+		"/home/joel/repos/testRobot/node_modules/turkey/app.coffee",
+		"/home/joel/repos/turkey-server/lib/controllers/api.coffee",
+		"/home/joel/repos/turkey-client/lib/models/UserConfig.json",
+		"/home/joel/repos/testRobot/node_modules/turkey/node_modules/socket.io-client/package.json",
+		"/home/joel/repos/turkey-client/package.json",
+		"/home/joel/repos/turkey-client/lib/cli/TurkeyValidator.coffee",
+		"/home/joel/repos/turkey-server/lib/helpers/TurkeyValidator.coffee",
+		"/home/joel/repos/turkey-client/lib/cli/UserConfig.json",
+		"/home/joel/repos/turkey-client/app.coffee",
+		"/home/joel/repos/generator-turkey-robot/app/templates/lib/name.coffee",
+		"/home/joel/repos/turkey-server/app/views/partials/turkeyfooter.html",
+		"/home/joel/repos/turkey-server/app/views/partials/gettingstarted.html",
+		"/home/joel/repos/turkey-server/doc/gettingStarted.md",
+		"/home/joel/repos/generator-turkey-robot/package.json",
+		"/home/joel/repos/generator-turkey-robot/app/templates/robot.json",
+		"/home/joel/repos/testRobot/spec/testrobot_spec.coffee",
+		"/home/joel/repos/generator-turkey-robot/app/templates/lib/name.js",
+		"/home/joel/repos/generator-turkey-robot/app/templates/spec/name_spec.coffee",
+		"/home/joel/repos/turkey-server/app/views/partials/main.html",
+		"/home/joel/repos/turkey-server/app/scripts/controllers/turkeyfooter.coffee",
+		"/home/joel/repos/turkey-server/app/views/partials/apiguide.html",
+		"/home/joel/repos/turkey-client/examples/helloWorld/recipientRobot.js",
+		"/home/joel/repos/turkey-server/app/scripts/controllers/navbar.coffee",
+		"/home/joel/repos/turkey-server/app/scripts/controllers/configfiles.coffee",
+		"/home/joel/repos/turkey-server/app/views/partials/configfiles.html",
+		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/.bower.json",
+		"/home/joel/repos/turkey-server/bower.json",
+		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/component.json",
+		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/bower.json",
+		"/home/joel/repos/turkey-server/app/scripts/app.coffee",
+		"/home/joel/repos/turkey-client/lib/Turkey.js",
+		"/home/joel/repos/turkey-server/app/bower_components/foundation/scss/foundation/_settings.scss",
+		"/home/joel/repos/turkey-server/app/styles/_settings.scss",
+		"/home/joel/repos/turkey-server/app/scripts/controllers/gettingstarted.coffee",
+		"/home/joel/repos/turkey-server/app/views/partials/navbar.html",
+		"/home/joel/repos/turkey-server/app/views/partials/robots.html",
+		"/home/joel/.config/sublime-text-3/Packages/User/SCSS.sublime-settings",
+		"/home/joel/repos/turkey-server/app/bower_components/foundation/js/foundation.min.js",
+		"/home/joel/Dropbox/sublime-text-3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/home/joel/.config/sublime-text-3/Packages/User/CoffeeScript.sublime-settings",
+		"/home/joel/repos/turkey-server/app/views/partials/navbar.html.2",
+		"/home/joel/repos/turkey-server/app/scripts/controllers/robots.coffee",
+		"/home/joel/repos/dummy/bla/bla",
+		"/home/joel/repos/turkey-server/lib/db/dummyRobots.js",
+		"/home/joel/repos/turkey-server/lib/db/dummyRobots.coffee",
+		"/home/joel/repos/turkey-client/lib/Robot.coffee",
+		"/home/joel/repos/turkey-client/app.js",
+		"/home/joel/repos/turkey-server/lib/models/user.coffee"
+	],
+	"find":
+	{
+		"height": 21.0
+	},
+	"find_in_files":
+	{
+		"height": 81.0,
+		"where_history":
+		[
+			"",
+			"<open files>",
+			"",
+			"<project>",
+			"*.c",
+			"*.js"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"browserify",
+			"coffee",
+			"combined.md",
+			"browserify",
+			"concat",
+			"browserif",
+			"coffee",
+			"watch",
+			"coffee",
+			"exiting",
+			"register map",
+			"sass",
+			".on ",
+			"build",
+			"coffee",
+			"  ",
+			"&",
+			"turkeyFooterCtrl",
+			"turkeyfooterCtrl",
+			"turkeyFooter",
+			"ruby",
+			"default.css",
+			"bower",
+			".javascript",
+			"body",
+			"index.html",
+			"angular.module",
+			"compass",
+			"stick_topbar",
+			"sass",
+			"http://localhost:9000/api/",
+			"logger.debug",
+			"      ",
+			"open",
+			"populate",
+			"      @",
+			"shell",
+			"npm",
+			"jasmine",
+			"coffee",
+			"tab",
+			"coffee",
+			"server",
+			"karma",
+			"newer",
+			"watch",
+			"coffee",
+			"lib",
+			"coffee",
+			"mongo",
+			"things",
+			"MONGOLAB_URI",
+			"URI",
+			"db",
+			"coffee",
+			"express",
+			"coffee",
+			"mongoose",
+			"mongo",
+			"dummyData",
+			"get",
+			"compass",
+			"console.log",
+			"This",
+			"compass",
+			"config.rb",
+			"config",
+			"rb",
+			"compass",
+			"require",
+			"server",
+			"watch",
+			"*.html",
+			"<% yeoman.app %>/*.html",
+			"variance",
+			"var",
+			"variance",
+			"printMemoryMap",
+			"displayMemMap",
+			"b",
+			"is",
+			"findFree",
+			"findFreeMem",
+			"findFreeMemory",
+			"TMemory",
+			"testFree",
+			"config",
+			"console.log",
+			"b",
+			"a",
+			"  ",
+			"a",
+			"\n	",
+			"shift+V",
+			"shift+v",
+			"ignored_package"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/joel/repos/test-report/Gruntfile.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3288,
+								3288
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": true,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1430.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 1,
+					"file": "/home/joel/repos/test-report/dest/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": true,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"is_xml": false,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/joel/repos/test-report/app/templates/app.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 520,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								469,
+								469
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": true,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"is_xml": false,
+							"sublime_auto_complete": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/joel/repos/test-report/src/browserify/build.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 179,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": true,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 27.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.coffeecompile_output":
+	{
+		"height": 470.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "school-report-generator.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/repos/snazz-server/turkey.sublime-project"
+			]
+		],
+		"width": 304.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 221.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
