@@ -1,6 +1,6 @@
 {
   "name": "generator-school-report",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "description": "Yeoman generator for writing school reports (printable and web).  Supports MathJax.  Uses Coffee, SaSS / ScSS, Compass, Bourbon.",
   "keywords": [
     "yeoman-generator",

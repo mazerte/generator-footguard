@@ -5,7 +5,7 @@
 | Header | What it does |
 | -- | -- |
 | `h1` | Main title |
-| `h2` | Section title |
+| `h2` | Section title on a new page. |
 | `h3` - `h6` | Sub-section titles |
 
 ### Markdown refresher

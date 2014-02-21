@@ -404,6 +404,8 @@ module.exports = (grunt)->
     'clean:dist'
     'clean:tmp'
     'clean:tmp_dist'
+    'concat'
+    'htmlbuild:dist'
     'coffee'
     'compass:dist'
     'less:dist'

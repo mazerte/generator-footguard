@@ -32,7 +32,20 @@ To start the server:
 
 You've got a Live, printer-friendly school report going!
 
+To export it as a ready-to-roll HTML page, do:
+
+	$ grunt
+
 
 ### Did you say printing?
 
 Yes!  `generator-school-report` comes with a printer-friendly adaptive template.  Margins and colors are printed nicely, as you would in a school report.  Plus, the fonts are paired for you.  Just plug and play.  Yay.
+
+
+### What's in?
+
+- SASS / SCSS-style stylesheets
+- Compass / Bourbon
+- A stylesheet that is optimized for print, ready to roll
+- Live update - edit your markdown as you go
+- Organize your Markdown 
