@@ -291,6 +291,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/templates/src/sass/_app.scss",
+			"settings":
+			{
+				"buffer_size": 2923,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -298,6 +306,10 @@
 		"height": 314.0,
 		"selected_items":
 		[
+			[
+				":w",
+				":w - Save"
+			],
 			[
 				"blame",
 				"Set Syntax: Git Blame"
@@ -313,10 +325,6 @@
 			[
 				"package\\",
 				"Package Control: Upgrade/Overwrite All Packages"
-			],
-			[
-				":w",
-				":w - Save"
 			],
 			[
 				":W",
@@ -529,21 +537,24 @@
 	},
 	"file_history":
 	[
+		"/home/joel/repos/test-report-3/src/coffee/app/views/app_view.coffee",
+		"/home/joel/repos/test-report-3/src/sass/_app.scss",
+		"/home/joel/repos/generator-school-report/package.json",
+		"/home/joel/repos/test-report-3/src/markdown/01-mainStory.md",
+		"/home/joel/repos/generator-school-report/app/templates/app/index.html",
+		"/home/joel/repos/generator-school-report/app/templates/bower.json",
+		"/home/joel/repos/generator-school-report/app/templates/src/coffee/app/views/app_view.coffee",
+		"/home/joel/repos/test-report-3/app/index.html",
 		"/home/joel/repos/generator-school-report/app/templates/src/markdown/00-beginnings.md",
 		"/home/joel/repos/generator-school-report/app/templates/src/html/index.html",
-		"/home/joel/repos/generator-school-report/app/templates/app/index.html",
 		"/home/joel/repos/generator-school-report/README.md",
 		"/home/joel/repos/test-report-3/Gruntfile.coffee",
 		"/home/joel/repos/generator-school-report/app/templates/Gruntfile.coffee",
-		"/home/joel/repos/test-report-3/app/index.html",
 		"/home/joel/repos/test-report-3/.tmp/markdown/combined.md",
 		"/home/joel/repos/test-report-3/src/markdown/00-beginnings.md",
 		"/home/joel/repos/test-report-3/src/markdown/02-ending.md",
-		"/home/joel/repos/test-report-3/src/markdown/01-mainStory.md",
-		"/home/joel/repos/generator-school-report/package.json",
 		"/home/joel/repos/generator-school-report/app/templates/src/markdown/01-mainStory.md",
 		"/home/joel/repos/generator-school-report/app/templates/src/markdown/02-ending.md",
-		"/home/joel/repos/generator-school-report/app/templates/bower.json",
 		"/home/joel/repos/generator-school-report/templates/_package.json",
 		"/home/joel/repos/test-report-3/bower.json",
 		"/home/joel/repos/test-report/Gruntfile.coffee",
@@ -653,10 +664,7 @@
 		"/home/joel/repos/turkey-server/app/scripts/controllers/navbar.coffee",
 		"/home/joel/repos/turkey-server/app/scripts/controllers/configfiles.coffee",
 		"/home/joel/repos/turkey-server/app/views/partials/configfiles.html",
-		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/.bower.json",
-		"/home/joel/repos/turkey-server/bower.json",
-		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/component.json",
-		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/bower.json"
+		"/home/joel/repos/turkey-server/app/bower_components/highlightjs/.bower.json"
 	],
 	"find":
 	{
@@ -680,6 +688,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"source code",
+			"muli",
 			"backbone",
 			"browserify",
 			"coffee",
@@ -794,6 +804,152 @@
 	"groups":
 	[
 		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/templates/src/sass/_app.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2923,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"apply_syntax_touched": true,
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": true,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"sublime_auto_complete": true,
+							"syntax": "Packages/SCSS/SCSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
 			"sheets":
 			[
 			]
@@ -827,6 +983,18 @@
 				0,
 				2,
 				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
 			]
 		],
 		"cols":
@@ -838,6 +1006,7 @@
 		"rows":
 		[
 			0.0,
+			0.5,
 			1.0
 		]
 	},

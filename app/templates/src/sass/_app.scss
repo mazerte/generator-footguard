@@ -7,6 +7,8 @@
 @import "mixins";
 @import "bourbon/app/assets/stylesheets/bourbon";
 
+@import url(http://fonts.googleapis.com/css?family=Lato:300,300italic,700|Source+Code+Pro|Josefin+Slab|Muli:400,400italic,300italic,300);
+
 
 #total {
   margin: 50px;
@@ -24,7 +26,7 @@
 
 body {
   @import "compass/typography/text/force-wrap";
-  font-family: 'Muli', 'Lato Light', 'Imprima';
+  font-family: 'Muli', 'Lato Light', 'Titillium Web','Imprima';
   font-size: 1em;
   @media print {
     font-size: 0.8em;
@@ -65,14 +67,32 @@ h6 {
 
 strong {
   font-weight: bold;
+  @media print {
+    font-weight: bold;
+    text-decoration: underline;
+  }
 }
 
 em {
   text-decoration: dashed;
+  font-style: italic;
+  @media print {
+    font-style: italic;
+    text-decoration: dashed;
+  }
 }
 
-i {
-  
+ul {
+    list-style:none;
+    margin-left:0;
+    padding-left:1em;
+
+  li:before {
+    display:inline-block;
+    content:"-";
+    width:1em;
+    margin-left:-1em;
+  }
 }
 
 p {
