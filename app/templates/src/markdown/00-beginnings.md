@@ -16,25 +16,32 @@ Typing LaTeX reports for short school projects is a pain.  Writing Markdown's ea
 
 I needed it for my assignments.
 
+
 ### Installation
 
 `generator-school-report` runs on NodeJS and Ruby.  You'll also need `compass`, `coffee` and `sass`.
 
 Install `grunt`, `grunt-cli`, `bower`, and `yo`, as per the Yeoman framework.  Then run:
 
-	$ npm install -g generator-school-report
-	$ mkdir my-first-report && cd $_
-	$ yo school-report
+```bash
+$ npm install -g generator-school-report
+$ mkdir my-first-report && cd $_
+$ yo school-report
+```
 
 To start the server:
 
-	$ grunt server
+```bash
+$ grunt server
+```
 
 You've got a Live, printer-friendly school report going!
 
 To export it as a ready-to-roll HTML page, do:
 
-	$ grunt
+```bash
+$ grunt
+```
 
 
 ### Did you say printing?

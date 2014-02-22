@@ -2,7 +2,7 @@
 
 Fork this repository at https://github.com/myrtleTree33/generator-school-report
 
-## Credit
+### Credit
 
 - Joel H Tong 
 - `jhtong`, `mrytletree33`

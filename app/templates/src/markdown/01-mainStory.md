@@ -10,26 +10,53 @@
 
 ### Markdown refresher
 
-**This is bold text**
 
-**This is italic text**
+*This is italic text*
 
 This contains some inline $$$\frac {a + 3} {b + c}$$$ latex text
 
 An equation can be written as follow:
 
+**Multiline**
+
+$$\begin{eqnarray}
+a + b &=& 3 \\\
+b &=& 3 - a
+\end{eqnarray}$$
+
+*Single line*
+
 $$
-\begin{align}
-a + b &= 3 \\
-b &= 3 - a
-\end{align}
+F = G \frac {m_1 m_2} {r^2}
 $$
 
-Writing some `inline code` or perhaps functions:
+Writing some `inline code` or perhaps functions.  If the language is not specified, automatic syntax highlighting is used:
 
 	function() {
 		console.log("hello world");
 	}
+
+Writing some language-specific code: 
+
+```js
+/** Memoization example from 
+  * http://www.sitepoint.com/implementing-memoization-in-javascript/
+  */
+function memoize(func) {
+  var memo = {};
+  var slice = Array.prototype.slice;
+
+  return function() {
+    var args = slice.call(arguments);
+
+    if (args in memo)
+      return memo[args];
+    else
+      return (memo[args] = func.apply(this, args));
+
+  }
+}
+```
 
 Oh, and HTML tags are supported as well.
 

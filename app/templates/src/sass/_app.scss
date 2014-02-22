@@ -15,7 +15,8 @@
 }
 
 @page {
-  margin: 1.7em 1.2em;
+  // margin: 1.7em 1.2em;
+  margin: 80px 0px;
 }
 
 @page :right {
@@ -66,20 +67,14 @@ h6 {
 }
 
 strong {
-  font-weight: bold;
+  // font-weight: 700;
   @media print {
-    font-weight: bold;
     text-decoration: underline;
   }
 }
 
 em {
-  text-decoration: dashed;
   font-style: italic;
-  @media print {
-    font-style: italic;
-    text-decoration: dashed;
-  }
 }
 
 ul {

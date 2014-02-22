@@ -4,18 +4,6 @@
 		{
 			"follow_symlinks": true,
 			"path": "."
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/home/joel/repos/test-report"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/home/joel/repos/testReport2"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/home/joel/repos/test-report-3"
 		}
 	]
 }

@@ -18,8 +18,9 @@ define [
 
       # use custom highlighting
       marked.setOptions {
-        highlight: (code) -> 
-          hljs.highlightAuto(code).value
+        highlight: (code, lang) -> 
+          if lang then hljs.highlight(lang, code).value
+          else hljs.highlightAuto(code).value
       }
 
       ## converts markdown to html
