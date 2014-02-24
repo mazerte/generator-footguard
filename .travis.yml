@@ -7,8 +7,8 @@ env:
     secure: B8roIKodiTL29MuIJti/iujkzlymhwlWhA+zYh0UV/mm6OARrtZJOg1ZlCRZ1dqGUt06kd6JV1QsvqNxwCatuH3CrRG8eWbUFlvm/jd+/+DxRGBkiGyWcjSP7teXniQ5WhX8pdHCe0vR982KZ7WeCd6/abygIC4r20D91gX8zC4=
 
 script:
-  - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
-  - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  # - ./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec
+  # - cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 
 after_success:
-  - ./deploy_test.sh
+  # - ./deploy_test.sh

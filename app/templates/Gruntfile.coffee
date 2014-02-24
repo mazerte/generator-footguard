@@ -46,6 +46,7 @@ fileHTMLRewriter = ({regex, snippet})->
 module.exports = (grunt)->
 
   grunt.loadNpmTasks('grunt-contrib-clean')
+  grunt.loadNpmTasks('grunt-html-build')
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-contrib-compass')
   grunt.loadNpmTasks('grunt-contrib-less')
@@ -96,7 +97,15 @@ module.exports = (grunt)->
     watch:
       options:
         interrupt: true
+        livereload:true
 
+      # browserify:
+      #   files: ['<%= yeoman.src %>/browserify/{,**/}*.coffee']
+      #   tasks: ['browserify:dist']
+
+      markdown:
+        files: ['<%= yeoman.src %>/markdown/{,**/}*.md']
+        tasks: ['concat', 'htmlbuild:dist']
       coffee:
         files: ['<%= yeoman.src %>/coffee/{,**/}*.coffee']
         tasks: ['coffee:dist']
@@ -188,6 +197,23 @@ module.exports = (grunt)->
         dest: '<%= yeoman.tmp %>/js'
         ext: '.js'
 
+    concat:
+      options:
+        separator: '\n\n'
+      dist: 
+        src: ['<%= yeoman.src %>/markdown/{,**/}*.md']
+        dest: '<%= yeoman.tmp %>/markdown/combined.md'
+
+    htmlbuild:
+      dist:
+        src: '<%= yeoman.src %>/html/app.html'
+        dest: '<%= yeoman.app %>/templates/'
+        options:
+          beautify: false
+          relative: false
+          sections:
+            markdown: '<%= yeoman.tmp %>/markdown/combined.md'
+
     coffeecov:
       options:
         path: 'relative'
@@ -257,6 +283,7 @@ module.exports = (grunt)->
         }, {
           expand: true
           cwd: '<%= yeoman.app %>/'
+          dot: true
           src: ['**']
           dest: '<%= yeoman.tmp_dist %>/'
         }]
@@ -341,6 +368,8 @@ module.exports = (grunt)->
   ])
 
   grunt.registerTask('server', [
+    'concat'
+    'htmlbuild:dist'
     'coffee:dist'
     'compass:server'
     'less:server'
@@ -376,6 +405,8 @@ module.exports = (grunt)->
     'clean:dist'
     'clean:tmp'
     'clean:tmp_dist'
+    'concat'
+    'htmlbuild:dist'
     'coffee'
     'compass:dist'
     'less:dist'

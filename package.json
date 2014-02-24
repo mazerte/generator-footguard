@@ -1,7 +1,7 @@
 {
-  "name": "generator-footguard",
-  "version": "0.2.11",
-  "description": "Yeoman generator for single page application",
+  "name": "generator-school-report",
+  "version": "0.1.2",
+  "description": "Yeoman generator for writing school reports (printable and web).  Supports MathJax.  Uses Coffee, SaSS / ScSS, Compass, Bourbon.",
   "keywords": [
     "yeoman-generator",
     "yeoman",
@@ -19,15 +19,15 @@
     "kss",
     "app"
   ],
-  "homepage": "https://github.com/mazerte/generator-footguard",
-  "bugs": "https://github.com/mazerte/generator-footguard/issues",
+  "homepage": "https://github.com/myrtleTree33/generator-school-report",
+  "bugs": "https://github.com/myrtleTree33/generator-school-report/issues",
   "author": {
-    "name": "Mathieu Desvé"
+    "name": "jhtong"
   },
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/mazerte/generator-footguard.git"
+    "url": "git://github.com/myrtleTree33/generator-school-report.git"
   },
   "scripts": {
     "test": "mocha -R spec"
@@ -52,8 +52,7 @@
       "type": "BSD"
     }
   ],
-  "readme": "# Footguard generator\n\nMaintainer: [Mathieu Desvé](https://github.com/mazerte)\n\nBased on [yeoman-generator](https://github.com/yeoman/yeoman-generator/)\n\n## Usage\n\nFirst make a new directory, and `cd` into it:\n```\nmkdir my-new-project && cd $_\n```\n\nThen install `generator-footguard`:\n```\nnpm install generator-footguard\n```\n\nRun `yo footguard`, optionally passing an app name:\n```\nyo footguard\n```\n\nFinally, install npm and bower dependencies:\n```\nnpm install && bower install --dev\n```\n\n## Generators\n\nAvailable generators:\n\n* [footguard](#app) (aka [footguard:app](#app))\n* [footguard:collection](#collection)\n* [footguard:model](#model)\n* [footguard:helper](#helper)\n* [footguard:view](#view)\n\n## Commands\n\nAvailable commands:\n\n* [yo server](#server)\n* [yo compile](#compile)\n* [yo build](#build)\n* [yo server-dist](#server-dist)",
-  "readmeFilename": "readme.md",
-  "_id": "generator-footguard@0.2.3",
-  "_from": "generator-footguard"
+  "readmeFilename": "README.md",
+  "_id": "generator-school-report@0.0.1",
+  "_from": "generator-school-report"
 }
