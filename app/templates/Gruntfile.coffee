@@ -283,6 +283,7 @@ module.exports = (grunt)->
         }, {
           expand: true
           cwd: '<%= yeoman.app %>/'
+          dot: true
           src: ['**']
           dest: '<%= yeoman.tmp_dist %>/'
         }]
